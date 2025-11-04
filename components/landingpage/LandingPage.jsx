@@ -4,6 +4,8 @@ import Image from "next/image";
 import Nav from "@/components/Navigation/Nav";
 import { Droplets, Lightbulb, Gauge, Zap, Volume2, Battery, Leaf, Timer, Sparkles } from "lucide-react";
 import Link from 'next/link'
+import { getLandingPageText } from "@/components/landingpage";
+import { useLanguage } from "@/components/context/LanguageContext";
 
 const LandingPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -11,7 +13,19 @@ const LandingPage = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const touchStartY = useRef(0);
-  
+  const lastTouchY = useRef(0);
+
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getLandingPageText("en")); // Default to 'en' on first render
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getLandingPageText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
+
   const images = [
     "images/mainroom.png",
     "images/bedroom.png",
@@ -67,8 +81,8 @@ const LandingPage = () => {
   ];
 
   // Split headline into two lines
-  const line1 = "Breathe better.";
-  const line2 = "Live smarter.";
+  const line1 = text.headline.line1;
+  const line2 = text.headline.line2;
 
   // Character split helper
   const splitChars = (text) => text.split("").map((char, index) => ({ char, index }));
@@ -88,32 +102,47 @@ const LandingPage = () => {
     return () => window.removeEventListener("wheel", handleScroll);
   }, []);
 
-  // Touch support for mobile
+  // Touch support for mobile - fixed to prevent pull-to-refresh
   useEffect(() => {
     const handleTouchStart = (e) => {
       touchStartY.current = e.touches[0].clientY;
+      lastTouchY.current = e.touches[0].clientY;
     };
 
     const handleTouchMove = (e) => {
       const touchY = e.touches[0].clientY;
-      const delta = touchStartY.current - touchY;
+      const delta = lastTouchY.current - touchY;
+      
+      // Only prevent default if we're not at the top and trying to scroll up
+      // or if we're scrolling down
+      if (scrollProgress > 0 || delta > 0) {
+        e.preventDefault();
+      }
       
       setScrollProgress(prev => {
         const newProgress = prev + delta * 2;
         return Math.max(0, Math.min(3250, newProgress));
       });
       
-      touchStartY.current = touchY;
+      lastTouchY.current = touchY;
     };
 
+    const handleTouchEnd = () => {
+      touchStartY.current = 0;
+      lastTouchY.current = 0;
+    };
+
+    // Use touchstart and touchend as passive, but touchmove needs to prevent default conditionally
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
     
     return () => {
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, []);
+  }, [scrollProgress]);
 
   // Calculate overlay darkness (0 to 1 for complete coverage)
   const overlayDarkness = Math.min(1, scrollProgress / 1000);
@@ -212,62 +241,18 @@ const LandingPage = () => {
     return (scrollProgress - 1750) / 1000;
   };
 
-  const squares = [
-    { 
-      title: "Real-Time", 
-      subtitle: "Monitor room humidity and temperature instantly with built-in sensors", 
-      icon: Gauge, 
-      color: "bg-blue-500" 
-    },
-    { 
-      title: "Smart Modes", 
-      subtitle: "Switch between auto-adjust or manual settings for perfect comfort", 
-      icon: Zap, 
-      color: "bg-purple-500" 
-    },
-    { 
-      title: "Ambient Glow", 
-      subtitle: "Customizable LED lighting to match your mood or decor", 
-      icon: Lightbulb, 
-      color: "bg-yellow-500" 
-    },
-    { 
-      title: "Silent", 
-      subtitle: "Ultra-quiet operation ideal for bedrooms and workspaces", 
-      icon: Volume2, 
-      color: "bg-green-500" 
-    },
-    { 
-      title: "Modular Design", 
-      subtitle: "Easily switch tops or refill water for convenience and style", 
-      icon: Droplets, 
-      color: "bg-cyan-500" 
-    },
-    { 
-      title: "Eco-Friendly", 
-      subtitle: "Made from recyclable materials for a sustainable choice", 
-      icon: Leaf, 
-      color: "bg-emerald-500" 
-    },
-    { 
-      title: "Connected", 
-      subtitle: "Control settings remotely via web app anytime, anywhere", 
-      icon: Battery, 
-      color: "bg-orange-500" 
-    },
-    { 
-      title: "Timed Comfort", 
-      subtitle: "Set schedules or timers for automated humidity control", 
-      icon: Timer, 
-      color: "bg-pink-500" 
-    },
-    { 
-      title: "Future-Proof", 
-      subtitle: "Receive OTA updates and enjoy locally-manufactured quality", 
-      icon: Sparkles, 
-      color: "bg-indigo-500" 
-    },
+  const icons = [Gauge, Zap, Lightbulb, Volume2, Droplets, Leaf, Battery, Timer, Sparkles];
+  const colors = [
+    "bg-blue-500", "bg-purple-500", "bg-yellow-500", "bg-green-500",
+    "bg-cyan-500", "bg-emerald-500", "bg-orange-500", "bg-pink-500", "bg-indigo-500"
   ];
+
+  const squares = text.squares.map((square, index) => ({
+    title: square.title,
+    subtitle: square.subtitle,
+    icon: icons[index],
+    color: colors[index]
+  }));
 
   return (
     <div className="h-screen w-screen overflow-hidden relative bg-[rgb(21,21,21)]">
@@ -312,7 +297,7 @@ const LandingPage = () => {
             }}
           >
           {/* Headline Line 1 */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight text-white drop-shadow-lg flex justify-center md:justify-start font-aeonik whitespace-nowrap overflow-hidden">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight text-white drop-shadow-lg flex justify-center md:justify-start font-aeonik whitespace-nowrap overflow-visible">
             <span className="inline-flex">
               {splitChars(line1).map(({ char, index }) => (
                 <motion.span
@@ -328,7 +313,7 @@ const LandingPage = () => {
             </span>
           </h1>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight text-white drop-shadow-lg flex justify-center md:justify-start mt-2 font-aeonik whitespace-nowrap overflow-hidden">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight text-white drop-shadow-lg flex justify-center md:justify-start mt-2 font-aeonik whitespace-nowrap overflow-visible pb-2">
             <span className="inline-flex">
               {splitChars(line2).map(({ char, index }) => (
                 <motion.span
@@ -344,8 +329,6 @@ const LandingPage = () => {
             </span>
           </h1>
 
-
-
             {/* Paragraphs */}
             <motion.p
               className="text-md md:text-lg mt-3 text-gray-200"
@@ -353,9 +336,7 @@ const LandingPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0 }}
             >
-              A modern humidifier that balances comfort and intelligence. 
-              Monitors humidity and temperature in real time while adapting 
-              to your space with ambient lighting.
+              {text.description.p1}
             </motion.p>
             <motion.p
               className="text-sm mt-2 text-gray-300"
@@ -363,7 +344,7 @@ const LandingPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
             >
-              Designed for both performance and aesthetics.
+              {text.description.p2}
             </motion.p>
 
             {/* Buttons */}
@@ -377,13 +358,13 @@ const LandingPage = () => {
                 href="/buy"
                 className="backdrop-blur-2xl bg-white/20 text-white font-semibold px-7 py-3 rounded-2xl shadow-[0_10px_45px_rgba(0,0,0,0.45)] hover:bg-white/50 hover:shadow-[0_10px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:scale-110"
               >
-                Buy Now
+                {text.buttons.buyNow}
               </Link>
               <button
                 onClick={() => scrollToProgress(1000, 400)}
                 className="backdrop-blur-xl bg-white/15 text-white font-medium px-6 py-3 rounded-2xl shadow-[0_8px_35px_rgba(0,0,0,0.35)] hover:bg-white/25 hover:shadow-[0_8px_45px_rgba(0,0,0,0.45)] transition-all duration-300 hover:scale-105"
               >
-                Learn More
+                {text.buttons.learnMore}
               </button>
             </motion.div>
           </div>
@@ -484,13 +465,13 @@ const LandingPage = () => {
           {/* Text Content */}
           <div className="flex-1 text-white text-center md:text-left">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
-              Experience Pure Comfort
+              {text.newContent.headline}
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-3 md:mb-4">
-              Keep your home healthy and comfortable. Proper humidity helps reduce dry skin, irritated eyes, and respiratory discomfort while supporting better sleep.
+              {text.newContent.p1}
             </p>
             <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-4">
-              A well-humidified room also protects wood furniture, flooring, and electronics from cracking or static buildup, preserving your space.
+              {text.newContent.p2}
             </p>
           </div>
 
@@ -537,15 +518,10 @@ const LandingPage = () => {
 
           {/* Right: Stats Section */}
           <div className="flex-1 flex flex-col items-start justify-center text-left w-full">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Performance at a Glance</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">{text.stats_title.headline}</h2>
             
             <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 w-full">
-              {[
-                { label: "Runtime per Refill", value: "24–48h" },
-                { label: "Average Power", value: "30W" },
-                { label: "Room Coverage", value: "30–50 m²" },
-                { label: "Tank Capacity", value: "1.5–2L" },
-              ].map((stat, idx) => (
+              {text.stats.map((stat, idx) => (
                 <div
                   key={idx}
                   className="flex flex-col items-start justify-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-gray-50 to-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1"

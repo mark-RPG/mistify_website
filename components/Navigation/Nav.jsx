@@ -2,9 +2,16 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/context/LanguageContext'
+import { Globe } from 'lucide-react'
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { locale, switchLanguage } = useLanguage()
+
+  const toggleLanguage = () => {
+    switchLanguage(locale === 'en' ? 'lv' : 'en')
+  }
 
   return (
     <>
@@ -28,7 +35,7 @@ const Nav = () => {
             />
           </Link>
 
-          {/* Connect Button - Desktop Only (lighter) */}
+          {/* Connect Button - Desktop Only */}
           <Link
             href="/connect"
             className="hidden md:block relative z-10 backdrop-blur-xl bg-white/20 text-black font-medium px-6 py-3 rounded-2xl shadow-lg hover:bg-white/30 transition-all duration-300 hover:scale-105"
@@ -39,6 +46,16 @@ const Nav = () => {
 
         {/* Right side: Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
+          {/* Language Switcher */}
+          <button
+            onClick={toggleLanguage}
+            className="backdrop-blur-xl bg-white/20 text-black font-medium px-4 py-3 rounded-2xl shadow-lg hover:bg-white/30 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            aria-label="Switch language"
+          >
+            <Globe className="w-5 h-5" />
+            <span className="uppercase font-semibold">{locale}</span>
+          </button>
+
           <Link
             href="/contact"
             className="backdrop-blur-xl bg-white/25 text-black font-medium px-6 py-3 rounded-2xl shadow-[0_8px_35px_rgba(0,0,0,0.35)] hover:bg-white/35 hover:shadow-[0_8px_45px_rgba(0,0,0,0.45)] transition-all duration-300 hover:scale-105"
@@ -46,7 +63,6 @@ const Nav = () => {
             Contact
           </Link>
 
-          {/* Buy button unchanged */}
           <Link
             href="/buy"
             className="backdrop-blur-2xl bg-white/40 text-black font-semibold px-7 py-3 rounded-2xl shadow-[0_10px_45px_rgba(0,0,0,0.45)] hover:bg-white/50 hover:shadow-[0_10px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:scale-110"
@@ -79,7 +95,6 @@ const Nav = () => {
             ></span>
           </div>
         </button>
-
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -101,6 +116,18 @@ const Nav = () => {
           }`}
         >
           <nav className="flex flex-col gap-4">
+            {/* Language Switcher - Mobile */}
+            <button
+              onClick={() => {
+                toggleLanguage()
+                setIsOpen(false)
+              }}
+              className="backdrop-blur-xl bg-white/20 text-black font-medium px-6 py-4 rounded-2xl shadow-lg hover:bg-white/30 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <Globe className="w-5 h-5" />
+              <span className="uppercase font-semibold">{locale === 'en' ? 'Switch to LV' : 'Switch to EN'}</span>
+            </button>
+
             <Link
               href="/connect"
               onClick={() => setIsOpen(false)}
@@ -117,7 +144,6 @@ const Nav = () => {
               Contact
             </Link>
 
-            {/* Buy button unchanged */}
             <Link
               href="/buy"
               onClick={() => setIsOpen(false)}
