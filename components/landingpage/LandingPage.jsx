@@ -75,7 +75,7 @@ const LandingPage = () => {
 
   // Humidifier positions and sizes - responsive
   const humidifierStyles = [
-    { bottom: "120px", right: "570px", width: 280, mobileBottom: "80px", mobileRight: "50%", mobileWidth: 200 },
+    { bottom: "120px", right: "490px", width: 220, mobileBottom: "80px", mobileRight: "50%", mobileWidth: 200 },
     { bottom: "170px", left: "57%", width: 180, mobileBottom: "100px", mobileRight: "50%", mobileWidth: 140 },
     { bottom: "80px", right: "520px", width: 210, mobileBottom: "70px", mobileRight: "50%", mobileWidth: 160 },
   ];
