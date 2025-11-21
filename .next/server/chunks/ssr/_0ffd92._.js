@@ -624,8 +624,8 @@ const LandingPage = ()=>{
     const humidifierStyles = [
         {
             bottom: "120px",
-            right: "570px",
-            width: 280,
+            right: "490px",
+            width: 220,
             mobileBottom: "80px",
             mobileRight: "50%",
             mobileWidth: 200
