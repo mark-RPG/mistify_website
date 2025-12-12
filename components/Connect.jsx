@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Nav from "@/components/Navigation/Nav";
-import { FaPlus, FaWifi, FaExclamationTriangle, FaTrash, FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa';
 
-const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refreshOnReturn, setCheckDeviceStatusFunction  }) => {
+const Connect = ({ setActiveDevice, refreshOnReturn }) => {
   const [devices, setDevices] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [newDeviceId, setNewDeviceId] = useState('');
@@ -11,7 +11,6 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
   const [loading, setLoading] = useState(false);
   const [showConfirmRemove, setShowConfirmRemove] = useState(false);
   const [deviceToRemove, setDeviceToRemove] = useState(null);
-  const [lastVisible, setLastVisible] = useState(false);
   const [editingDeviceId, setEditingDeviceId] = useState(null);
   const [editName, setEditName] = useState('');
 
@@ -28,84 +27,10 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
     }
   }, [devices]);
 
-  const checkDeviceStatus = async () => {
-    const updatedDevices = await Promise.all(
-      devices.map(async (device) => {
-        try {
-          // Get device name
-          const nameResponse = await fetch(`https://simple-api.mistify.lv/api/device/get-name?id=${device.id}`);
-          const name = await nameResponse.text();
-          
-          updateDeviceStatuses(prev => ({
-            ...prev,
-            [device.id]: { name }
-          }));
-          
-          return { ...device, name: name || '' };
-        } catch (err) {
-          console.error(`Error checking device ${device.id}:`, err);
-          
-          updateDeviceStatuses(prev => ({
-            ...prev,
-            [device.id]: { name: device.name || '' }
-          }));
-          
-          return { ...device };
-        }
-      })
-    );
-    setDevices(updatedDevices);
-  };
-
-  useEffect(() => {
-    console.log("Setting checkDeviceStatusFunction");
-    if (setCheckDeviceStatusFunction) {
-      setCheckDeviceStatusFunction(() => checkDeviceStatus);
-    }
-  }, [setCheckDeviceStatusFunction, devices]);
-
-  useEffect(() => {
-    console.log("Checking device status");
-    if (devices.length > 0) {
-      checkDeviceStatus();
-    }
-  }, [devices.length]);
-
-  useEffect(() => {
-    console.log("Refreshing status on return");
-    if (refreshOnReturn && !lastVisible) {
-      console.log("Returning from device management, refreshing status...");
-      checkDeviceStatus();
-    }
-    setLastVisible(true);
-  }, [refreshOnReturn]);
-
-  useEffect(() => {
-    console.log("Checking device status on visibility change");
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        checkDeviceStatus();
-      }
-    };
-
-    const handleFocus = () => {
-      checkDeviceStatus();
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('focus', handleFocus);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('focus', handleFocus);
-    };
-  }, [devices]);  
-
   const selectDevice = (id) => {
     // Don't select device if we're in editing mode
     if (editingDeviceId) return;
     
-    console.log(`Selecting device: ${id}`);
     setActiveDevice(id);
   };
 
@@ -132,13 +57,9 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
       const data = await response.text();
 
       if (data === 'true') {
-        // Get device name
-        const nameResponse = await fetch(`https://simple-api.mistify.lv/api/device/get-name?id=${newDeviceId}`);
-        const name = await nameResponse.text();
-        
         const newDevice = { 
           id: newDeviceId, 
-          name: name || ''
+          name: ''
         };
         
         const updatedDevices = [...devices, newDevice];
@@ -146,11 +67,6 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
         
         // Save to localStorage
         localStorage.setItem('savedDevices', JSON.stringify(updatedDevices));
-        
-        updateDeviceStatuses(prev => ({
-          ...prev,
-          [newDeviceId]: { name }
-        }));
         
         setNewDeviceId('');
         setShowModal(false);
@@ -191,31 +107,17 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
     setEditName('');
   };
 
-  const saveDeviceName = async (id) => {
-    try {
-      const response = await fetch(`https://simple-api.mistify.lv/api/device/set-name?id=${id}&name=${encodeURIComponent(editName)}`);
-      if (response.ok) {
-        const updatedDevices = devices.map(device => 
-          device.id === id ? { ...device, name: editName } : device
-        );
-        
-        setDevices(updatedDevices);
-        
-        // Save updated devices with new name to localStorage
-        localStorage.setItem('savedDevices', JSON.stringify(updatedDevices));
-        
-        updateDeviceStatuses(prev => ({
-          ...prev,
-          [id]: { ...prev[id], name: editName }
-        }));
-      } else {
-        console.error('Failed to update device name');
-      }
-    } catch (err) {
-      console.error('Error updating device name:', err);
-    } finally {
-      setEditingDeviceId(null);
-    }
+  const saveDeviceName = (id) => {
+    const updatedDevices = devices.map(device => 
+      device.id === id ? { ...device, name: editName } : device
+    );
+    
+    setDevices(updatedDevices);
+    
+    // Save updated devices with new name to localStorage
+    localStorage.setItem('savedDevices', JSON.stringify(updatedDevices));
+    
+    setEditingDeviceId(null);
   };
 
   return (
