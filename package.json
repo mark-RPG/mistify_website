@@ -16,7 +16,7 @@
     "lucide-react": "^0.510.0",
     "mongobd": "^0.0.1-security.0",
     "my_prompts": "file:",
-    "next": "15.1.6",
+    "next": "15.1.11",
     "next-auth": "^4.24.11",
     "next-video": "^2.1.0",
     "ngoose": "^1.1.1",
