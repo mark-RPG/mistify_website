@@ -2,6 +2,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { SketchPicker } from "react-color";
 import { useDevice } from '@/components/context/DeviceContext';
+import { getDevicePanelsText } from '@/components/devicePanelsText';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 export const ColorSelector = () => {
   const { deviceData, setDeviceData } = useDevice();
@@ -10,6 +12,18 @@ export const ColorSelector = () => {
   const popupRef = useRef(null);
   const buttonRef = useRef(null);
   const lastCloseTimeRef = useRef(0);
+
+  // Language system
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getDevicePanelsText("en"));
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getDevicePanelsText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
 
   const handleClickOutside = (event) => {
     if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -66,7 +80,7 @@ export const ColorSelector = () => {
                 d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" 
               />
             </svg>
-            <h3 className="text-gray-200 text-lg font-medium">Light Color</h3>
+            <h3 className="text-gray-200 text-lg font-medium">{text.colorSelector.title}</h3>
           </div>
           <div className="w-8 h-8 rounded-full border-2 border-white shadow-lg" style={{ backgroundColor: deviceData.color }}></div>
         </div>

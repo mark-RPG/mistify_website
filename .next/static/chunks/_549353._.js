@@ -557,9 +557,9 @@ const LandingPage = ()=>{
         locale
     ]);
     const images = [
-        "images/mainroom.png",
-        "images/bedroom.png",
-        "images/livingroom.png"
+        "images/mainroom1.png",
+        "images/bedroom1.png",
+        "images/livingroom1.png"
     ];
     const scrollToProgress = (target, duration = 500)=>{
         const start = scrollProgress;
@@ -1038,53 +1038,6 @@ const LandingPage = ()=>{
                         fileName: "[project]/components/landingpage/LandingPage.jsx",
                         lineNumber: 290,
                         columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute transition-opacity duration-500 ease-in-out z-20 hidden md:block",
-                        style: {
-                            opacity: fade ? 1 : 0,
-                            position: "absolute",
-                            ...humidifierStyles[currentImageIndex]
-                        },
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            src: "/humidifierfake1.png",
-                            width: humidifierStyles[currentImageIndex].width,
-                            height: humidifierStyles[currentImageIndex].width,
-                            alt: "Smart Humidifier Product",
-                            className: "drop-shadow-2xl"
-                        }, void 0, false, {
-                            fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 382,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/landingpage/LandingPage.jsx",
-                        lineNumber: 374,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute md:hidden transition-opacity duration-500 ease-in-out z-20",
-                        style: {
-                            opacity: fade ? 1 : 0,
-                            bottom: humidifierStyles[currentImageIndex].mobileBottom,
-                            right: humidifierStyles[currentImageIndex].mobileRight,
-                            transform: 'translateX(50%)'
-                        },
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            src: "/humidifierfake1.png",
-                            width: humidifierStyles[currentImageIndex].mobileWidth,
-                            height: humidifierStyles[currentImageIndex].mobileWidth,
-                            alt: "Smart Humidifier Product",
-                            className: "drop-shadow-2xl"
-                        }, void 0, false, {
-                            fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 401,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/landingpage/LandingPage.jsx",
-                        lineNumber: 392,
-                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
@@ -1123,12 +1076,12 @@ const LandingPage = ()=>{
                                         strokeWidth: 2
                                     }, void 0, false, {
                                         fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                        lineNumber: 441,
+                                        lineNumber: 405,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 434,
+                                    lineNumber: 398,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1139,7 +1092,7 @@ const LandingPage = ()=>{
                                     children: square.title
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 443,
+                                    lineNumber: 407,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1150,24 +1103,24 @@ const LandingPage = ()=>{
                                     children: square.subtitle
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 446,
+                                    lineNumber: 410,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 424,
+                            lineNumber: 388,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                    lineNumber: 413,
+                    lineNumber: 377,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                lineNumber: 412,
+                lineNumber: 376,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1188,7 +1141,7 @@ const LandingPage = ()=>{
                                     children: text.newContent.headline
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 467,
+                                    lineNumber: 431,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1196,7 +1149,7 @@ const LandingPage = ()=>{
                                     children: text.newContent.p1
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 470,
+                                    lineNumber: 434,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1204,13 +1157,13 @@ const LandingPage = ()=>{
                                     children: text.newContent.p2
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 473,
+                                    lineNumber: 437,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 466,
+                            lineNumber: 430,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1225,28 +1178,28 @@ const LandingPage = ()=>{
                                     className: "drop-shadow-2xl"
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 481,
+                                    lineNumber: 445,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                lineNumber: 480,
+                                lineNumber: 444,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 479,
+                            lineNumber: 443,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                    lineNumber: 464,
+                    lineNumber: 428,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                lineNumber: 456,
+                lineNumber: 420,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1258,97 +1211,63 @@ const LandingPage = ()=>{
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "pointer-events-auto max-w-6xl w-full mx-auto px-4 sm:px-6 md:px-10 py-8 sm:py-12 md:py-16 bg-white/90 rounded-2xl sm:rounded-3xl shadow-[0_12px_50px_rgba(0,0,0,0.1)] flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-10 lg:gap-16",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex-1 flex justify-center items-center",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative w-full max-w-[200px] sm:max-w-xs md:max-w-sm lg:max-w-md aspect-square",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/buy",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                        src: "/humidifierfake1.png",
-                                        width: 400,
-                                        height: 400,
-                                        alt: "Humidifier",
-                                        className: "w-full h-full object-contain drop-shadow-2xl rounded-2xl sm:rounded-3xl transition-transform duration-500 hover:scale-105 cursor-pointer"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                        lineNumber: 508,
-                                        columnNumber: 17
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 507,
-                                    columnNumber: 15
-                                }, this)
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex-1 flex flex-col items-start justify-center text-left w-full",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                className: "text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6",
+                                children: text.stats_title.headline
                             }, void 0, false, {
                                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                lineNumber: 506,
+                                lineNumber: 470,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 w-full",
+                                children: text.stats.map((stat, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex flex-col items-start justify-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-gray-50 to-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 mb-1 tracking-tight",
+                                                children: stat.value
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/landingpage/LandingPage.jsx",
+                                                lineNumber: 478,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "text-xs sm:text-sm md:text-base text-gray-500 font-medium",
+                                                children: stat.label
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/landingpage/LandingPage.jsx",
+                                                lineNumber: 481,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, idx, true, {
+                                        fileName: "[project]/components/landingpage/LandingPage.jsx",
+                                        lineNumber: 474,
+                                        columnNumber: 17
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/components/landingpage/LandingPage.jsx",
+                                lineNumber: 472,
                                 columnNumber: 13
                             }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 505,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex-1 flex flex-col items-start justify-center text-left w-full",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                    className: "text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6",
-                                    children: text.stats_title.headline
-                                }, void 0, false, {
-                                    fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 521,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 w-full",
-                                    children: text.stats.map((stat, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex flex-col items-start justify-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-gray-50 to-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 mb-1 tracking-tight",
-                                                    children: stat.value
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                                    lineNumber: 529,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-xs sm:text-sm md:text-base text-gray-500 font-medium",
-                                                    children: stat.label
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                                    lineNumber: 532,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, idx, true, {
-                                            fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                            lineNumber: 525,
-                                            columnNumber: 17
-                                        }, this))
-                                }, void 0, false, {
-                                    fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 523,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 520,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/landingpage/LandingPage.jsx",
+                        lineNumber: 469,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                    lineNumber: 502,
+                    lineNumber: 466,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                lineNumber: 494,
+                lineNumber: 458,
                 columnNumber: 7
             }, this)
         ]

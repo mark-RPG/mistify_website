@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { useDevice } from '@/components/context/DeviceContext';
+import { getDevicePanelsText } from '@/components/devicePanelsText';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 const showGlobalToast = (message) => {
   const event = new CustomEvent('showToast', {
@@ -13,6 +15,18 @@ const TimerControl = () => {
   const { deviceData, setDeviceData, isActive, timeLeft, setTimeLeft, setIsActive } = useDevice();
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
+
+  // Language system
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getDevicePanelsText("en"));
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getDevicePanelsText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
 
   useEffect(() => {
     const remainingMs  = deviceData.timer * 1000;
@@ -44,7 +58,7 @@ const TimerControl = () => {
         timerActive: true
       }));
              
-      showGlobalToast(`Timer set for ${hours}h ${minutes}m`);
+      showGlobalToast(`${text.timerControl.timerSetMessage} ${hours}h ${minutes}m`);
              
       setHours(0);
       setMinutes(0);
@@ -59,7 +73,7 @@ const TimerControl = () => {
       timer: null,
       timerActive: false
     }));
-    showGlobalToast('Timer cancelled');
+    showGlobalToast(text.timerControl.timerCancelledMessage);
   };
 
   const formatTime = (seconds) => {
@@ -80,7 +94,7 @@ const TimerControl = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <h3 className="text-gray-300 text-xl font-medium">
-          {isActive ? 'Timer Running' : 'Set Timer'}
+          {isActive ? text.timerControl.timerRunning : text.timerControl.setTimer}
         </h3>
       </div>
       
@@ -90,13 +104,13 @@ const TimerControl = () => {
           <div className="text-4xl font-mono font-bold text-blue-400 mb-2">
             {formatTime(timeLeft)}
           </div>
-          <div className="text-gray-400">Time Remaining</div>
+          <div className="text-gray-400">{text.timerControl.timeRemaining}</div>
         </div>
       ) : (
         // Timer setup when inactive
         <div className="grid grid-cols-2 gap-4 mb-3">
           <div className="bg-gray-700 rounded-lg p-3">
-            <label className="block text-sm text-gray-400 mb-2">Hours</label>
+            <label className="block text-sm text-gray-400 mb-2">{text.timerControl.hours}</label>
             <select
               value={hours}
               onChange={(e) => setHours(parseInt(e.target.value))}
@@ -109,7 +123,7 @@ const TimerControl = () => {
           </div>
                  
           <div className="bg-gray-700 rounded-lg p-3">
-            <label className="block text-sm text-gray-400 mb-2">Minutes</label>
+            <label className="block text-sm text-gray-400 mb-2">{text.timerControl.minutes}</label>
             <select
               value={minutes}
               onChange={(e) => setMinutes(parseInt(e.target.value))}
@@ -132,7 +146,7 @@ const TimerControl = () => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
-            Cancel Timer
+            {text.timerControl.cancelTimer}
           </button>
         ) : (
           <button
@@ -143,7 +157,7 @@ const TimerControl = () => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            Set Timer
+            {text.timerControl.setTimerButton}
           </button>
         )}
       </div>

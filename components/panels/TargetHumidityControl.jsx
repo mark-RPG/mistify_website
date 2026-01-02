@@ -1,9 +1,23 @@
 "use client";
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { useDevice } from '@/components/context/DeviceContext';
+import { getDevicePanelsText } from '@/components/devicePanelsText';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 const TargetHumidityControl = () => {
   const { deviceData, setDeviceData } = useDevice();
+
+  // Language system
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getDevicePanelsText("en"));
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getDevicePanelsText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
 
   const setTargetHumidity = (value) => {
     const humidity = Math.min(Math.max(parseInt(value), 30), 75);
@@ -12,6 +26,7 @@ const TargetHumidityControl = () => {
       targetHumidity: humidity,
     }));
   };
+  
   const toggleTargetOff = () => {
     if (deviceData.targetHumidity > 75) {
       setDeviceData(prev => ({
@@ -33,11 +48,11 @@ const TargetHumidityControl = () => {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
           </svg>
-          <h3 className="text-gray-300 text-xl font-medium">Target Humidity</h3>
+          <h3 className="text-gray-300 text-xl font-medium">{text.targetHumidityControl.title}</h3>
         </div>
         <div className="items-center hidden xl:flex">
           <span className="text-2xl font-bold text-blue-400">
-            {deviceData.targetHumidity > 75 ? 'OFF' : `${deviceData.targetHumidity}%`}
+            {deviceData.targetHumidity > 75 ? text.targetHumidityControl.off : `${deviceData.targetHumidity}%`}
           </span>
           <div className="ml-2 relative">
             <div className="w-12 h-12 rounded-full border-4 border-gray-700 flex items-center justify-center overflow-hidden">
@@ -70,7 +85,7 @@ const TargetHumidityControl = () => {
         <div className={`flex justify-between text-sm mb-2 ${deviceData.targetHumidity > 75 ? 'text-red-400 opacity-50' : 'text-gray-400'}`}>
           <span>30%</span>
           <span className={`font-medium ${deviceData.targetHumidity > 75 ? 'text-red-400' : 'text-blue-400'}`}>
-            {deviceData.targetHumidity > 75 ? 'TARGET DISABLED' : '50%'}
+            {deviceData.targetHumidity > 75 ? text.targetHumidityControl.targetDisabled : '50%'}
           </span>
           <span>75%</span>
         </div>
@@ -87,7 +102,7 @@ const TargetHumidityControl = () => {
                 : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
             }`}>
             <div className="flex flex-col items-center">
-              Low (40%)
+              {text.targetHumidityControl.low} (40%)
             </div>
           </button>
           <button 
@@ -101,7 +116,7 @@ const TargetHumidityControl = () => {
                 : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
             }`}>
             <div className="flex flex-col items-center">
-              Med (50%)
+              {text.targetHumidityControl.med} (50%)
             </div>
           </button>
           <button 
@@ -115,14 +130,14 @@ const TargetHumidityControl = () => {
                 : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
             }`}>
             <div className="flex flex-col items-center">
-              High (60%)
+              {text.targetHumidityControl.high} (60%)
             </div>
           </button>
           <button 
             onClick={toggleTargetOff}
             className={`py-3 px-3 rounded-lg text-sm font-medium text-center transition-all ${deviceData.targetHumidity > 75 ? 'bg-red-500 text-white shadow-lg' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}>
             <div className="flex flex-col items-center">
-              {deviceData.targetHumidity > 75 ? 'Target On' : 'Target Off'}
+              {deviceData.targetHumidity > 75 ? text.targetHumidityControl.targetOn : text.targetHumidityControl.targetOff}
             </div>
           </button>
         </div>
@@ -133,13 +148,13 @@ const TargetHumidityControl = () => {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span className="text-sm text-gray-300">Recommended: 50-60% for optimal health.</span>
+          <span className="text-sm text-gray-300">{text.targetHumidityControl.recommendedNote}</span>
         </div>
       </div>
       
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/20"></div>
     </div>
-  )
-}
+  );
+};
 
-export default TargetHumidityControl
+export default TargetHumidityControl;

@@ -281,13 +281,21 @@ __turbopack_esm__({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Navigation$2f$Nav$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/Navigation/Nav.jsx [app-ssr] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module '@/components/connectPageText'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/context/LanguageContext.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-icons/fa/index.mjs [app-ssr] (ecmascript)");
 "use client";
 ;
 ;
 ;
 ;
-const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refreshOnReturn, setCheckDeviceStatusFunction })=>{
+;
+;
+const Connect = ({ setActiveDevice, refreshOnReturn })=>{
     const [devices, setDevices] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [showModal, setShowModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [newDeviceId, setNewDeviceId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
@@ -295,9 +303,20 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showConfirmRemove, setShowConfirmRemove] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [deviceToRemove, setDeviceToRemove] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [lastVisible, setLastVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [editingDeviceId, setEditingDeviceId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [editName, setEditName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    // Language system
+    const { locale } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLanguage"])();
+    const [text, setText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(getConnectPageText("en"));
+    // Update text when locale changes
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const newText = getConnectPageText(locale);
+        if (newText) {
+            setText(newText);
+        }
+    }, [
+        locale
+    ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const savedDevices = localStorage.getItem('savedDevices');
         if (savedDevices) {
@@ -311,97 +330,19 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
     }, [
         devices
     ]);
-    const checkDeviceStatus = async ()=>{
-        const updatedDevices = await Promise.all(devices.map(async (device)=>{
-            try {
-                // Get device name
-                const nameResponse = await fetch(`https://simple-api.mistify.lv/api/device/get-name?id=${device.id}`);
-                const name = await nameResponse.text();
-                updateDeviceStatuses((prev)=>({
-                        ...prev,
-                        [device.id]: {
-                            name
-                        }
-                    }));
-                return {
-                    ...device,
-                    name: name || ''
-                };
-            } catch (err) {
-                console.error(`Error checking device ${device.id}:`, err);
-                updateDeviceStatuses((prev)=>({
-                        ...prev,
-                        [device.id]: {
-                            name: device.name || ''
-                        }
-                    }));
-                return {
-                    ...device
-                };
-            }
-        }));
-        setDevices(updatedDevices);
-    };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        console.log("Setting checkDeviceStatusFunction");
-        if (setCheckDeviceStatusFunction) {
-            setCheckDeviceStatusFunction(()=>checkDeviceStatus);
-        }
-    }, [
-        setCheckDeviceStatusFunction,
-        devices
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        console.log("Checking device status");
-        if (devices.length > 0) {
-            checkDeviceStatus();
-        }
-    }, [
-        devices.length
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        console.log("Refreshing status on return");
-        if (refreshOnReturn && !lastVisible) {
-            console.log("Returning from device management, refreshing status...");
-            checkDeviceStatus();
-        }
-        setLastVisible(true);
-    }, [
-        refreshOnReturn
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        console.log("Checking device status on visibility change");
-        const handleVisibilityChange = ()=>{
-            if (document.visibilityState === 'visible') {
-                checkDeviceStatus();
-            }
-        };
-        const handleFocus = ()=>{
-            checkDeviceStatus();
-        };
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-        window.addEventListener('focus', handleFocus);
-        return ()=>{
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-            window.removeEventListener('focus', handleFocus);
-        };
-    }, [
-        devices
-    ]);
     const selectDevice = (id)=>{
         // Don't select device if we're in editing mode
         if (editingDeviceId) return;
-        console.log(`Selecting device: ${id}`);
         setActiveDevice(id);
     };
     const addDevice = async ()=>{
         if (!newDeviceId) {
-            setError('Device ID cannot be empty.');
+            setError(text.errorEmpty);
             return;
         }
         // Check if device already exists in the array
         if (devices.some((device)=>device.id === newDeviceId)) {
-            setError('This device has already been added.');
+            setError(text.errorExists);
             return;
         }
         setLoading(true);
@@ -413,12 +354,9 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
             }
             const data = await response.text();
             if (data === 'true') {
-                // Get device name
-                const nameResponse = await fetch(`https://simple-api.mistify.lv/api/device/get-name?id=${newDeviceId}`);
-                const name = await nameResponse.text();
                 const newDevice = {
                     id: newDeviceId,
-                    name: name || ''
+                    name: ''
                 };
                 const updatedDevices = [
                     ...devices,
@@ -427,20 +365,14 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                 setDevices(updatedDevices);
                 // Save to localStorage
                 localStorage.setItem('savedDevices', JSON.stringify(updatedDevices));
-                updateDeviceStatuses((prev)=>({
-                        ...prev,
-                        [newDeviceId]: {
-                            name
-                        }
-                    }));
                 setNewDeviceId('');
                 setShowModal(false);
             } else {
-                setError('Device ID does not exist or is invalid.');
+                setError(text.errorInvalid);
             }
         } catch (err) {
             console.error('Fetch error:', err);
-            setError('There was an error checking the device ID. Please try again later.');
+            setError(text.errorFetch);
         } finally{
             setLoading(false);
         }
@@ -465,38 +397,21 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
         setEditingDeviceId(null);
         setEditName('');
     };
-    const saveDeviceName = async (id)=>{
-        try {
-            const response = await fetch(`https://simple-api.mistify.lv/api/device/set-name?id=${id}&name=${encodeURIComponent(editName)}`);
-            if (response.ok) {
-                const updatedDevices = devices.map((device)=>device.id === id ? {
-                        ...device,
-                        name: editName
-                    } : device);
-                setDevices(updatedDevices);
-                // Save updated devices with new name to localStorage
-                localStorage.setItem('savedDevices', JSON.stringify(updatedDevices));
-                updateDeviceStatuses((prev)=>({
-                        ...prev,
-                        [id]: {
-                            ...prev[id],
-                            name: editName
-                        }
-                    }));
-            } else {
-                console.error('Failed to update device name');
-            }
-        } catch (err) {
-            console.error('Error updating device name:', err);
-        } finally{
-            setEditingDeviceId(null);
-        }
+    const saveDeviceName = (id)=>{
+        const updatedDevices = devices.map((device)=>device.id === id ? {
+                ...device,
+                name: editName
+            } : device);
+        setDevices(updatedDevices);
+        // Save updated devices with new name to localStorage
+        localStorage.setItem('savedDevices', JSON.stringify(updatedDevices));
+        setEditingDeviceId(null);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Navigation$2f$Nav$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/components/Connect.jsx",
-                lineNumber: 223,
+                lineNumber: 139,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -507,10 +422,10 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 className: "text-3xl font-bold",
-                                children: "Device Connection"
+                                children: text.pageTitle
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 226,
+                                lineNumber: 142,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -521,25 +436,26 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaPlus"], {}, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 232,
+                                            lineNumber: 148,
                                             columnNumber: 15
                                         }, this),
-                                        " Add Device"
+                                        " ",
+                                        text.addDeviceButton
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 228,
+                                    lineNumber: 144,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 227,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 225,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this),
                     showModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -547,7 +463,7 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                         onClick: ()=>setShowModal(false)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 238,
+                        lineNumber: 154,
                         columnNumber: 11
                     }, this),
                     showModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -557,10 +473,10 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                     className: "text-2xl font-semibold text-gray-800 mb-6",
-                                    children: "Add New Device"
+                                    children: text.modalTitle
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 244,
+                                    lineNumber: 160,
                                     columnNumber: 15
                                 }, this),
                                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -568,7 +484,7 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                     children: error
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 245,
+                                    lineNumber: 161,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -576,10 +492,10 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                     value: newDeviceId,
                                     onChange: (e)=>setNewDeviceId(e.target.value),
                                     className: "w-full p-4 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500",
-                                    placeholder: "Enter Device ID"
+                                    placeholder: text.modalPlaceholder
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 246,
+                                    lineNumber: 162,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -588,37 +504,37 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>setShowModal(false),
                                             className: "px-6 py-2 bg-gray-300 rounded-lg",
-                                            children: "Cancel"
+                                            children: text.modalCancel
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 254,
+                                            lineNumber: 170,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: addDevice,
                                             className: "px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out",
                                             disabled: loading,
-                                            children: loading ? 'Adding...' : 'Add Device'
+                                            children: loading ? text.modalAdding : text.modalAdd
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 255,
+                                            lineNumber: 171,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 253,
+                                    lineNumber: 169,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Connect.jsx",
-                            lineNumber: 243,
+                            lineNumber: 159,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 242,
+                        lineNumber: 158,
                         columnNumber: 11
                     }, this),
                     showConfirmRemove && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -628,28 +544,29 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                     className: "text-lg font-semibold mb-4",
-                                    children: "Confirm Removal"
+                                    children: text.confirmTitle
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 264,
+                                    lineNumber: 180,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "mb-4",
                                     children: [
-                                        "Are you sure you want to remove the device with ID: ",
+                                        text.confirmMessage,
+                                        " ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                             children: deviceToRemove
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 265,
-                                            columnNumber: 87
+                                            lineNumber: 181,
+                                            columnNumber: 57
                                         }, this),
                                         "?"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 265,
+                                    lineNumber: 181,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -658,36 +575,36 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>setShowConfirmRemove(false),
                                             className: "px-6 py-2 bg-gray-300 rounded-lg",
-                                            children: "Cancel"
+                                            children: text.confirmCancel
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 267,
+                                            lineNumber: 183,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: removeDevice,
                                             className: "px-6 py-2 bg-red-500 text-white rounded-lg",
-                                            children: "Remove"
+                                            children: text.confirmRemove
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 268,
+                                            lineNumber: 184,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 266,
+                                    lineNumber: 182,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Connect.jsx",
-                            lineNumber: 263,
+                            lineNumber: 179,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 262,
+                        lineNumber: 178,
                         columnNumber: 11
                     }, this),
                     devices.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -712,7 +629,7 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                                 autoFocus: true
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 287,
+                                                lineNumber: 203,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -725,12 +642,12 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                                             className: "text-gray-600"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 300,
+                                                            lineNumber: 216,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 296,
+                                                        lineNumber: 212,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -740,24 +657,24 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                                             className: "text-white"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 306,
+                                                            lineNumber: 222,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 302,
+                                                        lineNumber: 218,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 295,
+                                                lineNumber: 211,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 286,
+                                        lineNumber: 202,
                                         columnNumber: 19
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex justify-between items-center w-full mb-4",
@@ -770,7 +687,7 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                                         children: device.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 315,
+                                                        lineNumber: 231,
                                                         columnNumber: 27
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -781,12 +698,12 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                                         className: "text-blue-500 hover:text-blue-700",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaPencilAlt"], {}, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 323,
+                                                            lineNumber: 239,
                                                             columnNumber: 29
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 316,
+                                                        lineNumber: 232,
                                                         columnNumber: 27
                                                     }, this)
                                                 ]
@@ -796,31 +713,32 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                                     startEditing(device.id, '');
                                                 },
                                                 className: "px-3 py-1 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 text-sm",
-                                                children: "+ Add Device Name"
+                                                children: text.addNameButton
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 327,
+                                                lineNumber: 243,
                                                 columnNumber: 25
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 312,
+                                            lineNumber: 228,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 311,
+                                        lineNumber: 227,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "text-sm text-gray-500 mb-4",
                                         children: [
-                                            "ID: ",
+                                            text.deviceIdLabel,
+                                            " ",
                                             device.id
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 340,
+                                        lineNumber: 256,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -831,59 +749,59 @@ const Connect = ({ setActiveDevice, deviceStatuses, updateDeviceStatuses, refres
                                         className: "absolute top-3 right-3 text-red-500 hover:text-red-700 transition-colors duration-200",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaTrash"], {}, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 348,
+                                            lineNumber: 264,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 341,
+                                        lineNumber: 257,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, device.id, true, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 277,
+                                lineNumber: 193,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 275,
+                        lineNumber: 191,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex flex-col items-center justify-center h-64 rounded-lg",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-xl text-gray-600 mb-4",
-                                children: "No devices connected"
+                                children: text.emptyTitle
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 355,
+                                lineNumber: 271,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-gray-500",
-                                children: 'Click the "Add Device" button above to connect a device'
+                                children: text.emptySubtitle
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 356,
+                                lineNumber: 272,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 354,
+                        lineNumber: 270,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Connect.jsx",
-                lineNumber: 224,
+                lineNumber: 140,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Connect.jsx",
-        lineNumber: 222,
+        lineNumber: 138,
         columnNumber: 5
     }, this);
 };

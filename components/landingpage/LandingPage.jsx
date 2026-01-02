@@ -27,9 +27,9 @@ const LandingPage = () => {
   }, [locale]);
 
   const images = [
-    "images/mainroom.png",
-    "images/bedroom.png",
-    "images/livingroom.png",
+    "images/mainroom1.png",
+    "images/bedroom1.png",
+    "images/livingroom1.png",
   ];
 
   const scrollToProgress = (target, duration = 500) => {
@@ -369,43 +369,7 @@ const LandingPage = () => {
             </motion.div>
           </div>
         </div>
-
-        {/* Humidifier Image - Responsive */}
-        <div
-          className="absolute transition-opacity duration-500 ease-in-out z-20 hidden md:block"
-          style={{
-            opacity: fade ? 1 : 0,
-            position: "absolute",
-            ...humidifierStyles[currentImageIndex],
-          }}
-        >
-          <Image
-            src="/humidifierfake1.png"
-            width={humidifierStyles[currentImageIndex].width}
-            height={humidifierStyles[currentImageIndex].width}
-            alt="Smart Humidifier Product"
-            className="drop-shadow-2xl"
-          />
-        </div>
-        
-        {/* Mobile Humidifier Image */}
-        <div
-          className="absolute md:hidden transition-opacity duration-500 ease-in-out z-20"
-          style={{
-            opacity: fade ? 1 : 0,
-            bottom: humidifierStyles[currentImageIndex].mobileBottom,
-            right: humidifierStyles[currentImageIndex].mobileRight,
-            transform: 'translateX(50%)',
-          }}
-        >
-          <Image
-            src="/humidifierfake1.png"
-            width={humidifierStyles[currentImageIndex].mobileWidth}
-            height={humidifierStyles[currentImageIndex].mobileWidth}
-            alt="Smart Humidifier Product"
-            className="drop-shadow-2xl"
-          />
-        </div>
+      
       </div>
 
       {/* Grid of squares overlay - Responsive */}
@@ -500,21 +464,6 @@ const LandingPage = () => {
         }}
       >
         <div className="pointer-events-auto max-w-6xl w-full mx-auto px-4 sm:px-6 md:px-10 py-8 sm:py-12 md:py-16 bg-white/90 rounded-2xl sm:rounded-3xl shadow-[0_12px_50px_rgba(0,0,0,0.1)] flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-10 lg:gap-16">
-          
-          {/* Left: Product Image */}
-          <div className="flex-1 flex justify-center items-center">
-            <div className="relative w-full max-w-[200px] sm:max-w-xs md:max-w-sm lg:max-w-md aspect-square">
-              <Link href="/buy">
-                <Image
-                  src="/humidifierfake1.png"
-                  width={400}
-                  height={400}
-                  alt="Humidifier"
-                  className="w-full h-full object-contain drop-shadow-2xl rounded-2xl sm:rounded-3xl transition-transform duration-500 hover:scale-105 cursor-pointer"
-                />
-              </Link>
-            </div>
-          </div>
 
           {/* Right: Stats Section */}
           <div className="flex-1 flex flex-col items-start justify-center text-left w-full">

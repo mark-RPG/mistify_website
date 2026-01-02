@@ -1,9 +1,23 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDevice } from '@/components/context/DeviceContext';
+import { getDevicePanelsText } from '@/components/devicePanelsText';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 const PowerControl = () => {
   const { deviceData, setDeviceData } = useDevice();
+
+  // Language system
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getDevicePanelsText("en"));
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getDevicePanelsText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
   
   const togglePower = () => {
     const newStatus = deviceData.status === 'On' ? 'Off' : 'On';
@@ -20,7 +34,7 @@ const PowerControl = () => {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          <h3 className="text-gray-300 text-xl font-medium">Power Control</h3>
+          <h3 className="text-gray-300 text-xl font-medium">{text.powerControl.title}</h3>
         </div>
       </div>
       
@@ -28,7 +42,7 @@ const PowerControl = () => {
         <div className="mb-6 w-full">
           <div className="text-center mb-4">
             <span className={`text-2xl font-bold ${deviceData.status === 'On' ? 'text-green-400' : 'text-gray-400'}`}>
-              {deviceData.status === 'On' ? 'Running' : 'Standby'}
+              {deviceData.status === 'On' ? text.powerControl.running : text.powerControl.standby}
             </span>
             
             <div className="flex justify-center mt-2 h-2"> {/* Fixed height container */}
@@ -49,7 +63,7 @@ const PowerControl = () => {
                 className="sr-only"
               />
               <span className="label flex items-center text-xl font-medium text-gray-400">
-                Off
+                {text.powerControl.off}
               </span>
               <span
                 className={`slider mx-6 flex h-14 w-[120px] items-center rounded-full p-2 duration-200 ${
@@ -63,7 +77,7 @@ const PowerControl = () => {
                 ></span>
               </span>
               <span className="label flex items-center text-xl font-medium text-green-400">
-                On
+                {text.powerControl.on}
               </span>
             </label>
           </div>

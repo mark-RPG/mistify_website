@@ -1,9 +1,23 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDevice } from '@/components/context/DeviceContext';
+import { getDevicePanelsText } from '@/components/devicePanelsText';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 const ControlModeSelector = () => {
   const { deviceData, setDeviceData, setTimeLeft, setIsActive } = useDevice();
+
+  // Language system
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getDevicePanelsText("en"));
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getDevicePanelsText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
 
   const isAuto = deviceData.controlMode === 'auto';
 
@@ -31,7 +45,7 @@ const ControlModeSelector = () => {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-yellow-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-3-3v6m7.5 0A7.5 7.5 0 1112 4.5 7.5 7.5 0 0121.5 12z" />
           </svg>
-          <h3 className="text-gray-300 text-xl font-medium">Control Mode</h3>
+          <h3 className="text-gray-300 text-xl font-medium">{text.controlModeSelector.title}</h3>
         </div>
       </div>
 
@@ -39,7 +53,7 @@ const ControlModeSelector = () => {
         <div className="mb-8 w-full">
           <div className="text-center mb-4">
             <span className={`text-2xl font-bold ${isAuto ? 'text-yellow-400' : 'text-blue-400'}`}>
-              {isAuto ? 'Auto Mode' : 'Manual Mode'}
+              {isAuto ? text.controlModeSelector.autoMode : text.controlModeSelector.manualMode}
             </span>
           </div>
 
@@ -52,7 +66,7 @@ const ControlModeSelector = () => {
                 className="sr-only"
               />
               <span className="label flex items-center text-xl font-medium text-blue-400">
-                Manual
+                {text.controlModeSelector.manual}
               </span>
               <span
                 className={`slider mx-6 flex h-14 w-[120px] items-center rounded-full p-2 duration-200 ${
@@ -66,7 +80,7 @@ const ControlModeSelector = () => {
                 ></span>
               </span>
               <span className="label flex items-center text-xl font-medium text-yellow-300">
-                Auto
+                {text.controlModeSelector.auto}
               </span>
             </label>
           </div>

@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import Nav from "@/components/Navigation/Nav";
 import { FaPlus, FaTrash, FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa';
+import { getConnectPageText } from '@/components/connectPageText';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 const Connect = ({ setActiveDevice, refreshOnReturn }) => {
   const [devices, setDevices] = useState([]);
@@ -13,6 +15,18 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
   const [deviceToRemove, setDeviceToRemove] = useState(null);
   const [editingDeviceId, setEditingDeviceId] = useState(null);
   const [editName, setEditName] = useState('');
+
+  // Language system
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getConnectPageText("en"));
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getConnectPageText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
 
   useEffect(() => {
     const savedDevices = localStorage.getItem('savedDevices');
@@ -36,13 +50,13 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
 
   const addDevice = async () => {
     if (!newDeviceId) {
-      setError('Device ID cannot be empty.');
+      setError(text.errorEmpty);
       return;
     }
 
     // Check if device already exists in the array
     if (devices.some(device => device.id === newDeviceId)) {
-      setError('This device has already been added.');
+      setError(text.errorExists);
       return;
     }
 
@@ -71,11 +85,11 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
         setNewDeviceId('');
         setShowModal(false);
       } else {
-        setError('Device ID does not exist or is invalid.');
+        setError(text.errorInvalid);
       }
     } catch (err) {
       console.error('Fetch error:', err);
-      setError('There was an error checking the device ID. Please try again later.');
+      setError(text.errorFetch);
     } finally {
       setLoading(false);
     }
@@ -125,13 +139,13 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
       <Nav />
       <div className="p-12 bg-gray-200 mt-[110px] h-[calc(100vh-110px)] relative text-gray-900">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">Device Connection</h2>
+          <h2 className="text-3xl font-bold">{text.pageTitle}</h2>
           <div className="flex gap-4">
             <button
               onClick={() => setShowModal(true)}
               className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out"
             >
-              <FaPlus /> Add Device
+              <FaPlus /> {text.addDeviceButton}
             </button>
           </div>
         </div>
@@ -143,18 +157,18 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
         {showModal && (
           <div className="fixed inset-0 flex justify-center items-center z-20 bg-[rgba(0,0,0,0.7)]">
             <div className="bg-white p-8 rounded-xl shadow-xl w-96 max-w-lg">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">Add New Device</h3>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-6">{text.modalTitle}</h3>
               {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
               <input
                 type="text"
                 value={newDeviceId}
                 onChange={(e) => setNewDeviceId(e.target.value)}
                 className="w-full p-4 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter Device ID"
+                placeholder={text.modalPlaceholder}
               />
               <div className="flex justify-end gap-4">
-                <button onClick={() => setShowModal(false)} className="px-6 py-2 bg-gray-300 rounded-lg">Cancel</button>
-                <button onClick={addDevice} className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out" disabled={loading}>{loading ? 'Adding...' : 'Add Device'}</button>
+                <button onClick={() => setShowModal(false)} className="px-6 py-2 bg-gray-300 rounded-lg">{text.modalCancel}</button>
+                <button onClick={addDevice} className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out" disabled={loading}>{loading ? text.modalAdding : text.modalAdd}</button>
               </div>
             </div>
           </div>
@@ -163,11 +177,11 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
         {showConfirmRemove && (
           <div className="fixed inset-0 flex justify-center items-center z-30 bg-[rgba(0,0,0,0.7)]">
             <div className="bg-white p-6 rounded-xl shadow-xl w-80">
-              <h3 className="text-lg font-semibold mb-4">Confirm Removal</h3>
-              <p className="mb-4">Are you sure you want to remove the device with ID: <strong>{deviceToRemove}</strong>?</p>
+              <h3 className="text-lg font-semibold mb-4">{text.confirmTitle}</h3>
+              <p className="mb-4">{text.confirmMessage} <strong>{deviceToRemove}</strong>?</p>
               <div className="flex justify-end gap-4">
-                <button onClick={() => setShowConfirmRemove(false)} className="px-6 py-2 bg-gray-300 rounded-lg">Cancel</button>
-                <button onClick={removeDevice} className="px-6 py-2 bg-red-500 text-white rounded-lg">Remove</button>
+                <button onClick={() => setShowConfirmRemove(false)} className="px-6 py-2 bg-gray-300 rounded-lg">{text.confirmCancel}</button>
+                <button onClick={removeDevice} className="px-6 py-2 bg-red-500 text-white rounded-lg">{text.confirmRemove}</button>
               </div>
             </div>
           </div>
@@ -233,13 +247,13 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                           }} 
                           className="px-3 py-1 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 text-sm"
                         >
-                          + Add Device Name
+                          {text.addNameButton}
                         </button>
                       )}
                     </div>
                   </div>
                 )}
-                <div className="text-sm text-gray-500 mb-4">ID: {device.id}</div> 
+                <div className="text-sm text-gray-500 mb-4">{text.deviceIdLabel} {device.id}</div> 
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
@@ -254,8 +268,8 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-64 rounded-lg">
-            <p className="text-xl text-gray-600 mb-4">No devices connected</p>
-            <p className="text-gray-500">Click the "Add Device" button above to connect a device</p>
+            <p className="text-xl text-gray-600 mb-4">{text.emptyTitle}</p>
+            <p className="text-gray-500">{text.emptySubtitle}</p>
           </div>
         )}
       </div>

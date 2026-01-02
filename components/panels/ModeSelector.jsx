@@ -1,14 +1,45 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { useDevice } from '@/components/context/DeviceContext';
+import { getDevicePanelsText } from '@/components/devicePanelsText';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 export const ModeSelector = () => {
   const { deviceData, setDeviceData } = useDevice();
 
-  // Available lighting modes
+  // Language system
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getDevicePanelsText("en"));
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getDevicePanelsText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
+
+  // Available lighting modes - these are the actual values stored
   const lightingModes = [
     "Color", "Fade", "Color Wave", "Rainbow", 
     "Glowing Gradient", "Soft Twinkle", "Warm Sunset", "Pulsating", "Off"
   ];
+
+  // Function to get translated mode name
+  const getModeName = (mode) => {
+    const modeMap = {
+      "Color": text.modeSelector.color,
+      "Fade": text.modeSelector.fade,
+      "Color Wave": text.modeSelector.colorWave,
+      "Rainbow": text.modeSelector.rainbow,
+      "Glowing Gradient": text.modeSelector.glowingGradient,
+      "Soft Twinkle": text.modeSelector.softTwinkle,
+      "Warm Sunset": text.modeSelector.warmSunset,
+      "Pulsating": text.modeSelector.pulsating,
+      "Off": text.modeSelector.off
+    };
+    return modeMap[mode] || mode;
+  };
 
   const setLightingMode = (mode) => {
     setDeviceData(prev => ({...prev, mode}));
@@ -21,7 +52,7 @@ export const ModeSelector = () => {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-amber-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
           </svg>
-          <h3 className="text-gray-300 text-base font-medium">Lighting Mode</h3>
+          <h3 className="text-gray-300 text-base font-medium">{text.modeSelector.title}</h3>
         </div>
       </div>
       
@@ -32,7 +63,7 @@ export const ModeSelector = () => {
           className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white mb-3"
         >
           {lightingModes.map((mode) => (
-            <option key={mode} value={mode}>{mode}</option>
+            <option key={mode} value={mode}>{getModeName(mode)}</option>
           ))}
         </select>
         
@@ -40,22 +71,22 @@ export const ModeSelector = () => {
           <button 
             onClick={() => setLightingMode('Color')}
             className={`py-1 px-2 rounded-md text-xs font-medium text-center ${deviceData.mode === 'Color' ? 'bg-amber-500 text-white' : 'bg-gray-700 text-gray-300'}`}>
-            Solid Color
+            {text.modeSelector.solidColor}
           </button>
           <button 
             onClick={() => setLightingMode('Warm Sunset')}
             className={`py-1 px-2 rounded-md text-xs font-medium text-center ${deviceData.mode === 'Warm Sunset' ? 'bg-amber-500 text-white' : 'bg-gray-700 text-gray-300'}`}>
-            Warm Sunset
+            {text.modeSelector.warmSunset}
           </button>
           <button 
             onClick={() => setLightingMode('Rainbow')}
             className={`py-1 px-2 rounded-md text-xs font-medium text-center ${deviceData.mode === 'Rainbow' ? 'bg-amber-500 text-white' : 'bg-gray-700 text-gray-300'}`}>
-            Rainbow
+            {text.modeSelector.rainbow}
           </button>
           <button 
             onClick={() => setLightingMode('Off')}
             className={`py-1 px-2 rounded-md text-xs font-medium text-center ${deviceData.mode === 'Off' ? 'bg-amber-500 text-white' : 'bg-gray-700 text-gray-300'}`}>
-            Turn Off
+            {text.modeSelector.turnOff}
           </button>
         </div>
       </div>

@@ -1,9 +1,23 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDevice } from '@/components/context/DeviceContext';
+import { getDevicePanelsText } from '@/components/devicePanelsText';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 const BrightnessSelector = () => {
   const { deviceData, setDeviceData } = useDevice();
+
+  // Language system
+  const { locale } = useLanguage();
+  const [text, setText] = useState(getDevicePanelsText("en"));
+
+  // Update text when locale changes
+  useEffect(() => {
+    const newText = getDevicePanelsText(locale);
+    if (newText) {
+      setText(newText);
+    }
+  }, [locale]);
 
   const hexToRgba = (hex, alpha = 1) => {
     let c = hex.replace('#', '');
@@ -31,10 +45,9 @@ const BrightnessSelector = () => {
       <div
         className="bg-gradient-to-br from-yellow-400/10 to-indigo-600/20 rounded-xl flex-grow text-white inline-flex items-center justify-center p-4 font-semibold text-lg"
       >
-        Current Mode: Off
+        {text.brightnessSelector.currentMode} {text.brightnessSelector.modeOff}
       </div>
     );
-    
   }
 
   // If not off, show brightness selector
@@ -45,7 +58,7 @@ const BrightnessSelector = () => {
     >
       <div className="relative z-10 flex flex-col flex-grow">
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-gray-400 text-sm">Brightness</h3>
+          <h3 className="text-gray-400 text-sm">{text.brightnessSelector.title}</h3>
           <span className="text-sm font-medium">
             {Math.round((deviceData.brightness / 255) * 100)}%
           </span>
@@ -71,39 +84,37 @@ const BrightnessSelector = () => {
         </div>
       </div>
 
-  <style jsx>{`
-    input[type="range"].custom-range-thumb::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 6px;
-      height: 84px;
-      background: white;
-      box-shadow: 0 0 4px ${color};
-      border-radius: 2px;
-      margin-top: 0;
-    }
+      <style jsx>{`
+        input[type="range"].custom-range-thumb::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 6px;
+          height: 84px;
+          background: white;
+          box-shadow: 0 0 4px ${color};
+          border-radius: 2px;
+          margin-top: 0;
+        }
 
-    input[type="range"].custom-range-thumb::-moz-range-thumb {
-      width: 6px;
-      height: 84px;
-      background: white;
-      box-shadow: 0 0 4px ${color};
-      border: none;
-      border-radius: 2px;
-    }
+        input[type="range"].custom-range-thumb::-moz-range-thumb {
+          width: 6px;
+          height: 84px;
+          background: white;
+          box-shadow: 0 0 4px ${color};
+          border: none;
+          border-radius: 2px;
+        }
 
-    input[type="range"].custom-range-thumb::-webkit-slider-runnable-track {
-      height: 84px;
-      background: transparent;
-    }
+        input[type="range"].custom-range-thumb::-webkit-slider-runnable-track {
+          height: 84px;
+          background: transparent;
+        }
 
-    input[type="range"].custom-range-thumb::-moz-range-track {
-      height: 84px;
-      background: transparent;
-    }
-  `}</style>
-
-
+        input[type="range"].custom-range-thumb::-moz-range-track {
+          height: 84px;
+          background: transparent;
+        }
+      `}</style>
     </div>
   );
 };
