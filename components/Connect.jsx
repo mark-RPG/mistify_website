@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Nav from "@/components/Navigation/Nav";
-import { FaPlus, FaTrash, FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaPencilAlt, FaSave, FaTimes, FaQuestionCircle } from 'react-icons/fa';
 import { getConnectPageText } from '@/components/connectPageText';
 import { useLanguage } from '@/components/context/LanguageContext';
+import GuidePopup from '@/components/GuidePopup';
 
 const Connect = ({ setActiveDevice, refreshOnReturn }) => {
   const [devices, setDevices] = useState([]);
@@ -15,6 +16,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
   const [deviceToRemove, setDeviceToRemove] = useState(null);
   const [editingDeviceId, setEditingDeviceId] = useState(null);
   const [editName, setEditName] = useState('');
+  const [showGuide, setShowGuide] = useState(false);
 
   // Language system
   const { locale } = useLanguage();
@@ -142,6 +144,12 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
           <h2 className="text-3xl font-bold">{text.pageTitle}</h2>
           <div className="flex gap-4">
             <button
+              onClick={() => setShowGuide(true)}
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105"
+            >
+              <FaQuestionCircle /> {text.viewGuideButton}
+            </button>
+            <button
               onClick={() => setShowModal(true)}
               className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out"
             >
@@ -149,6 +157,12 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
             </button>
           </div>
         </div>
+
+        {/* Guide Popup */}
+        <GuidePopup 
+          isOpen={showGuide} 
+          onClose={() => setShowGuide(false)}
+        />
 
         {showModal && (
           <div className="fixed inset-0 bg-[rgba(0, 0, 0, 0.7)] z-10" onClick={() => setShowModal(false)} />

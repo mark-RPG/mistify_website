@@ -4,6 +4,7 @@ const connectPageText = {
   en: {
     pageTitle: "Device Connection",
     addDeviceButton: "Add Device",
+    viewGuideButton: "View Guide",
     
     // Add Device Modal
     modalTitle: "Add New Device",
@@ -36,6 +37,7 @@ const connectPageText = {
   lv: {
     pageTitle: "Ierīces Savienojums",
     addDeviceButton: "Pievienot Ierīci",
+    viewGuideButton: "Skatīt Ceļvedi",
     
     // Add Device Modal
     modalTitle: "Pievienot Jaunu Ierīci",

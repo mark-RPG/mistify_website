@@ -1,4 +1,4 @@
-(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_1b19b2._.js", {
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_2f96e6._.js", {
 
 "[project]/components/Navigation/Nav.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -296,6 +296,7 @@ const connectPageText = {
     en: {
         pageTitle: "Device Connection",
         addDeviceButton: "Add Device",
+        viewGuideButton: "View Guide",
         // Add Device Modal
         modalTitle: "Add New Device",
         modalPlaceholder: "Enter Device ID",
@@ -322,6 +323,7 @@ const connectPageText = {
     lv: {
         pageTitle: "Ierīces Savienojums",
         addDeviceButton: "Pievienot Ierīci",
+        viewGuideButton: "Skatīt Ceļvedi",
         // Add Device Modal
         modalTitle: "Pievienot Jaunu Ierīci",
         modalPlaceholder: "Ievadiet Ierīces ID",
@@ -353,6 +355,967 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
+"[project]/components/guideText.js [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+// Guide Popup Text Translations
+__turbopack_esm__({
+    "getGuideText": (()=>getGuideText)
+});
+const guideText = {
+    en: {
+        // Header
+        title: "Device Connection Guide",
+        closeButton: "Close",
+        // Introduction
+        introduction: "Welcome to the device connection guide. Follow these simple steps to connect your Mistify device and start monitoring it remotely through your dashboard.",
+        // Step 1
+        step1Number: "1",
+        step1Title: "Power Up Your Device",
+        step1Description: "Connect your Mistify device to a power outlet and wait for it to power on. The device will automatically create its own WiFi network for initial setup.",
+        step1List: [
+            "Plug the device into a standard power outlet",
+            "Wait 10-15 seconds for the device to boot up",
+            "Look for a steady or blinking LED indicator light"
+        ],
+        step1Note: "Note:",
+        step1NoteText: "The device must be powered on to complete the setup process.",
+        // Step 2
+        step2Number: "2",
+        step2Title: "Connect to Device WiFi",
+        step2Description: "Using your smartphone or computer, connect to the temporary WiFi network created by your device:",
+        step2List: [
+            "Open WiFi settings on your phone or computer",
+            "Look for a network named \"Mistify Connect\"",
+            "Select and connect to this network",
+            "No password is required for this connection"
+        ],
+        step2Note: "Tip:",
+        step2NoteText: "This is a temporary connection only used for device setup. You will reconnect to your regular WiFi after configuration.",
+        // Step 3
+        step3Number: "3",
+        step3Title: "Configure Device Settings",
+        step3Description: "Once connected to the Mistify Connect network, configure your device's WiFi settings:",
+        step3List: [
+            "Open your web browser (Chrome, Safari, Firefox, etc.)",
+            "Navigate to: 192.168.4.1",
+            "Enter your home WiFi network name (SSID)",
+            "Enter your home WiFi password",
+            "Click \"Save\" to save settings"
+        ],
+        step3Note: "Important:",
+        step3NoteText: "Make sure to enter your WiFi credentials correctly. The device needs a stable internet connection to function.",
+        // Step 4
+        step4Number: "4",
+        step4Title: "Wait for Connection",
+        step4Description: "After submitting your WiFi credentials, the device will attempt to connect to your home network:",
+        step4List: [
+            "The device will disconnect from the setup network",
+            "Wait 15-30 seconds for the connection process",
+            "Your phone/computer will automatically reconnect to your regular WiFi"
+        ],
+        step4Note: "Note:",
+        step4NoteText: "If the connection fails, the device will restart the setup network. Simply repeat steps 2-3 with correct credentials.",
+        // Step 5
+        step5Number: "5",
+        step5Title: "Add Device to Dashboard",
+        step5Description: "Now that your device is online, add it to your dashboard:",
+        step5List: [
+            "Visit https://mistify.lv/connect",
+            "Click the \"Add Device\" button in the top-right corner",
+            "Enter your unique Device ID",
+            "Click \"Add\" to verify and connect the device",
+            "Your device will appear in the device list below"
+        ],
+        step5Note: "Tip:",
+        step5NoteText: "You can add a custom name to your device by clicking the \"Add name\" button on the device card for easier identification.",
+        // Troubleshooting
+        troubleshootingTitle: "Troubleshooting",
+        trouble1Title: "Can't find \"Mistify Connect\" WiFi network?",
+        trouble1Text: "Ensure the device is powered on and wait at least 15 seconds. Try restarting the device by unplugging and plugging it back in.",
+        trouble2Title: "Can't access 192.168.4.1?",
+        trouble2Text: "Make sure you're connected to the \"Mistify Connect\" network. Some phones may show a \"No Internet\" warning - this is normal, stay connected.",
+        trouble3Title: "Device won't connect to home WiFi?",
+        trouble3Text: "Double-check your WiFi name and password are correct. Ensure your WiFi network is 2.4GHz compatible (most routers support this).",
+        trouble5Title: "Device already exists error?",
+        trouble5Text: "This device has already been added to your dashboard. Check your device list below.",
+        // Support
+        supportTitle: "Need More Help?",
+        supportText: "If you're still experiencing issues connecting your device, please contact our support team for personalized assistance. We're here to help!",
+        // Footer
+        footerButton: "Got it, thanks!"
+    },
+    lv: {
+        // Header
+        title: "Ierīces Pievienošanas Ceļvedis",
+        closeButton: "Aizvērt",
+        // Introduction
+        introduction: "Laipni lūdzam ierīces pievienošanas ceļvedī. Sekojiet šiem vienkāršajiem soļiem, lai pievienotu savu Mistify ierīci un sāktu to attālināti uzraudzīt caur savu vadības paneli.",
+        // Step 1
+        step1Number: "1",
+        step1Title: "Pieslēdziet Ierīci Strāvai",
+        step1Description: "Pievienojiet savu Mistify ierīci elektrības kontaktligzdai un uzgaidiet, līdz tā ieslēdzas. Ierīce automātiski izveidos savu WiFi tīklu sākotnējai iestatīšanai.",
+        step1List: [
+            "Iespraudiet ierīci standarta elektrības kontaktligzdā",
+            "Uzgaidiet 10-15 sekundes, līdz ierīce ielādējas",
+            "Meklējiet pastāvīgu vai mirgojošu LED indikatora gaismu"
+        ],
+        step1Note: "Piezīme:",
+        step1NoteText: "Ierīcei jābūt ieslēgtai, lai pabeigtu iestatīšanas procesu.",
+        // Step 2
+        step2Number: "2",
+        step2Title: "Savienojieties ar Ierīces WiFi",
+        step2Description: "Izmantojot savu viedtālruni vai datoru, izveidojiet savienojumu ar pagaidu WiFi tīklu, ko izveidojusi jūsu ierīce:",
+        step2List: [
+            "Atveriet WiFi iestatījumus savā tālrunī vai datorā",
+            "Meklējiet tīklu ar nosaukumu \"Mistify Connect\"",
+            "Atlasiet un izveidojiet savienojumu ar šo tīklu",
+            "Šim savienojumam nav nepieciešama parole"
+        ],
+        step2Note: "Padoms:",
+        step2NoteText: "Šis ir pagaidu savienojums, ko izmanto tikai ierīces iestatīšanai. Pēc konfigurācijas jūs atkal pieslēgsieties savam parastajam WiFi.",
+        // Step 3
+        step3Number: "3",
+        step3Title: "Konfigurējiet Ierīces Iestatījumus",
+        step3Description: "Pēc savienojuma izveides ar Mistify Connect tīklu, konfigurējiet savas ierīces WiFi iestatījumus:",
+        step3List: [
+            "Atveriet savu tīmekļa pārlūkprogrammu (Chrome, Safari, Firefox, u.c.)",
+            "Dodieties uz: 192.168.4.1",
+            "Ievadiet savas mājas WiFi tīkla nosaukumu (SSID)",
+            "Ievadiet savas mājas WiFi paroli",
+            "Noklikšķiniet uz \"Saglabāt\", lai saglabātu iestatījumus"
+        ],
+        step3Note: "Svarīgi:",
+        step3NoteText: "Pārliecinieties, ka pareizi ievadāt WiFi piekļuves datus. Ierīcei ir nepieciešams stabils interneta savienojums, lai tā darbotos.",
+        // Step 4
+        step4Number: "4",
+        step4Title: "Uzgaidiet Savienojumu",
+        step4Description: "Pēc WiFi piekļuves datu iesniegšanas, ierīce mēģinās izveidot savienojumu ar jūsu mājas tīklu:",
+        step4List: [
+            "Ierīce atvienosies no iestatīšanas tīkla",
+            "Uzgaidiet 15-30 sekundes savienojuma izveidošanas procesam",
+            "Jūsu tālrunis/dators automātiski atkal pieslēgsies jūsu parastajam WiFi"
+        ],
+        step4Note: "Piezīme:",
+        step4NoteText: "Ja savienojums neizdodas, ierīce restartēs iestatīšanas tīklu. Vienkārši atkārtojiet 2.-3. soli ar pareiziem piekļuves datiem.",
+        // Step 5
+        step5Number: "5",
+        step5Title: "Pievienojiet Ierīci Vadības Panelim",
+        step5Description: "Tagad, kad jūsu ierīce ir tiešsaistē, pievienojiet to savam vadības panelim:",
+        step5List: [
+            "Apmeklējiet https://mistify.lv/connect",
+            "Noklikšķiniet uz pogas \"Pievienot Ierīci\" augšējā labajā stūrī",
+            "Ievadiet savu unikālo Ierīces ID",
+            "Noklikšķiniet uz \"Pievienot\", lai verificētu un pievienotu ierīci",
+            "Jūsu ierīce parādīsies ierīču sarakstā zemāk"
+        ],
+        step5Note: "Padoms:",
+        step5NoteText: "Varat pievienot pielāgotu nosaukumu savai ierīcei, noklikšķinot uz pogas \"Pievienot nosaukumu\" uz ierīces kartītes ērtākai identificēšanai.",
+        // Troubleshooting
+        troubleshootingTitle: "Problēmu Novēršana",
+        trouble1Title: "Nevarat atrast \"Mistify Connect\" WiFi tīklu?",
+        trouble1Text: "Pārliecinieties, ka ierīce ir ieslēgta un uzgaidiet vismaz 15 sekundes. Mēģiniet restartēt ierīci, to atvienojot un atkal pievienojot.",
+        trouble2Title: "Nevarat piekļūt 192.168.4.1?",
+        trouble2Text: "Pārliecinieties, ka esat savienojies ar \"Mistify Connect\" tīklu. Daži tālruņi var parādīt brīdinājumu \"Nav interneta\" - tas ir normāli, palieciet savienojumā.",
+        trouble3Title: "Ierīce neizveido savienojumu ar mājas WiFi?",
+        trouble3Text: "Pārbaudiet, vai jūsu WiFi nosaukums un parole ir pareizi. Pārliecinieties, ka jūsu WiFi tīkls ir 2.4GHz saderīgs (lielākā daļa maršrutētāju to atbalsta).",
+        trouble5Title: "Ierīce jau eksistē kļūda?",
+        trouble5Text: "Šī ierīce jau ir pievienota jūsu vadības panelim. Pārbaudiet savu ierīču sarakstu zemāk.",
+        // Support
+        supportTitle: "Nepieciešama Vairāk Palīdzības?",
+        supportText: "Ja jums joprojām ir problēmas ar ierīces pievienošanu, lūdzu, sazinieties ar mūsu atbalsta komandu personalizētai palīdzībai. Mēs esam šeit, lai palīdzētu!",
+        // Footer
+        footerButton: "Sapratu, paldies!"
+    }
+};
+const getGuideText = (locale)=>{
+    return guideText[locale] || guideText.en;
+};
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/components/GuidePopup.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "default": (()=>__TURBOPACK__default__export__)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$guideText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/guideText.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/context/LanguageContext.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-icons/fa/index.mjs [app-client] (ecmascript)");
+;
+var _s = __turbopack_refresh__.signature();
+;
+;
+;
+const GuidePopup = ({ isOpen, onClose })=>{
+    _s();
+    const { locale } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLanguage"])();
+    const text = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$guideText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getGuideText"])(locale);
+    if (!isOpen) return null;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed inset-0 bg-black bg-opacity-50 z-40",
+                onClick: onClose
+            }, void 0, false, {
+                fileName: "[project]/components/GuidePopup.tsx",
+                lineNumber: 15,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed inset-0 flex justify-center items-center z-50 p-4",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto",
+                    onClick: (e)=>e.stopPropagation(),
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "sticky top-0 bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-t-2xl flex justify-between items-center",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center gap-3",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaInfoCircle"], {
+                                            className: "text-3xl"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/GuidePopup.tsx",
+                                            lineNumber: 29,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                            className: "text-2xl font-bold",
+                                            children: text.title
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/GuidePopup.tsx",
+                                            lineNumber: 30,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 28,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: onClose,
+                                    className: "p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-all duration-200",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTimes"], {
+                                        className: "text-2xl"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/GuidePopup.tsx",
+                                        lineNumber: 36,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 32,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/GuidePopup.tsx",
+                            lineNumber: 27,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "p-8",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mb-8",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-gray-700 text-lg leading-relaxed",
+                                        children: text.introduction
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/GuidePopup.tsx",
+                                        lineNumber: 44,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 43,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mb-8 bg-blue-50 rounded-xl p-6 border-l-4 border-blue-500",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-start gap-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg flex-shrink-0 mt-1",
+                                                children: text.step1Number
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 52,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                        className: "text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaPlug"], {
+                                                                className: "text-blue-500"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 57,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            text.step1Title
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 56,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-gray-700 leading-relaxed mb-3",
+                                                        children: text.step1Description
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 60,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                        className: "list-disc list-inside text-gray-700 space-y-2 ml-4",
+                                                        children: text.step1List.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                children: item
+                                                            }, index, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 65,
+                                                                columnNumber: 23
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 63,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mt-4 p-3 bg-white rounded-lg border border-blue-200",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-gray-600",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                    children: text.step1Note
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                                    lineNumber: 70,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                " ",
+                                                                text.step1NoteText
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 69,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 68,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 55,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/GuidePopup.tsx",
+                                        lineNumber: 51,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 50,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mb-8 bg-green-50 rounded-xl p-6 border-l-4 border-green-500",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-start gap-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg flex-shrink-0 mt-1",
+                                                children: text.step2Number
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 80,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                        className: "text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaWifi"], {
+                                                                className: "text-green-500"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 85,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            text.step2Title
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 84,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-gray-700 leading-relaxed mb-3",
+                                                        children: text.step2Description
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 88,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                        className: "list-disc list-inside text-gray-700 space-y-2 ml-4",
+                                                        children: text.step2List.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                children: item
+                                                            }, index, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 93,
+                                                                columnNumber: 23
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 91,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mt-4 p-3 bg-amber-50 rounded-lg border border-amber-200",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-amber-800",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                    children: text.step2Note
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                                    lineNumber: 98,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                " ",
+                                                                text.step2NoteText
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 97,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 96,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 83,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/GuidePopup.tsx",
+                                        lineNumber: 79,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 78,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mb-8 bg-purple-50 rounded-xl p-6 border-l-4 border-purple-500",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-start gap-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-purple-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg flex-shrink-0 mt-1",
+                                                children: text.step3Number
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 108,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                        className: "text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaCog"], {
+                                                                className: "text-purple-500"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 113,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            text.step3Title
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 112,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-gray-700 leading-relaxed mb-3",
+                                                        children: text.step3Description
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 116,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
+                                                        className: "list-decimal list-inside text-gray-700 space-y-2 ml-4",
+                                                        children: text.step3List.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                children: item
+                                                            }, index, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 121,
+                                                                columnNumber: 23
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 119,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mt-4 p-3 bg-red-50 rounded-lg border border-red-200",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-red-800",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                    children: text.step3Note
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                                    lineNumber: 126,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                " ",
+                                                                text.step3NoteText
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 125,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 124,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 111,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/GuidePopup.tsx",
+                                        lineNumber: 107,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 106,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mb-8 bg-amber-50 rounded-xl p-6 border-l-4 border-amber-500",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-start gap-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-amber-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg flex-shrink-0 mt-1",
+                                                children: text.step4Number
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 136,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                        className: "text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaClock"], {
+                                                                className: "text-amber-500"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 141,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            text.step4Title
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 140,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-gray-700 leading-relaxed mb-3",
+                                                        children: text.step4Description
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 144,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                        className: "list-disc list-inside text-gray-700 space-y-2 ml-4",
+                                                        children: text.step4List.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                children: item
+                                                            }, index, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 149,
+                                                                columnNumber: 23
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 147,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mt-4 p-3 bg-white rounded-lg border border-amber-200",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-gray-600",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                    children: text.step4Note
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                                    lineNumber: 154,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                " ",
+                                                                text.step4NoteText
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 153,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 152,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 139,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/GuidePopup.tsx",
+                                        lineNumber: 135,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 134,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mb-8 bg-indigo-50 rounded-xl p-6 border-l-4 border-indigo-500",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-start gap-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-indigo-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg flex-shrink-0 mt-1",
+                                                children: text.step5Number
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 164,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                        className: "text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaCheckCircle"], {
+                                                                className: "text-indigo-500"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 169,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            text.step5Title
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 168,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-gray-700 leading-relaxed mb-3",
+                                                        children: text.step5Description
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 172,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
+                                                        className: "list-decimal list-inside text-gray-700 space-y-2 ml-4",
+                                                        children: text.step5List.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                children: item
+                                                            }, index, false, {
+                                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                                lineNumber: 177,
+                                                                columnNumber: 23
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 175,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mt-4 p-3 bg-white rounded-lg border border-indigo-200",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-gray-600",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                    children: text.step5Note
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                                    lineNumber: 182,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                " ",
+                                                                text.step5NoteText
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 181,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/GuidePopup.tsx",
+                                                        lineNumber: 180,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/GuidePopup.tsx",
+                                                lineNumber: 167,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/GuidePopup.tsx",
+                                        lineNumber: 163,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 162,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "bg-gray-50 rounded-xl p-6 border border-gray-200",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                            className: "text-xl font-semibold text-gray-800 mb-4",
+                                            children: text.troubleshootingTitle
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/GuidePopup.tsx",
+                                            lineNumber: 191,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "space-y-3 text-gray-700",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "font-semibold text-gray-800",
+                                                            children: text.trouble1Title
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 196,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm",
+                                                            children: text.trouble1Text
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 197,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                    lineNumber: 195,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "font-semibold text-gray-800",
+                                                            children: text.trouble2Title
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 200,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm",
+                                                            children: text.trouble2Text
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 201,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                    lineNumber: 199,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "font-semibold text-gray-800",
+                                                            children: text.trouble3Title
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 204,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm",
+                                                            children: text.trouble3Text
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 205,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                    lineNumber: 203,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "font-semibold text-gray-800",
+                                                            children: text.trouble4Title
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 208,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm",
+                                                            children: text.trouble4Text
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 209,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                    lineNumber: 207,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "font-semibold text-gray-800",
+                                                            children: text.trouble5Title
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 212,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm",
+                                                            children: text.trouble5Text
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/GuidePopup.tsx",
+                                                            lineNumber: 213,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/GuidePopup.tsx",
+                                                    lineNumber: 211,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/components/GuidePopup.tsx",
+                                            lineNumber: 194,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/GuidePopup.tsx",
+                                    lineNumber: 190,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/GuidePopup.tsx",
+                            lineNumber: 41,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "sticky bottom-0 bg-gray-50 p-6 rounded-b-2xl border-t border-gray-200",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: onClose,
+                                className: "w-full py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-all duration-200 shadow-md hover:shadow-lg",
+                                children: text.footerButton
+                            }, void 0, false, {
+                                fileName: "[project]/components/GuidePopup.tsx",
+                                lineNumber: 221,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/components/GuidePopup.tsx",
+                            lineNumber: 220,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/GuidePopup.tsx",
+                    lineNumber: 22,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/components/GuidePopup.tsx",
+                lineNumber: 21,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(GuidePopup, "Cyhrmn6WDX+lPVgAonDrFl2Bdtk=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLanguage"]
+    ];
+});
+_c = GuidePopup;
+const __TURBOPACK__default__export__ = GuidePopup;
+var _c;
+__turbopack_refresh__.register(_c, "GuidePopup");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
 "[project]/components/Connect.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -366,11 +1329,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Navigation$2f$Nav$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/Navigation/Nav.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$connectPageText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/connectPageText.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/context/LanguageContext.js [app-client] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '@/components/GuidePopup'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$GuidePopup$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/GuidePopup.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-icons/fa/index.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_refresh__.signature();
@@ -534,7 +1493,8 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                 lineNumber: 150,
                                                 columnNumber: 15
                                             }, this),
-                                            " View Guide"
+                                            " ",
+                                            text.viewGuideButton
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
@@ -570,10 +1530,9 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                         lineNumber: 143,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(GuidePopup, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$GuidePopup$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         isOpen: showGuide,
-                        onClose: ()=>setShowGuide(false),
-                        text: text
+                        onClose: ()=>setShowGuide(false)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
                         lineNumber: 162,
@@ -584,7 +1543,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                         onClick: ()=>setShowModal(false)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 169,
+                        lineNumber: 168,
                         columnNumber: 11
                     }, this),
                     showModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -597,7 +1556,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                     children: text.modalTitle
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 175,
+                                    lineNumber: 174,
                                     columnNumber: 15
                                 }, this),
                                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -605,7 +1564,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                     children: error
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 176,
+                                    lineNumber: 175,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -616,7 +1575,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                     placeholder: text.modalPlaceholder
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 177,
+                                    lineNumber: 176,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -628,7 +1587,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                             children: text.modalCancel
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 185,
+                                            lineNumber: 184,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -638,24 +1597,24 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                             children: loading ? text.modalAdding : text.modalAdd
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 186,
+                                            lineNumber: 185,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 184,
+                                    lineNumber: 183,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Connect.jsx",
-                            lineNumber: 174,
+                            lineNumber: 173,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 173,
+                        lineNumber: 172,
                         columnNumber: 11
                     }, this),
                     showConfirmRemove && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -668,7 +1627,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                     children: text.confirmTitle
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 195,
+                                    lineNumber: 194,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -680,14 +1639,14 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                             children: deviceToRemove
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 196,
+                                            lineNumber: 195,
                                             columnNumber: 57
                                         }, this),
                                         "?"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 196,
+                                    lineNumber: 195,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -699,7 +1658,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                             children: text.confirmCancel
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 198,
+                                            lineNumber: 197,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -708,24 +1667,24 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                             children: text.confirmRemove
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 199,
+                                            lineNumber: 198,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 197,
+                                    lineNumber: 196,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Connect.jsx",
-                            lineNumber: 194,
+                            lineNumber: 193,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 193,
+                        lineNumber: 192,
                         columnNumber: 11
                     }, this),
                     devices.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -750,7 +1709,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                 autoFocus: true
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 218,
+                                                lineNumber: 217,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -763,12 +1722,12 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                             className: "text-gray-600"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 231,
+                                                            lineNumber: 230,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 227,
+                                                        lineNumber: 226,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -778,24 +1737,24 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                             className: "text-white"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 237,
+                                                            lineNumber: 236,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 233,
+                                                        lineNumber: 232,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 226,
+                                                lineNumber: 225,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 217,
+                                        lineNumber: 216,
                                         columnNumber: 19
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex justify-between items-center w-full mb-4",
@@ -808,7 +1767,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                         children: device.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 246,
+                                                        lineNumber: 245,
                                                         columnNumber: 27
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -819,12 +1778,12 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                         className: "text-blue-500 hover:text-blue-700",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaPencilAlt"], {}, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 254,
+                                                            lineNumber: 253,
                                                             columnNumber: 29
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 247,
+                                                        lineNumber: 246,
                                                         columnNumber: 27
                                                     }, this)
                                                 ]
@@ -837,17 +1796,17 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                 children: text.addNameButton
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 258,
+                                                lineNumber: 257,
                                                 columnNumber: 25
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 243,
+                                            lineNumber: 242,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 242,
+                                        lineNumber: 241,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -859,7 +1818,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 271,
+                                        lineNumber: 270,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -870,23 +1829,23 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                         className: "absolute top-3 right-3 text-red-500 hover:text-red-700 transition-colors duration-200",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTrash"], {}, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 279,
+                                            lineNumber: 278,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 272,
+                                        lineNumber: 271,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, device.id, true, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 208,
+                                lineNumber: 207,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 206,
+                        lineNumber: 205,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex flex-col items-center justify-center h-64 rounded-lg",
@@ -896,7 +1855,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                 children: text.emptyTitle
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 286,
+                                lineNumber: 285,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -904,13 +1863,13 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                 children: text.emptySubtitle
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 287,
+                                lineNumber: 286,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 285,
+                        lineNumber: 284,
                         columnNumber: 11
                     }, this)
                 ]
@@ -5617,4 +6576,4 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 }}),
 }]);
 
-//# sourceMappingURL=_1b19b2._.js.map
+//# sourceMappingURL=_2f96e6._.js.map
