@@ -8,60 +8,60 @@ const landingPageText = {
     p2: "Dizains, kas apvieno gan veiktspēju, gan estētiku."
   },
   buttons: {
-    buyNow: "Iegādāties",
+    connect: "Savienot",
     learnMore: "Uzzināt vairāk"
   },
   squares: [
     {
-      title: "Tiešajā laikā",
-      subtitle: "Uzraugiet telpas mitrumu un temperatūru momentāni ar iebūvētajiem sensoriem"
+      title: "Reāllaikā",
+      subtitle: "Sekojiet telpas mitrumam un temperatūrai reāllaikā ar iebūvētajiem sensoriem"
     },
     {
-      title: "Gudrie režīmi",
-      subtitle: "Pārslēdzieties starp automātisko vai manuālo režīmu, lai nodrošinātu ideālu komfortu"
+      title: "Gudri režīmi",
+      subtitle: "Izvēlieties automātisko vai manuālo režīmu, lai nodrošinātu optimālu komfortu"
     },
     {
-      title: "Gaismas atmosfēra",
-      subtitle: "Pielāgojams LED apgaismojums atbilstoši noskaņojumam vai interjeram"
+      title: "Gaismas noskaņa",
+      subtitle: "Pielāgojams LED apgaismojums, kas pieskaņojas jūsu noskaņojumam vai interjeram"
     },
     {
-      title: "Klusums",
-      subtitle: "Ļoti klusa darbība, ideāli piemērota guļamistabām un darba telpām"
+      title: "Īpaši kluss",
+      subtitle: "Ļoti klusa darbība — ideāli piemērota guļamistabām un darba telpām"
     },
     {
       title: "Modulārs dizains",
-      subtitle: "Vienkārši maināmi augšdaļas vai papildināma ūdens tvertnes ērtībai un stilam"
+      subtitle: "Viegli nomaināma augšdaļa un paplašināma ūdens tvertne ērtībai un stilam"
     },
     {
       title: "Videi draudzīgs",
-      subtitle: "Izgatavots no pārstrādājamiem materiāliem ilgtspējīgai izvēlei"
+      subtitle: "Izgatavots no pārstrādājamiem materiāliem ilgtspējīgākai izvēlei"
     },
     {
-      title: "Savienojams",
-      subtitle: "Kontrolējiet iestatījumus attālināti ar tīmekļa lietotni jebkurā laikā"
+      title: "Savienots ar jums",
+      subtitle: "Pārvaldiet iestatījumus attālināti ar tīmekļa lietotni jebkurā laikā"
     },
     {
-      title: "Laika komforts",
-      subtitle: "Iestatiet grafikus vai taimerus automātiskai mitruma kontrolei"
+      title: "Komforts laikā",
+      subtitle: "Iestatiet grafikus un taimerus automātiskai mitruma regulēšanai"
     },
     {
-      title: "Nākotnei gatavs",
+      title: "Gatavs nākotnei",
       subtitle: "Saņemiet OTA atjauninājumus un izbaudiet lokāli ražotas kvalitātes priekšrocības"
     }
   ],
   newContent: {
     headline: "Izbaudiet tīru komfortu",
-    p1: "Saglabājiet savu māju veselīgu un ērtu. Pareizs mitrums palīdz samazināt sausu ādu, kairinātas acis un elpošanas diskomfortu, vienlaikus veicinot labāku miegu.",
-    p2: "Labi mitrināta telpa arī aizsargā koka mēbeles, grīdas un elektroniku no plaisāšanas vai statiskā uzlādes, saglabājot jūsu vidi."
+    p1: "Uzturiet mājokli veselīgu un patīkamu ikdienai. Optimāls gaisa mitrums palīdz mazināt sausu ādu, acu kairinājumu un elpošanas diskomfortu, kā arī veicina kvalitatīvāku miegu.",
+    p2: "Pareizi mitrināts gaiss aizsargā arī koka mēbeles, grīdas segumus un elektroniku no izžūšanas, plaisāšanas un statiskās elektrības, saglabājot jūsu vidi ilgtermiņā."
   },
   stats_title: {
     headline: "Veiktspējas pārskats"
   },
   stats: [
-    { label: "Darbības laiks vienas uzpildes laikā", value: "24-48h" },
-    { label: "Vidējā jauda", value: "30W" },
-    { label: "Telpas pārklājums", value: "30-50 m²" },
-    { label: "Tvertnes tilpums", value: "1.5-2L" }
+  { label: "Gaisa mitruma regulēšana", value: "30–75%" },
+  { label: "Vidējā jauda", value: "30W" },
+  { label: "Telpas pārklājums", value: "30–50 m²" },
+  { label: "Tvertnes tilpums", value: "500 ml" }
   ]
 };
 

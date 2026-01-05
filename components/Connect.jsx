@@ -139,19 +139,20 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
   return (
     <div>
       <Nav />
-      <div className="p-12 bg-gray-200 mt-[110px] h-[calc(100vh-110px)] relative text-gray-900">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">{text.pageTitle}</h2>
-          <div className="flex gap-4">
+      <div className="p-4 sm:p-8 md:p-12 bg-gray-200 mt-[110px] min-h-[calc(100vh-110px)] relative text-gray-900">
+        {/* Header Section - Mobile Responsive */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold">{text.pageTitle}</h2>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-auto">
             <button
               onClick={() => setShowGuide(true)}
-              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105"
+              className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105 text-sm sm:text-base"
             >
               <FaQuestionCircle /> {text.viewGuideButton}
             </button>
             <button
               onClick={() => setShowModal(true)}
-              className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+              className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out text-sm sm:text-base"
             >
               <FaPlus /> {text.addDeviceButton}
             </button>
@@ -164,49 +165,74 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
           onClose={() => setShowGuide(false)}
         />
 
+        {/* Modal Backdrop */}
         {showModal && (
           <div className="fixed inset-0 bg-[rgba(0, 0, 0, 0.7)] z-10" onClick={() => setShowModal(false)} />
         )}
 
+        {/* Add Device Modal - Mobile Responsive */}
         {showModal && (
-          <div className="fixed inset-0 flex justify-center items-center z-20 bg-[rgba(0,0,0,0.7)]">
-            <div className="bg-white p-8 rounded-xl shadow-xl w-96 max-w-lg">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">{text.modalTitle}</h3>
+          <div className="fixed inset-0 flex justify-center items-center z-20 bg-[rgba(0,0,0,0.7)] p-4">
+            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-xl w-full max-w-md sm:max-w-lg">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6">{text.modalTitle}</h3>
               {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
               <input
                 type="text"
                 value={newDeviceId}
                 onChange={(e) => setNewDeviceId(e.target.value)}
-                className="w-full p-4 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 sm:p-4 border border-gray-300 rounded-lg mb-4 sm:mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                 placeholder={text.modalPlaceholder}
               />
-              <div className="flex justify-end gap-4">
-                <button onClick={() => setShowModal(false)} className="px-6 py-2 bg-gray-300 rounded-lg">{text.modalCancel}</button>
-                <button onClick={addDevice} className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out" disabled={loading}>{loading ? text.modalAdding : text.modalAdd}</button>
+              <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4">
+                <button 
+                  onClick={() => setShowModal(false)} 
+                  className="w-full sm:w-auto px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-200"
+                >
+                  {text.modalCancel}
+                </button>
+                <button 
+                  onClick={addDevice} 
+                  className="w-full sm:w-auto px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out disabled:opacity-50" 
+                  disabled={loading}
+                >
+                  {loading ? text.modalAdding : text.modalAdd}
+                </button>
               </div>
             </div>
           </div>
         )}
 
+        {/* Confirm Remove Modal - Mobile Responsive */}
         {showConfirmRemove && (
-          <div className="fixed inset-0 flex justify-center items-center z-30 bg-[rgba(0,0,0,0.7)]">
-            <div className="bg-white p-6 rounded-xl shadow-xl w-80">
+          <div className="fixed inset-0 flex justify-center items-center z-30 bg-[rgba(0,0,0,0.7)] p-4">
+            <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-sm">
               <h3 className="text-lg font-semibold mb-4">{text.confirmTitle}</h3>
-              <p className="mb-4">{text.confirmMessage} <strong>{deviceToRemove}</strong>?</p>
-              <div className="flex justify-end gap-4">
-                <button onClick={() => setShowConfirmRemove(false)} className="px-6 py-2 bg-gray-300 rounded-lg">{text.confirmCancel}</button>
-                <button onClick={removeDevice} className="px-6 py-2 bg-red-500 text-white rounded-lg">{text.confirmRemove}</button>
+              <p className="mb-4 text-sm sm:text-base">{text.confirmMessage} <strong className="break-all">{deviceToRemove}</strong>?</p>
+              <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4">
+                <button 
+                  onClick={() => setShowConfirmRemove(false)} 
+                  className="w-full sm:w-auto px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-200"
+                >
+                  {text.confirmCancel}
+                </button>
+                <button 
+                  onClick={removeDevice} 
+                  className="w-full sm:w-auto px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-200"
+                >
+                  {text.confirmRemove}
+                </button>
               </div>
             </div>
           </div>
         )}
 
+        {/* Device Grid - Mobile Responsive */}
         {devices.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {devices.map((device) => (
               <div
                 key={device.id}
-                className="p-8 bg-white rounded-lg shadow-md flex flex-col items-start transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:cursor-pointer relative"
+                className="p-6 sm:p-8 bg-white rounded-lg shadow-md flex flex-col items-start transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:cursor-pointer relative"
                 onClick={() => selectDevice(device.id)}
                 style={{ 
                   transition: "transform 0.3s ease, box-shadow 0.3s ease" 
@@ -218,20 +244,20 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                       type="text"
                       value={editName}
                       onChange={(e) => setEditName(e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded mb-2"
+                      className="w-full p-2 border border-gray-300 rounded mb-2 text-sm sm:text-base"
                       placeholder="Device name"
                       autoFocus
                     />
                     <div className="flex justify-end gap-2">
                       <button 
                         onClick={() => cancelEditing()} 
-                        className="p-1 bg-gray-200 rounded hover:bg-gray-300"
+                        className="p-2 bg-gray-200 rounded hover:bg-gray-300 transition duration-200"
                       >
                         <FaTimes className="text-gray-600" />
                       </button>
                       <button 
                         onClick={() => saveDeviceName(device.id)} 
-                        className="p-1 bg-green-500 rounded hover:bg-green-600"
+                        className="p-2 bg-green-500 rounded hover:bg-green-600 transition duration-200"
                       >
                         <FaSave className="text-white" />
                       </button>
@@ -239,18 +265,18 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                   </div>
                 ) : (
                   <div className="flex justify-between items-center w-full mb-4">
-                    <div className="flex items-center">
+                    <div className="flex items-center flex-1 min-w-0 mr-2">
                       {device.name ? (
                         <>
-                          <h3 className="text-xl font-semibold mr-2">{device.name}</h3>
+                          <h3 className="text-lg sm:text-xl font-semibold mr-2 truncate">{device.name}</h3>
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
                               startEditing(device.id, device.name);
                             }} 
-                            className="text-blue-500 hover:text-blue-700"
+                            className="text-blue-500 hover:text-blue-700 flex-shrink-0"
                           >
-                            <FaPencilAlt />
+                            <FaPencilAlt className="text-sm sm:text-base" />
                           </button>
                         </>
                       ) : (
@@ -259,7 +285,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                             e.stopPropagation();
                             startEditing(device.id, '');
                           }} 
-                          className="px-3 py-1 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 text-sm"
+                          className="px-2 sm:px-3 py-1 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 text-xs sm:text-sm whitespace-nowrap"
                         >
                           {text.addNameButton}
                         </button>
@@ -267,23 +293,25 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                     </div>
                   </div>
                 )}
-                <div className="text-sm text-gray-500 mb-4">{text.deviceIdLabel} {device.id}</div> 
+                <div className="text-xs sm:text-sm text-gray-500 mb-4 break-all w-full pr-8">
+                  {text.deviceIdLabel} {device.id}
+                </div> 
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
                     confirmRemoveDevice(device.id);
                   }} 
-                  className="absolute top-3 right-3 text-red-500 hover:text-red-700 transition-colors duration-200"
+                  className="absolute top-3 right-3 text-red-500 hover:text-red-700 transition-colors duration-200 p-1"
                 >
-                  <FaTrash />
+                  <FaTrash className="text-sm sm:text-base" />
                 </button>
               </div>
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-64 rounded-lg">
-            <p className="text-xl text-gray-600 mb-4">{text.emptyTitle}</p>
-            <p className="text-gray-500">{text.emptySubtitle}</p>
+          <div className="flex flex-col items-center justify-center h-64 rounded-lg px-4">
+            <p className="text-lg sm:text-xl text-gray-600 mb-4 text-center">{text.emptyTitle}</p>
+            <p className="text-sm sm:text-base text-gray-500 text-center">{text.emptySubtitle}</p>
           </div>
         )}
       </div>

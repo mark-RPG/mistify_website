@@ -4,10 +4,13 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { useLanguage } from '@/components/context/LanguageContext'
 import { Globe } from 'lucide-react'
+import { translations } from '@/components/navbar_text'
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { locale, switchLanguage } = useLanguage()
+  
+  const t = translations[locale].nav
 
   const toggleLanguage = () => {
     switchLanguage(locale === 'en' ? 'lv' : 'en')
@@ -40,7 +43,7 @@ const Nav = () => {
             href="/connect"
             className="hidden md:block relative z-10 backdrop-blur-xl bg-white/20 text-black font-medium px-6 py-3 rounded-2xl shadow-lg hover:bg-white/30 transition-all duration-300 hover:scale-105"
           >
-            Connect
+            {t.connect}
           </Link>
         </div>
 
@@ -60,14 +63,7 @@ const Nav = () => {
             href="/contact"
             className="backdrop-blur-xl bg-white/25 text-black font-medium px-6 py-3 rounded-2xl shadow-[0_8px_35px_rgba(0,0,0,0.35)] hover:bg-white/35 hover:shadow-[0_8px_45px_rgba(0,0,0,0.45)] transition-all duration-300 hover:scale-105"
           >
-            Contact
-          </Link>
-
-          <Link
-            href="/buy"
-            className="backdrop-blur-2xl bg-white/40 text-black font-semibold px-7 py-3 rounded-2xl shadow-[0_10px_45px_rgba(0,0,0,0.45)] hover:bg-white/50 hover:shadow-[0_10px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:scale-110"
-          >
-            Buy Now
+            {t.contact}
           </Link>
         </div>
 
@@ -125,7 +121,7 @@ const Nav = () => {
               className="backdrop-blur-xl bg-white/20 text-black font-medium px-6 py-4 rounded-2xl shadow-lg hover:bg-white/30 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <Globe className="w-5 h-5" />
-              <span className="uppercase font-semibold">{locale === 'en' ? 'Switch to LV' : 'Switch to EN'}</span>
+              <span className="font-semibold">{t.switchTo}</span>
             </button>
 
             <Link
@@ -133,7 +129,7 @@ const Nav = () => {
               onClick={() => setIsOpen(false)}
               className="backdrop-blur-xl bg-white/20 text-black font-medium px-6 py-4 rounded-2xl shadow-lg hover:bg-white/30 transition-all duration-300 text-center"
             >
-              Connect
+              {t.connect}
             </Link>
             
             <Link
@@ -141,7 +137,7 @@ const Nav = () => {
               onClick={() => setIsOpen(false)}
               className="backdrop-blur-xl bg-white/25 text-black font-medium px-6 py-4 rounded-2xl shadow-lg hover:bg-white/35 transition-all duration-300 text-center"
             >
-              Contact
+              {t.contact}
             </Link>
 
             <Link
@@ -149,7 +145,7 @@ const Nav = () => {
               onClick={() => setIsOpen(false)}
               className="backdrop-blur-2xl bg-white/40 text-black font-semibold px-6 py-4 rounded-2xl shadow-lg hover:bg-white/50 transition-all duration-300 text-center"
             >
-              Buy Now
+              {t.buyNow}
             </Link>
           </nav>
         </div>

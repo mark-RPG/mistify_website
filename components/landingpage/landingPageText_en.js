@@ -9,7 +9,7 @@ const landingPageText = {
     p2: "Designed for both performance and aesthetics."
   },
   buttons: {
-    buyNow: "Buy Now",
+    connect: "Connect",
     learnMore: "Learn More"
   },
   squares: [
@@ -67,4 +67,3 @@ const landingPageText = {
 };
 
 export default landingPageText;
-

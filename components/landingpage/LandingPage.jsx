@@ -355,11 +355,12 @@ const LandingPage = () => {
               transition={{ delay: 1.5, type: "spring", stiffness: 120 }}
             >
               <Link
-                href="/buy"
+                href="/connect"
                 className="backdrop-blur-2xl bg-white/20 text-white font-semibold px-7 py-3 rounded-2xl shadow-[0_10px_45px_rgba(0,0,0,0.45)] hover:bg-white/50 hover:shadow-[0_10px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:scale-110"
               >
-                {text.buttons.buyNow}
+                {text.buttons.connect}
               </Link>
+
               <button
                 onClick={() => scrollToProgress(1000, 400)}
                 className="backdrop-blur-xl bg-white/15 text-white font-medium px-6 py-3 rounded-2xl shadow-[0_8px_35px_rgba(0,0,0,0.35)] hover:bg-white/25 hover:shadow-[0_8px_45px_rgba(0,0,0,0.45)] transition-all duration-300 hover:scale-105"
@@ -367,6 +368,7 @@ const LandingPage = () => {
                 {text.buttons.learnMore}
               </button>
             </motion.div>
+
           </div>
         </div>
       
@@ -443,7 +445,7 @@ const LandingPage = () => {
           <div className="flex-1 flex justify-center">
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
               <Image
-                src="/humidifierfake1.png"
+                src="/humidifier.png"
                 width={400}
                 height={400}
                 alt="Smart Humidifier Detail"

@@ -13,6 +13,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/image.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/context/LanguageContext.js [app-client] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module '@/translations'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$globe$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Globe$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/globe.js [app-client] (ecmascript) <export default as Globe>");
 ;
 var _s = __turbopack_refresh__.signature();
@@ -22,10 +27,12 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
+;
 const Nav = ()=>{
     _s();
     const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const { locale, switchLanguage } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLanguage"])();
+    const t = translations[locale].nav;
     const toggleLanguage = ()=>{
         switchLanguage(locale === 'en' ? 'lv' : 'en');
     };
@@ -41,7 +48,7 @@ const Nav = ()=>{
                                 className: "absolute -left-10 -top-6 w-[320px] h-[90px] bg-gradient-to-r from-black/20 via-black/10 to-transparent rounded-3xl blur-3xl pointer-events-none hidden md:block"
                             }, void 0, false, {
                                 fileName: "[project]/components/Navigation/Nav.jsx",
-                                lineNumber: 22,
+                                lineNumber: 25,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -55,27 +62,27 @@ const Nav = ()=>{
                                     className: "hover:scale-105 transition-transform duration-300"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navigation/Nav.jsx",
-                                    lineNumber: 29,
+                                    lineNumber: 32,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Navigation/Nav.jsx",
-                                lineNumber: 25,
+                                lineNumber: 28,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/connect",
                                 className: "hidden md:block relative z-10 backdrop-blur-xl bg-white/20 text-black font-medium px-6 py-3 rounded-2xl shadow-lg hover:bg-white/30 transition-all duration-300 hover:scale-105",
-                                children: "Connect"
+                                children: t.connect
                             }, void 0, false, {
                                 fileName: "[project]/components/Navigation/Nav.jsx",
-                                lineNumber: 39,
+                                lineNumber: 42,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Navigation/Nav.jsx",
-                        lineNumber: 20,
+                        lineNumber: 23,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -90,7 +97,7 @@ const Nav = ()=>{
                                         className: "w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/Navigation/Nav.jsx",
-                                        lineNumber: 55,
+                                        lineNumber: 58,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -98,37 +105,28 @@ const Nav = ()=>{
                                         children: locale
                                     }, void 0, false, {
                                         fileName: "[project]/components/Navigation/Nav.jsx",
-                                        lineNumber: 56,
+                                        lineNumber: 59,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Navigation/Nav.jsx",
-                                lineNumber: 50,
+                                lineNumber: 53,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/contact",
                                 className: "backdrop-blur-xl bg-white/25 text-black font-medium px-6 py-3 rounded-2xl shadow-[0_8px_35px_rgba(0,0,0,0.35)] hover:bg-white/35 hover:shadow-[0_8px_45px_rgba(0,0,0,0.45)] transition-all duration-300 hover:scale-105",
-                                children: "Contact"
+                                children: t.contact
                             }, void 0, false, {
                                 fileName: "[project]/components/Navigation/Nav.jsx",
-                                lineNumber: 59,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                href: "/buy",
-                                className: "backdrop-blur-2xl bg-white/40 text-black font-semibold px-7 py-3 rounded-2xl shadow-[0_10px_45px_rgba(0,0,0,0.45)] hover:bg-white/50 hover:shadow-[0_10px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:scale-110",
-                                children: "Buy Now"
-                            }, void 0, false, {
-                                fileName: "[project]/components/Navigation/Nav.jsx",
-                                lineNumber: 66,
+                                lineNumber: 62,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Navigation/Nav.jsx",
-                        lineNumber: 48,
+                        lineNumber: 51,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -142,38 +140,38 @@ const Nav = ()=>{
                                     className: `w-full h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navigation/Nav.jsx",
-                                    lineNumber: 81,
+                                    lineNumber: 77,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: `w-full h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navigation/Nav.jsx",
-                                    lineNumber: 86,
+                                    lineNumber: 82,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: `w-full h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navigation/Nav.jsx",
-                                    lineNumber: 91,
+                                    lineNumber: 87,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Navigation/Nav.jsx",
-                            lineNumber: 80,
+                            lineNumber: 76,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Navigation/Nav.jsx",
-                        lineNumber: 75,
+                        lineNumber: 71,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Navigation/Nav.jsx",
-                lineNumber: 18,
+                lineNumber: 21,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -184,7 +182,7 @@ const Nav = ()=>{
                         onClick: ()=>setIsOpen(false)
                     }, void 0, false, {
                         fileName: "[project]/components/Navigation/Nav.jsx",
-                        lineNumber: 107,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -203,68 +201,68 @@ const Nav = ()=>{
                                             className: "w-5 h-5"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Navigation/Nav.jsx",
-                                            lineNumber: 127,
+                                            lineNumber: 123,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "uppercase font-semibold",
-                                            children: locale === 'en' ? 'Switch to LV' : 'Switch to EN'
+                                            className: "font-semibold",
+                                            children: t.switchTo
                                         }, void 0, false, {
                                             fileName: "[project]/components/Navigation/Nav.jsx",
-                                            lineNumber: 128,
+                                            lineNumber: 124,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Navigation/Nav.jsx",
-                                    lineNumber: 120,
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                     href: "/connect",
                                     onClick: ()=>setIsOpen(false),
                                     className: "backdrop-blur-xl bg-white/20 text-black font-medium px-6 py-4 rounded-2xl shadow-lg hover:bg-white/30 transition-all duration-300 text-center",
-                                    children: "Connect"
+                                    children: t.connect
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navigation/Nav.jsx",
-                                    lineNumber: 131,
+                                    lineNumber: 127,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                     href: "/contact",
                                     onClick: ()=>setIsOpen(false),
                                     className: "backdrop-blur-xl bg-white/25 text-black font-medium px-6 py-4 rounded-2xl shadow-lg hover:bg-white/35 transition-all duration-300 text-center",
-                                    children: "Contact"
+                                    children: t.contact
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navigation/Nav.jsx",
-                                    lineNumber: 139,
+                                    lineNumber: 135,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                     href: "/buy",
                                     onClick: ()=>setIsOpen(false),
                                     className: "backdrop-blur-2xl bg-white/40 text-black font-semibold px-6 py-4 rounded-2xl shadow-lg hover:bg-white/50 transition-all duration-300 text-center",
-                                    children: "Buy Now"
+                                    children: t.buyNow
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navigation/Nav.jsx",
-                                    lineNumber: 147,
+                                    lineNumber: 143,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Navigation/Nav.jsx",
-                            lineNumber: 118,
+                            lineNumber: 114,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Navigation/Nav.jsx",
-                        lineNumber: 113,
+                        lineNumber: 109,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Navigation/Nav.jsx",
-                lineNumber: 101,
+                lineNumber: 97,
                 columnNumber: 7
             }, this)
         ]
@@ -302,7 +300,7 @@ const landingPageText = {
         p2: "Designed for both performance and aesthetics."
     },
     buttons: {
-        buyNow: "Buy Now",
+        connect: "Connect",
         learnMore: "Learn More"
     },
     squares: [
@@ -393,59 +391,59 @@ const landingPageText = {
         p2: "Dizains, kas apvieno gan veiktspēju, gan estētiku."
     },
     buttons: {
-        buyNow: "Iegādāties",
+        connect: "Savienot",
         learnMore: "Uzzināt vairāk"
     },
     squares: [
         {
-            title: "Tiešajā laikā",
-            subtitle: "Uzraugiet telpas mitrumu un temperatūru momentāni ar iebūvētajiem sensoriem"
+            title: "Reāllaikā",
+            subtitle: "Sekojiet telpas mitrumam un temperatūrai reāllaikā ar iebūvētajiem sensoriem"
         },
         {
-            title: "Gudrie režīmi",
-            subtitle: "Pārslēdzieties starp automātisko vai manuālo režīmu, lai nodrošinātu ideālu komfortu"
+            title: "Gudri režīmi",
+            subtitle: "Izvēlieties automātisko vai manuālo režīmu, lai nodrošinātu optimālu komfortu"
         },
         {
-            title: "Gaismas atmosfēra",
-            subtitle: "Pielāgojams LED apgaismojums atbilstoši noskaņojumam vai interjeram"
+            title: "Gaismas noskaņa",
+            subtitle: "Pielāgojams LED apgaismojums, kas pieskaņojas jūsu noskaņojumam vai interjeram"
         },
         {
-            title: "Klusums",
-            subtitle: "Ļoti klusa darbība, ideāli piemērota guļamistabām un darba telpām"
+            title: "Īpaši kluss",
+            subtitle: "Ļoti klusa darbība — ideāli piemērota guļamistabām un darba telpām"
         },
         {
             title: "Modulārs dizains",
-            subtitle: "Vienkārši maināmi augšdaļas vai papildināma ūdens tvertnes ērtībai un stilam"
+            subtitle: "Viegli nomaināma augšdaļa un paplašināma ūdens tvertne ērtībai un stilam"
         },
         {
             title: "Videi draudzīgs",
-            subtitle: "Izgatavots no pārstrādājamiem materiāliem ilgtspējīgai izvēlei"
+            subtitle: "Izgatavots no pārstrādājamiem materiāliem ilgtspējīgākai izvēlei"
         },
         {
-            title: "Savienojams",
-            subtitle: "Kontrolējiet iestatījumus attālināti ar tīmekļa lietotni jebkurā laikā"
+            title: "Savienots ar jums",
+            subtitle: "Pārvaldiet iestatījumus attālināti ar tīmekļa lietotni jebkurā laikā"
         },
         {
-            title: "Laika komforts",
-            subtitle: "Iestatiet grafikus vai taimerus automātiskai mitruma kontrolei"
+            title: "Komforts laikā",
+            subtitle: "Iestatiet grafikus un taimerus automātiskai mitruma regulēšanai"
         },
         {
-            title: "Nākotnei gatavs",
+            title: "Gatavs nākotnei",
             subtitle: "Saņemiet OTA atjauninājumus un izbaudiet lokāli ražotas kvalitātes priekšrocības"
         }
     ],
     newContent: {
         headline: "Izbaudiet tīru komfortu",
-        p1: "Saglabājiet savu māju veselīgu un ērtu. Pareizs mitrums palīdz samazināt sausu ādu, kairinātas acis un elpošanas diskomfortu, vienlaikus veicinot labāku miegu.",
-        p2: "Labi mitrināta telpa arī aizsargā koka mēbeles, grīdas un elektroniku no plaisāšanas vai statiskā uzlādes, saglabājot jūsu vidi."
+        p1: "Uzturiet mājokli veselīgu un patīkamu ikdienai. Optimāls gaisa mitrums palīdz mazināt sausu ādu, acu kairinājumu un elpošanas diskomfortu, kā arī veicina kvalitatīvāku miegu.",
+        p2: "Pareizi mitrināts gaiss aizsargā arī koka mēbeles, grīdas segumus un elektroniku no izžūšanas, plaisāšanas un statiskās elektrības, saglabājot jūsu vidi ilgtermiņā."
     },
     stats_title: {
         headline: "Veiktspējas pārskats"
     },
     stats: [
         {
-            label: "Darbības laiks vienas uzpildes laikā",
-            value: "24-48h"
+            label: "Gaisa mitruma regulēšana",
+            value: "30–75%"
         },
         {
             label: "Vidējā jauda",
@@ -453,11 +451,11 @@ const landingPageText = {
         },
         {
             label: "Telpas pārklājums",
-            value: "30-50 m²"
+            value: "30–50 m²"
         },
         {
             label: "Tvertnes tilpums",
-            value: "1.5-2L"
+            value: "500 ml"
         }
     ]
 };
@@ -1005,9 +1003,9 @@ const LandingPage = ()=>{
                                     },
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                            href: "/buy",
+                                            href: "/connect",
                                             className: "backdrop-blur-2xl bg-white/20 text-white font-semibold px-7 py-3 rounded-2xl shadow-[0_10px_45px_rgba(0,0,0,0.45)] hover:bg-white/50 hover:shadow-[0_10px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:scale-110",
-                                            children: text.buttons.buyNow
+                                            children: text.buttons.connect
                                         }, void 0, false, {
                                             fileName: "[project]/components/landingpage/LandingPage.jsx",
                                             lineNumber: 357,
@@ -1019,7 +1017,7 @@ const LandingPage = ()=>{
                                             children: text.buttons.learnMore
                                         }, void 0, false, {
                                             fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                            lineNumber: 363,
+                                            lineNumber: 364,
                                             columnNumber: 15
                                         }, this)
                                     ]
@@ -1076,12 +1074,12 @@ const LandingPage = ()=>{
                                         strokeWidth: 2
                                     }, void 0, false, {
                                         fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                        lineNumber: 405,
+                                        lineNumber: 407,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 398,
+                                    lineNumber: 400,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1092,7 +1090,7 @@ const LandingPage = ()=>{
                                     children: square.title
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 407,
+                                    lineNumber: 409,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1103,24 +1101,24 @@ const LandingPage = ()=>{
                                     children: square.subtitle
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 410,
+                                    lineNumber: 412,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 388,
+                            lineNumber: 390,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                    lineNumber: 377,
+                    lineNumber: 379,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                lineNumber: 376,
+                lineNumber: 378,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1141,7 +1139,7 @@ const LandingPage = ()=>{
                                     children: text.newContent.headline
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 431,
+                                    lineNumber: 433,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1149,7 +1147,7 @@ const LandingPage = ()=>{
                                     children: text.newContent.p1
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 434,
+                                    lineNumber: 436,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1157,13 +1155,13 @@ const LandingPage = ()=>{
                                     children: text.newContent.p2
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 437,
+                                    lineNumber: 439,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 430,
+                            lineNumber: 432,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1171,35 +1169,35 @@ const LandingPage = ()=>{
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "relative w-full max-w-xs sm:max-w-sm md:max-w-md",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    src: "/humidifierfake1.png",
+                                    src: "/humidifier.png",
                                     width: 400,
                                     height: 400,
                                     alt: "Smart Humidifier Detail",
                                     className: "drop-shadow-2xl"
                                 }, void 0, false, {
                                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                    lineNumber: 445,
+                                    lineNumber: 447,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                lineNumber: 444,
+                                lineNumber: 446,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/landingpage/LandingPage.jsx",
-                            lineNumber: 443,
+                            lineNumber: 445,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                    lineNumber: 428,
+                    lineNumber: 430,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                lineNumber: 420,
+                lineNumber: 422,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1219,7 +1217,7 @@ const LandingPage = ()=>{
                                 children: text.stats_title.headline
                             }, void 0, false, {
                                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                lineNumber: 470,
+                                lineNumber: 472,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1232,7 +1230,7 @@ const LandingPage = ()=>{
                                                 children: stat.value
                                             }, void 0, false, {
                                                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                                lineNumber: 478,
+                                                lineNumber: 480,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1240,34 +1238,34 @@ const LandingPage = ()=>{
                                                 children: stat.label
                                             }, void 0, false, {
                                                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                                lineNumber: 481,
+                                                lineNumber: 483,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, idx, true, {
                                         fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                        lineNumber: 474,
+                                        lineNumber: 476,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                                lineNumber: 472,
+                                lineNumber: 474,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/landingpage/LandingPage.jsx",
-                        lineNumber: 469,
+                        lineNumber: 471,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/landingpage/LandingPage.jsx",
-                    lineNumber: 466,
+                    lineNumber: 468,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/landingpage/LandingPage.jsx",
-                lineNumber: 458,
+                lineNumber: 460,
                 columnNumber: 7
             }, this)
         ]

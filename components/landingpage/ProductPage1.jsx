@@ -10,7 +10,7 @@ const ProductPage1 = () => {
         <div className="w-full md:w-1/2">
           <div className="relative w-full h-80 md:h-[500px]">
             <Image
-              src="/humidifierfake1.png"
+              src="/humidifier.png"
               alt="Mistify Smart Humidifier"
               layout="fill"
               objectFit="contain"
