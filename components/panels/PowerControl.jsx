@@ -21,15 +21,39 @@ const PowerControl = () => {
   
   const togglePower = () => {
     const newStatus = deviceData.status === 'On' ? 'Off' : 'On';
-    setDeviceData(prev => ({
-      ...prev,
-      status: newStatus,
-    }));
+    const isAutoMode = deviceData.controlMode === 'auto';
+    
+    if (isAutoMode) {
+      if (newStatus === 'Off') {
+        // When turning Off in Auto mode: switch to manual first, then turn off
+        setDeviceData(prev => ({
+          ...prev,
+          controlMode: 'manual',
+          status: newStatus,
+          // Keep the UI showing auto mode
+          displayControlMode: 'auto'
+        }));
+      } else {
+        // When turning On in Auto mode: switch to auto first, then turn on
+        setDeviceData(prev => ({
+          ...prev,
+          controlMode: 'auto',
+          status: newStatus,
+          displayControlMode: 'auto'
+        }));
+      }
+    } else {
+      // Manual mode - just change status normally
+      setDeviceData(prev => ({
+        ...prev,
+        status: newStatus,
+      }));
+    }
   };
   
   return (
-    <div className="bg-gray-800 rounded-xl p-4 relative overflow-hidden flex flex-col justify-evenly">
-      <div className="flex justify-between items-center mb-5 z-10 relative">
+    <div className="bg-gray-800 rounded-xl p-1 relative overflow-hidden flex flex-col justify-evenly">
+      <div className="flex justify-between items-center mb-1 z-10 relative">
         <div className="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -39,19 +63,11 @@ const PowerControl = () => {
       </div>
       
       <div className="flex flex-col items-center z-10 relative">
-        <div className="mb-6 w-full">
+        <div className="mb-7 w-full">
           <div className="text-center mb-4">
             <span className={`text-2xl font-bold ${deviceData.status === 'On' ? 'text-green-400' : 'text-gray-400'}`}>
               {deviceData.status === 'On' ? text.powerControl.running : text.powerControl.standby}
             </span>
-            
-            <div className="flex justify-center mt-2 h-2"> {/* Fixed height container */}
-              <div className={`animate-pulse flex space-x-1 ${deviceData.status === 'On' ? 'opacity-100' : 'opacity-0'}`}>
-                <div className={`w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`}></div>
-                <div className={`w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`}></div>
-                <div className={`w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`}></div>
-              </div>
-            </div>
           </div>
           
           <div className="flex items-center justify-center">
@@ -62,21 +78,21 @@ const PowerControl = () => {
                 onChange={togglePower}
                 className="sr-only"
               />
-              <span className="label flex items-center text-xl font-medium text-gray-400">
+              <span className="label flex items-center text-lg font-medium text-gray-400">
                 {text.powerControl.off}
               </span>
               <span
-                className={`slider mx-6 flex h-14 w-[120px] items-center rounded-full p-2 duration-200 ${
+                className={`slider mx-4 flex h-10 w-[88px] items-center rounded-full p-1.5 duration-200 ${
                   deviceData.status === 'On' ? 'bg-blue-500' : 'bg-gray-600'
                 }`}
               >
                 <span
-                  className={`dot h-10 w-10 rounded-full bg-white duration-200 ${
-                    deviceData.status === 'On' ? 'translate-x-[72px]' : ''
+                  className={`dot h-7 w-7 rounded-full bg-white duration-200 ${
+                    deviceData.status === 'On' ? 'translate-x-[52px]' : ''
                   }`}
                 ></span>
               </span>
-              <span className="label flex items-center text-xl font-medium text-green-400">
+              <span className="label flex items-center text-lg font-medium text-green-400">
                 {text.powerControl.on}
               </span>
             </label>

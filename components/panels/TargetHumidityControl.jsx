@@ -42,7 +42,7 @@ const TargetHumidityControl = () => {
   };
   
   return (
-    <div className="bg-gray-800 rounded-xl p-2 relative overflow-hidden flex flex-col justify-between">
+    <div className="bg-gray-800 rounded-xl p-2 h-full relative overflow-hidden flex flex-col justify-between">
       <div className="flex justify-between items-center mb-5 z-10 relative">
         <div className="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,21 +90,7 @@ const TargetHumidityControl = () => {
           <span>75%</span>
         </div>
         
-        <div className="grid grid-cols-4 gap-3 mt-1">
-          <button 
-            onClick={() => setTargetHumidity(40)}
-            disabled={deviceData.targetHumidity > 75}
-            className={`py-3 px-3 rounded-lg text-sm font-medium text-center transition-all ${
-              deviceData.targetHumidity > 75 
-                ? 'bg-gray-800 text-gray-500 cursor-not-allowed opacity-50' 
-                : deviceData.targetHumidity === 40 
-                ? 'bg-blue-500 text-white shadow-lg' 
-                : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-            }`}>
-            <div className="flex flex-col items-center">
-              {text.targetHumidityControl.low} (40%)
-            </div>
-          </button>
+        <div className="grid grid-cols-3 gap-3 mt-3">
           <button 
             onClick={() => setTargetHumidity(50)}
             disabled={deviceData.targetHumidity > 75}
@@ -140,15 +126,6 @@ const TargetHumidityControl = () => {
               {deviceData.targetHumidity > 75 ? text.targetHumidityControl.targetOn : text.targetHumidityControl.targetOff}
             </div>
           </button>
-        </div>
-      </div>
-      
-      <div className="bg-gray-700/50 p-2 rounded-lg mt-2 z-10 relative hidden xl:inline">
-        <div className="flex items-center justify-center text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span className="text-sm text-gray-300">{text.targetHumidityControl.recommendedNote}</span>
         </div>
       </div>
       

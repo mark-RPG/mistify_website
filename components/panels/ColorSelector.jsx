@@ -128,7 +128,7 @@ export const ColorSelector = () => {
                 if (!isOpen && buttonRef.current) {
                   const rect = buttonRef.current.getBoundingClientRect();
                   setPopupPosition({
-                    top: rect.bottom + 8,
+                    top: rect.top - 280, // Position above the button (color picker height ~320px + 10px gap)
                     left: rect.left - 200 // Offset to the left of the button
                   });
                 }
@@ -139,7 +139,7 @@ export const ColorSelector = () => {
           </div>
         </div>
         
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/15"></div>
+        <div className="rounded-xl absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/15"></div>
         <style jsx>{`
           input[type="range"].color-slider {
             -webkit-appearance: none;

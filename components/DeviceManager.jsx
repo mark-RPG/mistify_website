@@ -6,8 +6,7 @@ import { ColorSelector } from '@/components/panels/ColorSelector.jsx';
 import { ModeEffectPreview } from '@/components/panels/ModeEffectPreview.jsx';
 import { ModeSelector } from '@/components/panels/ModeSelector.jsx';
 import TargetHumidityControl from '@/components/panels/TargetHumidityControl.jsx';
-import TemperatureDisplay from '@/components/panels/TemperatureDisplay.jsx';
-import HumidityDisplay from '@/components/panels/HumidityDisplay.jsx';
+  import EnvironmentDisplay from '@/components/panels/EnvironmentDisplay.jsx';
 import ControlModeSelector from '@/components/panels/ControlModeSelector.jsx';
 import PowerControl from '@/components/panels/PowerControl';
 import TimerControl from '@/components/panels/TimerControl.jsx';
@@ -139,12 +138,28 @@ const DeviceManager = ({ deviceId, onBack }) => {
       </div>
       
       {/* Main content */}
-      <div className="p-2 px-4 sm:px-[15vw] flex-grow flex flex-col space-y-2 bg-gray-900">
+      <div className="p-2 px-4 md:px-[15vw] flex-grow flex flex-col space-y-3 bg-gray-900">
+        {/* Power Control Section */}
+        <section className="bg-gray-800 rounded-xl shadow-lg p-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <PowerControl />
+            <EnvironmentDisplay />
+          </div>
+        </section>
+
         {/* Environment Info Section */}
         <section className="bg-gray-800 rounded-xl shadow-lg p-2">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <TemperatureDisplay />
-            <HumidityDisplay />
+            <ControlModeSelector />
+            {deviceData.controlMode === 'manual' ? (
+              <>
+                <TimerControl />
+              </>
+            ) : (
+              <div className="sm:col-span-1">
+                <TargetHumidityControl />
+              </div>
+            )}
           </div>
         </section>
 
@@ -155,23 +170,6 @@ const DeviceManager = ({ deviceId, onBack }) => {
             <BrightnessSelector />
             <ColorSelector />
             <ModeEffectPreview />
-          </div>
-        </section>
-
-        {/* Power Control Section */}
-        <section className="bg-gray-800 rounded-xl shadow-lg p-2">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <ControlModeSelector />
-            {deviceData.controlMode === 'manual' ? (
-              <>
-                <PowerControl />
-                <TimerControl />
-              </>
-            ) : (
-              <div className="sm:col-span-2">
-                <TargetHumidityControl />
-              </div>
-            )}
           </div>
         </section>
       </div>

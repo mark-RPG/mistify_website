@@ -122,7 +122,7 @@ const devicePanelsText = {
     
     // HumidityDisplay
     humidityDisplay: {
-      title: "Pašreizējais Mitrums",
+      title: "Mitrums",
       target: "Mērķis:",
       increasing: "Palielinās",
       decreasing: "Samazinās",
@@ -138,12 +138,13 @@ const devicePanelsText = {
     
     // PowerControl
     powerControl: {
-      title: "Barošanas Vadība",
+      title: "Ierīces stāvoklis",
       on: "Ieslēgts",
       off: "Izslēgts",
       running: "Darbojas",
-      standby: "Gaidīšanas Režīms"
+      standby: "Pauzēts"
     },
+
     
     // TimerControl
     timerControl: {

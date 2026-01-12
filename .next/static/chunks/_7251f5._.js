@@ -1,4 +1,4 @@
-(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_78e94d._.js", {
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_7251f5._.js", {
 
 "[project]/components/navbar_text.js [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -1760,23 +1760,23 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                         columnNumber: 11
                     }, this),
                     devices.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8",
+                        className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10",
                         children: devices.map((device)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "p-6 sm:p-8 bg-white rounded-lg shadow-md flex flex-col items-start transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:cursor-pointer relative",
+                                className: "p-8 sm:p-10 md:p-12 bg-white rounded-xl shadow-lg flex flex-col items-start transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:cursor-pointer relative min-h-[200px] sm:min-h-[220px]",
                                 onClick: ()=>selectDevice(device.id),
                                 style: {
                                     transition: "transform 0.3s ease, box-shadow 0.3s ease"
                                 },
                                 children: [
                                     editingDeviceId === device.id ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-full mb-4",
+                                        className: "w-full mb-6",
                                         onClick: (e)=>e.stopPropagation(),
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                 type: "text",
                                                 value: editName,
                                                 onChange: (e)=>setEditName(e.target.value),
-                                                className: "w-full p-2 border border-gray-300 rounded mb-2 text-sm sm:text-base",
+                                                className: "w-full p-3 border border-gray-300 rounded-lg mb-3 text-base sm:text-lg",
                                                 placeholder: "Device name",
                                                 autoFocus: true
                                             }, void 0, false, {
@@ -1785,13 +1785,13 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-end gap-2",
+                                                className: "flex justify-end gap-3",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>cancelEditing(),
-                                                        className: "p-2 bg-gray-200 rounded hover:bg-gray-300 transition duration-200",
+                                                        className: "p-3 bg-gray-200 rounded-lg hover:bg-gray-300 transition duration-200",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTimes"], {
-                                                            className: "text-gray-600"
+                                                            className: "text-gray-600 text-lg"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
                                                             lineNumber: 256,
@@ -1804,9 +1804,9 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>saveDeviceName(device.id),
-                                                        className: "p-2 bg-green-500 rounded hover:bg-green-600 transition duration-200",
+                                                        className: "p-3 bg-green-500 rounded-lg hover:bg-green-600 transition duration-200",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaSave"], {
-                                                            className: "text-white"
+                                                            className: "text-white text-lg"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
                                                             lineNumber: 262,
@@ -1829,13 +1829,13 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                         lineNumber: 242,
                                         columnNumber: 19
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex justify-between items-center w-full mb-4",
+                                        className: "flex justify-between items-center w-full mb-6",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center flex-1 min-w-0 mr-2",
+                                            className: "flex items-center flex-1 min-w-0 mr-3",
                                             children: device.name ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                        className: "text-lg sm:text-xl font-semibold mr-2 truncate",
+                                                        className: "text-xl sm:text-xl md:text-2xl font-bold mr-3 truncate text-gray-800",
                                                         children: device.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
@@ -1849,7 +1849,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                         },
                                                         className: "text-blue-500 hover:text-blue-700 flex-shrink-0",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaPencilAlt"], {
-                                                            className: "text-sm sm:text-base"
+                                                            className: "text-lg sm:text-xl"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
                                                             lineNumber: 279,
@@ -1866,7 +1866,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                     e.stopPropagation();
                                                     startEditing(device.id, '');
                                                 },
-                                                className: "px-2 sm:px-3 py-1 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 text-xs sm:text-sm whitespace-nowrap",
+                                                className: "px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 text-sm sm:text-base font-medium whitespace-nowrap",
                                                 children: text.addNameButton
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
@@ -1884,7 +1884,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-xs sm:text-sm text-gray-500 mb-4 break-all w-full pr-8",
+                                        className: "text-sm sm:text-base md:text-lg text-gray-600 mb-4 break-all w-full pr-10 font-medium",
                                         children: [
                                             text.deviceIdLabel,
                                             " ",
@@ -1900,9 +1900,9 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                             e.stopPropagation();
                                             confirmRemoveDevice(device.id);
                                         },
-                                        className: "absolute top-3 right-3 text-red-500 hover:text-red-700 transition-colors duration-200 p-1",
+                                        className: "absolute top-4 right-4 text-red-500 hover:text-red-700 transition-colors duration-200 p-2",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTrash"], {
-                                            className: "text-sm sm:text-base"
+                                            className: "text-lg sm:text-xl"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
                                             lineNumber: 306,
@@ -3281,7 +3281,7 @@ const devicePanelsText = {
         },
         // HumidityDisplay
         humidityDisplay: {
-            title: "Pašreizējais Mitrums",
+            title: "Mitrums",
             target: "Mērķis:",
             increasing: "Palielinās",
             decreasing: "Samazinās",
@@ -3295,11 +3295,11 @@ const devicePanelsText = {
         },
         // PowerControl
         powerControl: {
-            title: "Barošanas Vadība",
+            title: "Ierīces stāvoklis",
             on: "Ieslēgts",
             off: "Izslēgts",
             running: "Darbojas",
-            standby: "Gaidīšanas Režīms"
+            standby: "Pauzēts"
         },
         // TimerControl
         timerControl: {
@@ -3796,7 +3796,7 @@ const ColorSelector = ()=>{
                                         if (!isOpen && buttonRef.current) {
                                             const rect = buttonRef.current.getBoundingClientRect();
                                             setPopupPosition({
-                                                top: rect.bottom + 8,
+                                                top: rect.top - 280,
                                                 left: rect.left - 200 // Offset to the left of the button
                                             });
                                         }
@@ -3820,7 +3820,7 @@ const ColorSelector = ()=>{
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-e5ad69b809542bdd" + " " + "absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/15"
+                        className: "jsx-e5ad69b809542bdd" + " " + "rounded-xl absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/15"
                     }, void 0, false, {
                         fileName: "[project]/components/panels/ColorSelector.jsx",
                         lineNumber: 142,
@@ -4769,7 +4769,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
-"[project]/components/panels/TemperatureDisplay.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"[project]/components/panels/EnvironmentDisplay.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
@@ -4789,7 +4789,7 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-const TemperatureDisplay = ()=>{
+const EnvironmentDisplay = ()=>{
     _s();
     const { deviceData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$DeviceContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDevice"])();
     // Language system
@@ -4797,317 +4797,292 @@ const TemperatureDisplay = ()=>{
     const [text, setText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$devicePanelsText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getDevicePanelsText"])("en"));
     // Update text when locale changes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "TemperatureDisplay.useEffect": ()=>{
+        "EnvironmentDisplay.useEffect": ()=>{
             const newText = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$devicePanelsText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getDevicePanelsText"])(locale);
             if (newText) {
                 setText(newText);
             }
         }
-    }["TemperatureDisplay.useEffect"], [
-        locale
-    ]);
-    const value = deviceData.temperature;
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "bg-gray-800 rounded-xl p-4 flex items-center justify-between relative overflow-hidden",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "z-10",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "text-gray-400 text-sm mb-3",
-                        children: text.temperatureDisplay.title
-                    }, void 0, false, {
-                        fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                        lineNumber: 27,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-end mt-1",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-4xl font-bold",
-                                children: value
-                            }, void 0, false, {
-                                fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                                lineNumber: 31,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-xl ml-1",
-                                children: text.temperatureDisplay.celsius
-                            }, void 0, false, {
-                                fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                                lineNumber: 32,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                        lineNumber: 30,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                lineNumber: 26,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "w-16 h-16 rounded-full border-4 flex items-center justify-center z-10 border-red-500 bg-red-500/10",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    className: "h-8 w-8 text-red-500",
-                    fill: "none",
-                    viewBox: "0 0 24 24",
-                    stroke: "currentColor",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 2,
-                        d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    }, void 0, false, {
-                        fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                        lineNumber: 37,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                    lineNumber: 36,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                lineNumber: 35,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute inset-0 bg-gradient-to-br from-red-500/5 to-red-600/20"
-            }, void 0, false, {
-                fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-                lineNumber: 40,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/components/panels/TemperatureDisplay.jsx",
-        lineNumber: 25,
-        columnNumber: 5
-    }, this);
-};
-_s(TemperatureDisplay, "K86YImtaLU80x8MWlHy1p2OnXy0=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$DeviceContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDevice"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLanguage"]
-    ];
-});
-_c = TemperatureDisplay;
-const __TURBOPACK__default__export__ = TemperatureDisplay;
-var _c;
-__turbopack_refresh__.register(_c, "TemperatureDisplay");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
-}
-}}),
-"[project]/components/panels/HumidityDisplay.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
-{
-__turbopack_esm__({
-    "default": (()=>__TURBOPACK__default__export__)
-});
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$DeviceContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/context/DeviceContext.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$devicePanelsText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/devicePanelsText.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/context/LanguageContext.js [app-client] (ecmascript)");
-;
-var _s = __turbopack_refresh__.signature();
-"use client";
-;
-;
-;
-;
-const HumidityDisplay = ()=>{
-    _s();
-    const { deviceData, setDeviceData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$DeviceContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDevice"])();
-    // Language system
-    const { locale } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLanguage"])();
-    const [text, setText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$devicePanelsText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getDevicePanelsText"])("en"));
-    // Update text when locale changes
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "HumidityDisplay.useEffect": ()=>{
-            const newText = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$devicePanelsText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getDevicePanelsText"])(locale);
-            if (newText) {
-                setText(newText);
-            }
-        }
-    }["HumidityDisplay.useEffect"], [
+    }["EnvironmentDisplay.useEffect"], [
         locale
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "bg-gray-800 rounded-xl p-4 flex items-center justify-between relative overflow-hidden",
+        className: "bg-gray-800 rounded-xl p-1 relative overflow-hidden flex-grow flex items-end pb-4",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "z-10",
+                className: "absolute inset-0 bg-gradient-to-b from-red-500/8 via-purple-500/8 to-blue-500/12"
+            }, void 0, false, {
+                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                lineNumber: 25,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex items-stretch z-10 relative w-full",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "text-gray-400 text-sm",
-                        children: text.humidityDisplay.title
-                    }, void 0, false, {
-                        fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                        lineNumber: 25,
-                        columnNumber: 9
-                    }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-end mt-1 mb-2",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-4xl font-bold",
-                                children: deviceData.humidity
-                            }, void 0, false, {
-                                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                                lineNumber: 27,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-xl ml-1",
-                                children: "%"
-                            }, void 0, false, {
-                                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                                lineNumber: 28,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                        lineNumber: 26,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-xs py-0.5 rounded-full h-5",
+                        className: "flex justify-between items-center flex-1 relative px-8 md:px-3 py-6",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: `${deviceData.controlMode === "manual" || deviceData.targetHumidity === 80 ? "hidden" : "inline"}`,
+                                className: "absolute inset-0 bg-gradient-to-r from-red-500/15 to-transparent rounded-lg"
+                            }, void 0, false, {
+                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                lineNumber: 32,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "relative z-10 flex flex-col",
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-xs text-gray-400",
-                                        children: text.humidityDisplay.target
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-gray-400 text-sm mb-1",
+                                        children: text.temperatureDisplay.title
                                     }, void 0, false, {
-                                        fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                                        lineNumber: 32,
+                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                        lineNumber: 34,
                                         columnNumber: 13
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-sm ml-1 font-medium mr-2",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-end",
                                         children: [
-                                            deviceData.targetHumidity,
-                                            "%"
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-3xl font-bold",
+                                                children: deviceData.temperature
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                lineNumber: 38,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-lg ml-1",
+                                                children: text.temperatureDisplay.celsius
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                lineNumber: 39,
+                                                columnNumber: 15
+                                            }, this)
                                         ]
                                     }, void 0, true, {
-                                        fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                                        lineNumber: 33,
+                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                        lineNumber: 37,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "h-5 mt-1"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                        lineNumber: 42,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
-                                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                                lineNumber: 31,
+                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                lineNumber: 33,
                                 columnNumber: 11
                             }, this),
-                            deviceData.humidity < deviceData.targetHumidity || deviceData.controlMode === "manual" && deviceData.status === "On" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full",
-                                children: text.humidityDisplay.increasing
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "hidden sm:flex w-16 h-16 rounded-full border-4 items-center justify-center border-red-500 bg-red-500/10 relative z-10",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 24 24",
+                                    fill: "currentColor",
+                                    className: "h-8 w-8 text-red-500",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        d: "M14 14.76V5a2 2 0 10-4 0v9.76a4 4 0 104 0zM12 2a3 3 0 00-3 3v9.35a5 5 0 106 0V5a3 3 0 00-3-3z"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                        lineNumber: 52,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                    lineNumber: 46,
+                                    columnNumber: 13
+                                }, this)
                             }, void 0, false, {
-                                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                                lineNumber: 36,
-                                columnNumber: 13
-                            }, this) : deviceData.humidity > deviceData.targetHumidity || deviceData.controlMode === "manual" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full",
-                                children: text.humidityDisplay.decreasing
-                            }, void 0, false, {
-                                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                                lineNumber: 38,
-                                columnNumber: 13
-                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded-full",
-                                children: text.humidityDisplay.optimal
-                            }, void 0, false, {
-                                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                                lineNumber: 40,
-                                columnNumber: 13
+                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                lineNumber: 44,
+                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/components/panels/HumidityDisplay.jsx",
+                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
                         lineNumber: 30,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex items-center justify-between flex-1 relative px-8 md:px-3 py-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "absolute inset-0 bg-gradient-to-l from-blue-500/15 to-transparent rounded-lg"
+                            }, void 0, false, {
+                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                lineNumber: 61,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "hidden sm:flex w-16 h-16 rounded-full border-4 border-blue-500 items-center justify-center bg-blue-500/10 relative z-10",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    className: "h-9 w-9 text-blue-500",
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        strokeLinecap: "round",
+                                        strokeLinejoin: "round",
+                                        strokeWidth: 2,
+                                        d: "M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                        lineNumber: 64,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                    lineNumber: 63,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                lineNumber: 62,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "relative z-10 flex flex-col text-right",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-gray-400 text-sm mb-1",
+                                        children: text.humidityDisplay.title
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                        lineNumber: 68,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-end justify-end",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-3xl font-bold",
+                                                children: deviceData.humidity
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                lineNumber: 70,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-lg ml-1",
+                                                children: "%"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                lineNumber: 71,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                        lineNumber: 69,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "text-xs py-0.5 rounded-full h-5 mt-1",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: `${deviceData.controlMode === "manual" || deviceData.targetHumidity === 80 ? "hidden" : "inline"}`,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-xs text-gray-400",
+                                                        children: text.humidityDisplay.target
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                        lineNumber: 75,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-sm ml-1 font-medium mr-2",
+                                                        children: [
+                                                            deviceData.targetHumidity,
+                                                            "%"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                        lineNumber: 76,
+                                                        columnNumber: 17
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                lineNumber: 74,
+                                                columnNumber: 15
+                                            }, this),
+                                            deviceData.humidity < deviceData.targetHumidity || deviceData.controlMode === "manual" && deviceData.status === "On" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full",
+                                                children: text.humidityDisplay.increasing
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                lineNumber: 79,
+                                                columnNumber: 17
+                                            }, this) : deviceData.humidity > deviceData.targetHumidity || deviceData.controlMode === "manual" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full",
+                                                children: text.humidityDisplay.decreasing
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                lineNumber: 81,
+                                                columnNumber: 17
+                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded-full",
+                                                children: text.humidityDisplay.optimal
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                                lineNumber: 83,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                        lineNumber: 73,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                                lineNumber: 67,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                        lineNumber: 59,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                lineNumber: 24,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "w-16 h-16 rounded-full border-4 border-blue-500 flex items-center justify-center bg-blue-500/10 z-10",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    className: "h-8 w-8 text-blue-500",
-                    fill: "none",
-                    viewBox: "0 0 24 24",
-                    stroke: "currentColor",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 2,
-                        d: "M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                    }, void 0, false, {
-                        fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                        lineNumber: 46,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                    lineNumber: 45,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                lineNumber: 44,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/20"
-            }, void 0, false, {
-                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                lineNumber: 49,
+                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                lineNumber: 28,
                 columnNumber: 7
             }, this),
             deviceData.status === 'On' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute bottom-0 left-0 right-0 h-1 bg-blue-500 animate-pulse"
             }, void 0, false, {
-                fileName: "[project]/components/panels/HumidityDisplay.jsx",
-                lineNumber: 51,
+                fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
+                lineNumber: 92,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/components/panels/HumidityDisplay.jsx",
+        fileName: "[project]/components/panels/EnvironmentDisplay.jsx",
         lineNumber: 23,
         columnNumber: 5
     }, this);
 };
-_s(HumidityDisplay, "tkF00G7iyl2h+YcrleFQvkUNIpw=", false, function() {
+_s(EnvironmentDisplay, "K86YImtaLU80x8MWlHy1p2OnXy0=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$DeviceContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDevice"],
         __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLanguage"]
     ];
 });
-_c = HumidityDisplay;
-const __TURBOPACK__default__export__ = HumidityDisplay;
+_c = EnvironmentDisplay;
+const __TURBOPACK__default__export__ = EnvironmentDisplay;
 var _c;
-__turbopack_refresh__.register(_c, "HumidityDisplay");
+__turbopack_refresh__.register(_c, "EnvironmentDisplay");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
@@ -5170,16 +5145,16 @@ const ControlModeSelector = ()=>{
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "bg-gray-800 rounded-xl p-4 relative overflow-hidden flex flex-col justify-evenly flex-1 w-full h-full flex-grow",
+        className: "bg-gray-800 rounded-xl p-1 relative overflow-hidden flex flex-col justify-around flex-1 w-full h-full",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex justify-between items-center mb-9 z-10 relative",
+                className: "flex justify-between items-center mb-1 z-10 relative",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex items-center",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                             xmlns: "http://www.w3.org/2000/svg",
-                            className: "h-7 w-7 text-yellow-400 mr-3",
+                            className: "h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-yellow-400 mr-2 sm:mr-3",
                             fill: "none",
                             viewBox: "0 0 24 24",
                             stroke: "currentColor",
@@ -5199,7 +5174,7 @@ const ControlModeSelector = ()=>{
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                            className: "text-gray-300 text-xl font-medium",
+                            className: "text-gray-300 text-base sm:text-lg md:text-xl font-medium",
                             children: text.controlModeSelector.title
                         }, void 0, false, {
                             fileName: "[project]/components/panels/ControlModeSelector.jsx",
@@ -5220,12 +5195,12 @@ const ControlModeSelector = ()=>{
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-col items-center z-10 relative",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mb-8 w-full",
+                    className: "mb-1 w-full",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "text-center mb-4",
+                            className: "text-center mb-2 sm:mb-4",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: `text-2xl font-bold ${isAuto ? 'text-yellow-400' : 'text-blue-400'}`,
+                                className: `text-lg sm:text-xl md:text-2xl font-bold ${isAuto ? 'text-yellow-400' : 'text-blue-400'}`,
                                 children: isAuto ? text.controlModeSelector.autoMode : text.controlModeSelector.manualMode
                             }, void 0, false, {
                                 fileName: "[project]/components/panels/ControlModeSelector.jsx",
@@ -5238,7 +5213,7 @@ const ControlModeSelector = ()=>{
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center justify-center",
+                            className: "flex items-center justify-center mb-2",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                 className: "relative inline-flex cursor-pointer select-none items-center",
                                 children: [
@@ -5253,7 +5228,7 @@ const ControlModeSelector = ()=>{
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "label flex items-center text-xl font-medium text-blue-400",
+                                        className: "label flex items-center text-sm sm:text-md md:text-lg font-medium text-blue-400",
                                         children: text.controlModeSelector.manual
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/ControlModeSelector.jsx",
@@ -5261,9 +5236,9 @@ const ControlModeSelector = ()=>{
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: `slider mx-6 flex h-14 w-[120px] items-center rounded-full p-2 duration-200 ${isAuto ? 'bg-yellow-400' : 'bg-blue-500'}`,
+                                        className: `slider mx-3 sm:mx-4 md:mx-6 flex h-8 w-[60px] sm:h-10 sm:w-[75px] md:h-12 md:w-[90px] items-center rounded-full p-1.5 sm:p-2 duration-200 ${isAuto ? 'bg-yellow-400' : 'bg-blue-500'}`,
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: `dot h-10 w-10 rounded-full bg-white duration-200 ${isAuto ? 'translate-x-[72px]' : ''}`
+                                            className: `dot h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 rounded-full bg-white duration-200 ${isAuto ? 'translate-x-[24px] sm:translate-x-[32px] md:translate-x-[38px]' : ''}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/panels/ControlModeSelector.jsx",
                                             lineNumber: 79,
@@ -5275,7 +5250,7 @@ const ControlModeSelector = ()=>{
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "label flex items-center text-xl font-medium text-yellow-300",
+                                        className: "label flex items-center text-sm sm:text-md md:text-lg font-medium text-yellow-300",
                                         children: text.controlModeSelector.auto
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/ControlModeSelector.jsx",
@@ -5407,10 +5382,10 @@ const PowerControl = ()=>{
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "bg-gray-800 rounded-xl p-4 relative overflow-hidden flex flex-col justify-evenly",
+        className: "bg-gray-800 rounded-xl p-1 relative overflow-hidden flex flex-col justify-evenly",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex justify-between items-center mb-5 z-10 relative",
+                className: "flex justify-between items-center mb-1 z-10 relative",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex items-center",
                     children: [
@@ -5457,61 +5432,19 @@ const PowerControl = ()=>{
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-col items-center z-10 relative",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mb-6 w-full",
+                    className: "mb-7 w-full",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "text-center mb-4",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: `text-2xl font-bold ${deviceData.status === 'On' ? 'text-green-400' : 'text-gray-400'}`,
-                                    children: deviceData.status === 'On' ? text.powerControl.running : text.powerControl.standby
-                                }, void 0, false, {
-                                    fileName: "[project]/components/panels/PowerControl.jsx",
-                                    lineNumber: 68,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex justify-center mt-2 h-2",
-                                    children: [
-                                        " ",
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: `animate-pulse flex space-x-1 ${deviceData.status === 'On' ? 'opacity-100' : 'opacity-0'}`,
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/panels/PowerControl.jsx",
-                                                    lineNumber: 74,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/panels/PowerControl.jsx",
-                                                    lineNumber: 75,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/panels/PowerControl.jsx",
-                                                    lineNumber: 76,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/components/panels/PowerControl.jsx",
-                                            lineNumber: 73,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/panels/PowerControl.jsx",
-                                    lineNumber: 72,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: `text-2xl font-bold ${deviceData.status === 'On' ? 'text-green-400' : 'text-gray-400'}`,
+                                children: deviceData.status === 'On' ? text.powerControl.running : text.powerControl.standby
+                            }, void 0, false, {
+                                fileName: "[project]/components/panels/PowerControl.jsx",
+                                lineNumber: 68,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
                             fileName: "[project]/components/panels/PowerControl.jsx",
                             lineNumber: 67,
                             columnNumber: 11
@@ -5528,48 +5461,48 @@ const PowerControl = ()=>{
                                         className: "sr-only"
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/PowerControl.jsx",
-                                        lineNumber: 83,
+                                        lineNumber: 75,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "label flex items-center text-xl font-medium text-gray-400",
+                                        className: "label flex items-center text-lg font-medium text-gray-400",
                                         children: text.powerControl.off
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/PowerControl.jsx",
-                                        lineNumber: 89,
+                                        lineNumber: 81,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: `slider mx-6 flex h-14 w-[120px] items-center rounded-full p-2 duration-200 ${deviceData.status === 'On' ? 'bg-blue-500' : 'bg-gray-600'}`,
+                                        className: `slider mx-4 flex h-10 w-[88px] items-center rounded-full p-1.5 duration-200 ${deviceData.status === 'On' ? 'bg-blue-500' : 'bg-gray-600'}`,
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: `dot h-10 w-10 rounded-full bg-white duration-200 ${deviceData.status === 'On' ? 'translate-x-[72px]' : ''}`
+                                            className: `dot h-7 w-7 rounded-full bg-white duration-200 ${deviceData.status === 'On' ? 'translate-x-[52px]' : ''}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/panels/PowerControl.jsx",
-                                            lineNumber: 97,
+                                            lineNumber: 89,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/PowerControl.jsx",
-                                        lineNumber: 92,
+                                        lineNumber: 84,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "label flex items-center text-xl font-medium text-green-400",
+                                        className: "label flex items-center text-lg font-medium text-green-400",
                                         children: text.powerControl.on
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/PowerControl.jsx",
-                                        lineNumber: 103,
+                                        lineNumber: 95,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/panels/PowerControl.jsx",
-                                lineNumber: 82,
+                                lineNumber: 74,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/panels/PowerControl.jsx",
-                            lineNumber: 81,
+                            lineNumber: 73,
                             columnNumber: 11
                         }, this)
                     ]
@@ -5587,14 +5520,14 @@ const PowerControl = ()=>{
                 className: "absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-600/20"
             }, void 0, false, {
                 fileName: "[project]/components/panels/PowerControl.jsx",
-                lineNumber: 111,
+                lineNumber: 103,
                 columnNumber: 7
             }, this),
             deviceData.status === 'On' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute bottom-0 left-0 right-0 h-1.5 bg-blue-500"
             }, void 0, false, {
                 fileName: "[project]/components/panels/PowerControl.jsx",
-                lineNumber: 113,
+                lineNumber: 105,
                 columnNumber: 9
             }, this)
         ]
@@ -5723,7 +5656,7 @@ const TimerControl = ()=>{
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "rounded-xl p-4 relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-gray-500/10 to-gray-600/20",
+        className: "rounded-xl p-2 relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-gray-500/10 to-gray-600/20",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex items-center mb-3 z-10 relative",
@@ -5793,7 +5726,6 @@ const TimerControl = ()=>{
                 className: "grid grid-cols-2 gap-4 mb-3",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "bg-gray-700 rounded-lg p-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                 className: "block text-sm text-gray-400 mb-2",
@@ -5829,7 +5761,6 @@ const TimerControl = ()=>{
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "bg-gray-700 rounded-lg p-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                 className: "block text-sm text-gray-400 mb-2",
@@ -6037,8 +5968,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$Colo
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$ModeEffectPreview$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/ModeEffectPreview.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$ModeSelector$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/ModeSelector.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$TargetHumidityControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/TargetHumidityControl.jsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$TemperatureDisplay$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/TemperatureDisplay.jsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$HumidityDisplay$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/HumidityDisplay.jsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$EnvironmentDisplay$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/EnvironmentDisplay.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$ControlModeSelector$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/ControlModeSelector.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$PowerControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/PowerControl.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$TimerControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/panels/TimerControl.jsx [app-client] (ecmascript)");
@@ -6048,7 +5978,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 var _s = __turbopack_refresh__.signature();
 'use client';
-;
 ;
 ;
 ;
@@ -6149,17 +6078,17 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                     d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 15.5c-.77.833.192 2.5 1.732 2.5z"
                                 }, void 0, false, {
                                     fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 78,
+                                    lineNumber: 77,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/DeviceManager.jsx",
-                                lineNumber: 77,
+                                lineNumber: 76,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 76,
+                            lineNumber: 75,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -6167,7 +6096,7 @@ const DeviceManager = ({ deviceId, onBack })=>{
                             children: text.lidWarning.title
                         }, void 0, false, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 81,
+                            lineNumber: 80,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6175,7 +6104,7 @@ const DeviceManager = ({ deviceId, onBack })=>{
                             children: text.lidWarning.message
                         }, void 0, false, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 82,
+                            lineNumber: 81,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6185,12 +6114,12 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                 children: text.lidWarning.safetyNote
                             }, void 0, false, {
                                 fileName: "[project]/components/DeviceManager.jsx",
-                                lineNumber: 86,
+                                lineNumber: 85,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 85,
+                            lineNumber: 84,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6198,18 +6127,18 @@ const DeviceManager = ({ deviceId, onBack })=>{
                             children: text.lidWarning.waiting
                         }, void 0, false, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 90,
+                            lineNumber: 89,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/DeviceManager.jsx",
-                    lineNumber: 75,
+                    lineNumber: 74,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/DeviceManager.jsx",
-                lineNumber: 74,
+                lineNumber: 73,
                 columnNumber: 9
             }, this),
             toast.show && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6230,12 +6159,12 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                 d: "M5 13l4 4L19 7"
                             }, void 0, false, {
                                 fileName: "[project]/components/DeviceManager.jsx",
-                                lineNumber: 102,
+                                lineNumber: 101,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 101,
+                            lineNumber: 100,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6243,25 +6172,25 @@ const DeviceManager = ({ deviceId, onBack })=>{
                             children: toast.message
                         }, void 0, false, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 104,
+                            lineNumber: 103,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/DeviceManager.jsx",
-                    lineNumber: 100,
+                    lineNumber: 99,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/DeviceManager.jsx",
-                lineNumber: 99,
+                lineNumber: 98,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$DeviceContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeviceManagerConnection"], {
                 deviceId: deviceId
             }, void 0, false, {
                 fileName: "[project]/components/DeviceManager.jsx",
-                lineNumber: 110,
+                lineNumber: 109,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6285,12 +6214,12 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                             clipRule: "evenodd"
                                         }, void 0, false, {
                                             fileName: "[project]/components/DeviceManager.jsx",
-                                            lineNumber: 120,
+                                            lineNumber: 119,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/DeviceManager.jsx",
-                                        lineNumber: 119,
+                                        lineNumber: 118,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6298,13 +6227,13 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                         children: text.backButton
                                     }, void 0, false, {
                                         fileName: "[project]/components/DeviceManager.jsx",
-                                        lineNumber: 122,
+                                        lineNumber: 121,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/DeviceManager.jsx",
-                                lineNumber: 115,
+                                lineNumber: 114,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -6313,7 +6242,7 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                 className: "h-8"
                             }, void 0, false, {
                                 fileName: "[project]/components/DeviceManager.jsx",
-                                lineNumber: 124,
+                                lineNumber: 123,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -6321,13 +6250,13 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                 children: text.title
                             }, void 0, false, {
                                 fileName: "[project]/components/DeviceManager.jsx",
-                                lineNumber: 125,
+                                lineNumber: 124,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/DeviceManager.jsx",
-                        lineNumber: 114,
+                        lineNumber: 113,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6340,20 +6269,20 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                         className: `w-2 h-2 rounded-full mr-2 ${deviceData.isConnected ? 'bg-green-400 animate-pulse' : 'bg-red-500'}`
                                     }, void 0, false, {
                                         fileName: "[project]/components/DeviceManager.jsx",
-                                        lineNumber: 129,
+                                        lineNumber: 128,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: deviceData.isConnected ? text.connected : text.disconnected
                                     }, void 0, false, {
                                         fileName: "[project]/components/DeviceManager.jsx",
-                                        lineNumber: 130,
+                                        lineNumber: 129,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/DeviceManager.jsx",
-                                lineNumber: 128,
+                                lineNumber: 127,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6372,12 +6301,12 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                             d: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                                         }, void 0, false, {
                                             fileName: "[project]/components/DeviceManager.jsx",
-                                            lineNumber: 134,
+                                            lineNumber: 133,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/DeviceManager.jsx",
-                                        lineNumber: 133,
+                                        lineNumber: 132,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6391,79 +6320,61 @@ const DeviceManager = ({ deviceId, onBack })=>{
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/DeviceManager.jsx",
-                                                lineNumber: 136,
+                                                lineNumber: 135,
                                                 columnNumber: 39
                                             }, this),
                                             deviceId || 'MH-2023X'
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/DeviceManager.jsx",
-                                        lineNumber: 136,
+                                        lineNumber: 135,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/DeviceManager.jsx",
-                                lineNumber: 132,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/DeviceManager.jsx",
-                        lineNumber: 127,
+                        lineNumber: 126,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/DeviceManager.jsx",
-                lineNumber: 113,
+                lineNumber: 112,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "p-2 px-4 sm:px-[15vw] flex-grow flex flex-col space-y-2 bg-gray-900",
+                className: "p-2 px-4 md:px-[15vw] flex-grow flex flex-col space-y-3 bg-gray-900",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                         className: "bg-gray-800 rounded-xl shadow-lg p-2",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid grid-cols-1 sm:grid-cols-3 gap-4",
+                            className: "grid grid-cols-1 sm:grid-cols-2 gap-4",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$ControlModeSelector$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$PowerControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                    fileName: "[project]/components/DeviceManager.jsx",
+                                    lineNumber: 145,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$EnvironmentDisplay$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/components/DeviceManager.jsx",
                                     lineNumber: 146,
                                     columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$PowerControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                                    fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 147,
-                                    columnNumber: 15
-                                }, this),
-                                deviceData.controlMode === 'manual' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$TimerControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                                        fileName: "[project]/components/DeviceManager.jsx",
-                                        lineNumber: 150,
-                                        columnNumber: 17
-                                    }, this)
-                                }, void 0, false) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "sm:col-span-1",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$TargetHumidityControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                                        fileName: "[project]/components/DeviceManager.jsx",
-                                        lineNumber: 154,
-                                        columnNumber: 17
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 153,
-                                    columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 145,
+                            lineNumber: 144,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/DeviceManager.jsx",
-                        lineNumber: 144,
+                        lineNumber: 143,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -6471,25 +6382,38 @@ const DeviceManager = ({ deviceId, onBack })=>{
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "grid grid-cols-1 sm:grid-cols-2 gap-4",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$TemperatureDisplay$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$ControlModeSelector$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 163,
+                                    lineNumber: 153,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$HumidityDisplay$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                deviceData.controlMode === 'manual' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$TimerControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                        fileName: "[project]/components/DeviceManager.jsx",
+                                        lineNumber: 156,
+                                        columnNumber: 17
+                                    }, this)
+                                }, void 0, false) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "sm:col-span-1",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$TargetHumidityControl$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                        fileName: "[project]/components/DeviceManager.jsx",
+                                        lineNumber: 160,
+                                        columnNumber: 17
+                                    }, this)
+                                }, void 0, false, {
                                     fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 164,
-                                    columnNumber: 13
+                                    lineNumber: 159,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 162,
+                            lineNumber: 152,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/DeviceManager.jsx",
-                        lineNumber: 161,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -6499,45 +6423,45 @@ const DeviceManager = ({ deviceId, onBack })=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$ModeSelector$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ModeSelector"], {}, void 0, false, {
                                     fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 171,
+                                    lineNumber: 169,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$BrightnessSelector$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 172,
+                                    lineNumber: 170,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$ColorSelector$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ColorSelector"], {}, void 0, false, {
                                     fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 173,
+                                    lineNumber: 171,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$panels$2f$ModeEffectPreview$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ModeEffectPreview"], {}, void 0, false, {
                                     fileName: "[project]/components/DeviceManager.jsx",
-                                    lineNumber: 174,
+                                    lineNumber: 172,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/DeviceManager.jsx",
-                            lineNumber: 170,
+                            lineNumber: 168,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/DeviceManager.jsx",
-                        lineNumber: 169,
+                        lineNumber: 167,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/DeviceManager.jsx",
-                lineNumber: 142,
+                lineNumber: 141,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/DeviceManager.jsx",
-        lineNumber: 70,
+        lineNumber: 69,
         columnNumber: 5
     }, this);
 };
@@ -6655,4 +6579,4 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 }}),
 }]);
 
-//# sourceMappingURL=_78e94d._.js.map
+//# sourceMappingURL=_7251f5._.js.map

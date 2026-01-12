@@ -1920,1146 +1920,6 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
 };
 const __TURBOPACK__default__export__ = Connect;
 }}),
-"[project]/components/context/DeviceContext.js [app-ssr] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
-{
-__turbopack_esm__({
-    "DeviceManagerConnection": (()=>DeviceManagerConnection),
-    "DeviceProvider": (()=>DeviceProvider),
-    "useDevice": (()=>useDevice)
-});
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-;
-;
-const DeviceContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createContext"])();
-const DeviceProvider = ({ children })=>{
-    const [deviceData, setDeviceData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
-        humidity: 56.6,
-        temperature: 16.8,
-        status: 'Off',
-        targetHumidity: 50,
-        timer: null,
-        timerActive: false,
-        brightness: 127,
-        color: '255, 255, 0',
-        controlMode: 'auto',
-        mode: 'Off',
-        lidStatus: "Unknown",
-        speed: 20,
-        divRef: null,
-        isConnected: false
-    });
-    const [ws, setWs] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [currentDeviceId, setCurrentDeviceId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const autoReconnectRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(true);
-    const pingIntervalRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const reconnectTimeoutRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const heartbeatTimeoutRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const connectionAttemptRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(0);
-    const hasReceivedServerDataRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(false);
-    const isInitialLoadRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(true);
-    const skipNextChangeRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(false);
-    const [timeLeft, setTimeLeft] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
-    const [isActive, setIsActive] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const prevDeviceDataRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(deviceData);
-    const timerRefs = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])({
-        status: null,
-        targetHumidity: null,
-        timer: null,
-        brightness: null,
-        colorMode: null
-    });
-    const DEBOUNCE_DELAY = 2000;
-    const PING_INTERVAL = 20000; // 20 seconds
-    const HEARTBEAT_TIMEOUT = 30000; // 30 seconds to wait for response
-    const RECONNECT_DELAYS = [
-        500,
-        1000,
-        2000,
-        5000,
-        10000,
-        15000
-    ]; // Faster initial reconnect
-    const errorCache = {}; // Used to throttle repeat errors
-    const REPORT_INTERVAL = 30000;
-    function reportError(errorCode, errorMessage, context, severity, varName, varValue) {
-        const now = Date.now();
-        let key = errorCode;
-        if (varName) key += `_${varName}`;
-        // Throttle duplicate errors (same key & value within interval)
-        const meta = errorCache[key];
-        if (meta && now - meta.lastReportTime < REPORT_INTERVAL && meta.lastValue === varValue) {
-            console.log("Duplicate error suppressed:", key);
-            return;
-        }
-        // Construct error payload
-        const doc = {
-            type: "error_report",
-            currentDeviceId,
-            error_code: errorCode,
-            timestamp: Math.floor(now / 1000),
-            severity
-        };
-        if (errorMessage && errorMessage.length < 50) {
-            doc.error_message = errorMessage;
-        }
-        if (varName) {
-            doc.variable = {
-                name: varName,
-                value: varValue
-            };
-        }
-        if (context && typeof context === "object") {
-            doc.context = context;
-        }
-        const payload = JSON.stringify(doc);
-        const message = `ERROR_REPORT:${currentDeviceId}:${payload}`;
-        // Send with debounce to prevent rapid fire
-        debouncedSendCommand("error_report", ()=>message, errorCode);
-        console.log("Error reported:", payload);
-        // Update cache
-        errorCache[key] = {
-            lastReportTime: now,
-            lastValue: varValue
-        };
-    }
-    const resetHeartbeat = ()=>{
-        try {
-            if (heartbeatTimeoutRef.current) {
-                clearTimeout(heartbeatTimeoutRef.current);
-            }
-            heartbeatTimeoutRef.current = setTimeout(()=>{
-                console.warn("Heartbeat timeout - connection seems dead, forcing reconnect");
-                reportError("HEARTBEAT_TIMEOUT", "No heartbeat received in expected time", {
-                    context: "heartbeat_monitor"
-                }, "warning", "connection_status", "timeout");
-                if (ws) {
-                    ws.close(); // triggers reconnect logic elsewhere
-                }
-            }, HEARTBEAT_TIMEOUT);
-        } catch (err) {
-            reportError("HEARTBEAT_RESET_FAIL", err.message || "Failed to reset heartbeat", {
-                function: "resetHeartbeat"
-            }, "error", null, "");
-        }
-    };
-    const startPingInterval = ()=>{
-        try {
-            if (pingIntervalRef.current) {
-                clearInterval(pingIntervalRef.current);
-            }
-            pingIntervalRef.current = setInterval(()=>{
-                try {
-                    if (ws && ws.readyState === WebSocket.OPEN && currentDeviceId) {
-                        const pingMessage = `PING:${currentDeviceId}`;
-                        console.log("Sending ping:", pingMessage);
-                        ws.send(pingMessage);
-                        resetHeartbeat();
-                    } else if (!currentDeviceId) {
-                        reportError("PING_NO_DEVICE_ID", "Cannot send ping: currentDeviceId missing", {
-                            function: "startPingInterval"
-                        }, "error", "currentDeviceId", "undefined");
-                    }
-                } catch (sendErr) {
-                    if (ws && ws.readyState === WebSocket.OPEN) {
-                        reportError("PING_SEND_FAIL", sendErr.message || "Failed to send ping", {
-                            function: "startPingInterval"
-                        }, "error", "ping_send", "failed");
-                    }
-                }
-            }, PING_INTERVAL);
-            if (ws && ws.readyState === WebSocket.OPEN && currentDeviceId) {
-                setTimeout(()=>{
-                    try {
-                        const pingMessage = `PING:${currentDeviceId}`;
-                        ws.send(pingMessage);
-                        resetHeartbeat();
-                    } catch (err) {
-                        reportError("PING_INITIAL_FAIL", err.message || "Failed to send initial ping", {
-                            function: "startPingInterval"
-                        }, "error", "ping_initial", "failed");
-                    }
-                }, 1000);
-            }
-        } catch (err) {
-            reportError("PING_INTERVAL_FAIL", err.message || "Failed to start ping interval", {
-                function: "startPingInterval"
-            }, "error", null, "");
-        }
-    };
-    const stopPingInterval = ()=>{
-        try {
-            if (pingIntervalRef.current) {
-                clearInterval(pingIntervalRef.current);
-                pingIntervalRef.current = null;
-            }
-            if (heartbeatTimeoutRef.current) {
-                clearTimeout(heartbeatTimeoutRef.current);
-                heartbeatTimeoutRef.current = null;
-            }
-        } catch (err) {
-            reportError("STOP_PING_FAIL", err.message || "Failed to stop ping or heartbeat", {
-                function: "stopPingInterval"
-            }, "warning", null, "");
-        }
-    };
-    const handleReconnect = (deviceId)=>{
-        try {
-            if (!autoReconnectRef.current) return;
-            if (document.visibilityState !== "visible") {
-                console.log("Tab not visible, skipping reconnect. Will reconnect when tab becomes active.");
-                reportError("RECONNECT_SKIPPED_INACTIVE_TAB", "Reconnect postponed because tab is not visible", {
-                    function: "handleReconnect"
-                }, "info", "visibility_state", document.visibilityState);
-                return;
-            }
-            const delay = RECONNECT_DELAYS[Math.min(connectionAttemptRef.current, RECONNECT_DELAYS.length - 1)];
-            console.log(`Attempting reconnect in ${delay}ms (attempt ${connectionAttemptRef.current + 1})`);
-            if (reconnectTimeoutRef.current) {
-                clearTimeout(reconnectTimeoutRef.current);
-            }
-            reconnectTimeoutRef.current = setTimeout(()=>{
-                try {
-                    connectionAttemptRef.current++;
-                    connectToDevice(deviceId);
-                } catch (err) {
-                    reportError("RECONNECT_FAIL", err.message || "Failed during reconnect attempt", {
-                        function: "handleReconnect"
-                    }, "error", "attempt_number", String(connectionAttemptRef.current));
-                }
-            }, delay);
-        } catch (err) {
-            reportError("RECONNECT_HANDLER_FAIL", err.message || "Unexpected error in handleReconnect", {
-                function: "handleReconnect"
-            }, "error", null, "");
-        }
-    };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const handleVisibilityChange = ()=>{
-            console.log("Page visibility changed:", document.visibilityState);
-            try {
-                if (document.visibilityState === "visible" && currentDeviceId) {
-                    // Page became visible - reconnect or test connection
-                    if (!ws || ws.readyState !== WebSocket.OPEN) {
-                        console.log("Tab became active and WebSocket not connected, reconnecting immediately");
-                        connectionAttemptRef.current = 0;
-                        connectToDevice(currentDeviceId);
-                    } else {
-                        try {
-                            const pingMessage = `PING:${currentDeviceId}`;
-                            ws.send(pingMessage);
-                            resetHeartbeat();
-                        } catch (sendErr) {
-                            if (ws && ws.readyState === WebSocket.OPEN) {
-                                reportError("PING_ON_VISIBILITY_FAIL", sendErr.message || "Failed to send ping on visibility change", {
-                                    function: "handleVisibilityChange"
-                                }, "error", "visibility_state", document.visibilityState);
-                            }
-                        }
-                    }
-                } else if (document.visibilityState === "hidden") {
-                    console.log("Tab became hidden, stopping pings to save resources");
-                    try {
-                        stopPingInterval();
-                    } catch (err) {
-                        reportError("STOP_PING_ON_HIDE_FAIL", err.message || "Failed to stop pings when tab hidden", {
-                            function: "handleVisibilityChange"
-                        }, "warning", "visibility_state", "hidden");
-                    }
-                }
-            } catch (err) {
-                reportError("VISIBILITY_HANDLER_FAIL", err.message || "Unexpected error in handleVisibilityChange", {
-                    function: "handleVisibilityChange"
-                }, "error", "visibility_state", document.visibilityState);
-            }
-        };
-        const handleFocus = ()=>{
-            try {
-                if (currentDeviceId && (!ws || ws.readyState !== WebSocket.OPEN)) {
-                    console.log("Window focused and WebSocket not connected, reconnecting immediately");
-                    connectionAttemptRef.current = 0;
-                    connectToDevice(currentDeviceId);
-                }
-            } catch (err) {
-                reportError("FOCUS_HANDLER_FAIL", err.message || "Error in handleFocus", {
-                    function: "handleFocus"
-                }, "error", null, "");
-            }
-        };
-        const handleBlur = ()=>{
-            try {
-                console.log("Window lost focus");
-            // No action required
-            } catch (err) {
-                reportError("BLUR_HANDLER_FAIL", err.message || "Error in handleBlur", {
-                    function: "handleBlur"
-                }, "warning", null, "");
-            }
-        };
-        document.addEventListener("visibilitychange", handleVisibilityChange);
-        window.addEventListener("focus", handleFocus);
-        window.addEventListener("blur", handleBlur);
-        return ()=>{
-            try {
-                document.removeEventListener("visibilitychange", handleVisibilityChange);
-                window.removeEventListener("focus", handleFocus);
-                window.removeEventListener("blur", handleBlur);
-            } catch (cleanupErr) {
-                reportError("VISIBILITY_CLEANUP_FAIL", cleanupErr.message || "Failed to remove event listeners", {
-                    function: "useEffect cleanup"
-                }, "warning", null, "");
-            }
-        };
-    }, [
-        currentDeviceId,
-        ws
-    ]);
-    const processColorInfo = (colorString)=>{
-        try {
-            let mode = "";
-            let colorValue = "";
-            if (colorString && colorString.includes("-")) {
-                if (colorString.includes("color-")) {
-                    mode = "Color";
-                    colorValue = colorString.substring(6, 15);
-                } else if (colorString.includes("gradient-")) {
-                    mode = "Gradient";
-                    colorValue = colorString.substring(9, 18);
-                } else if (colorString.includes("fade-")) {
-                    mode = "Fade";
-                    colorValue = colorString.substring(5, 14);
-                } else if (colorString.includes("pulsating-")) {
-                    mode = "Pulsating";
-                    colorValue = colorString.substring(10, 19);
-                } else if (colorString.includes("twinkle-")) {
-                    mode = "Soft Twinkle";
-                    colorValue = colorString.substring(8, 17);
-                } else {
-                    reportError("UNKNOWN_COLOR_FORMAT", "Unrecognized color format pattern", {
-                        input: colorString
-                    }, "warning", "colorString", colorString);
-                }
-            } else {
-                switch(colorString){
-                    case "Color Wave":
-                    case "Rainbow":
-                    case "Warm Sunset":
-                    case "Off":
-                        mode = colorString;
-                        colorValue = deviceData?.color;
-                        break;
-                    default:
-                        if (!colorString) {
-                            reportError("EMPTY_COLOR_STRING", "Color string was empty or undefined", {
-                                input: colorString
-                            }, "warning", "colorString", "empty");
-                        }
-                        mode = colorString || deviceData?.mode;
-                        colorValue = deviceData?.color;
-                }
-            }
-            // Validate colorValue before parsing
-            if (!colorValue || typeof colorValue !== "string") {
-                reportError("INVALID_COLOR_VALUE", "Color value missing or invalid", {
-                    function: "processColorInfo",
-                    input: colorString
-                }, "error", "colorValue", String(colorValue));
-                colorValue = "#000000"; // fallback to black
-            }
-            // Try deformatRGB safely
-            let result;
-            try {
-                result = deformatRGB(colorValue);
-            } catch (rgbErr) {
-                reportError("RGB_PARSE_FAIL", rgbErr.message || "Failed to parse RGB value", {
-                    function: "processColorInfo",
-                    colorValue
-                }, "error", "colorValue", colorValue);
-                result = {
-                    r: 0,
-                    g: 0,
-                    b: 0
-                };
-            }
-            return {
-                mode,
-                color: result
-            };
-        } catch (err) {
-            reportError("COLOR_INFO_FAIL", err.message || "Unexpected error processing color info", {
-                function: "processColorInfo"
-            }, "error", "input", colorString);
-            return {
-                mode: "Unknown",
-                color: {
-                    r: 0,
-                    g: 0,
-                    b: 0
-                }
-            };
-        }
-    };
-    const parseRgb = (rgbStr)=>{
-        try {
-            if (typeof rgbStr !== "string") {
-                reportError("PARSE_RGB_INVALID_TYPE", "RGB input is not a string", {
-                    input: rgbStr
-                }, "error", "rgbStr", String(rgbStr));
-                return {
-                    r: 255,
-                    g: 0,
-                    b: 0
-                };
-            }
-            const match = rgbStr.match(/(\d+),\s*(\d+),\s*(\d+)/);
-            if (match) {
-                return {
-                    r: parseInt(match[1]),
-                    g: parseInt(match[2]),
-                    b: parseInt(match[3])
-                };
-            } else {
-                reportError("PARSE_RGB_NO_MATCH", "RGB string did not match expected format", {
-                    input: rgbStr
-                }, "warning", "rgbStr", rgbStr);
-                return {
-                    r: 255,
-                    g: 0,
-                    b: 0
-                };
-            }
-        } catch (err) {
-            reportError("PARSE_RGB_FAIL", err.message || "Failed to parse RGB string", {
-                function: "parseRgb",
-                input: rgbStr
-            }, "error", "rgbStr", rgbStr);
-            return {
-                r: 255,
-                g: 0,
-                b: 0
-            };
-        }
-    };
-    function deformatRGB(paddedRGBString) {
-        try {
-            if (typeof paddedRGBString !== "string" || !/^\d{9}$/.test(paddedRGBString)) {
-                reportError("DEFORMAT_RGB_INVALID_INPUT", "Input must be a 9-digit string consisting only of digits", {
-                    input: paddedRGBString
-                }, "error", "paddedRGBString", String(paddedRGBString));
-                throw new Error("Invalid padded RGB string");
-            }
-            const r = parseInt(paddedRGBString.slice(0, 3), 10);
-            const g = parseInt(paddedRGBString.slice(3, 6), 10);
-            const b = parseInt(paddedRGBString.slice(6, 9), 10);
-            return `rgb(${r}, ${g}, ${b})`;
-        } catch (err) {
-            reportError("DEFORMAT_RGB_FAIL", err.message || "Failed to deformat RGB", {
-                function: "deformatRGB",
-                input: paddedRGBString
-            }, "error", "paddedRGBString", String(paddedRGBString));
-            return "rgb(0, 0, 0)";
-        }
-    }
-    const getComplementaryColor = (rgbStr)=>{
-        try {
-            const { r, g, b } = parseRgb(rgbStr);
-            if (typeof r !== "number" || typeof g !== "number" || typeof b !== "number" || [
-                r,
-                g,
-                b
-            ].some((v)=>v < 0 || v > 255)) {
-                reportError("COMPLEMENTARY_RGB_INVALID", "Invalid RGB values detected", {
-                    input: rgbStr
-                }, "warning", "rgbStr", rgbStr);
-                return "rgb(255, 255, 255)";
-            }
-            return `rgb(${255 - r}, ${255 - g}, ${255 - b})`;
-        } catch (err) {
-            reportError("COMPLEMENTARY_FAIL", err.message || "Failed to compute complementary color", {
-                function: "getComplementaryColor",
-                input: rgbStr
-            }, "error", "rgbStr", rgbStr);
-            return "rgb(255, 255, 255)";
-        }
-    };
-    function formatRGB(rgbString) {
-        try {
-            if (typeof rgbString !== "string") {
-                reportError("FORMAT_RGB_INVALID_TYPE", "RGB input is not a string", {
-                    input: rgbString
-                }, "error", "rgbString", String(rgbString));
-                return "000000000";
-            }
-            const match = rgbString.match(/\d+/g);
-            if (!match || match.length < 3) {
-                reportError("FORMAT_RGB_NO_MATCH", "RGB string missing numeric components", {
-                    input: rgbString
-                }, "error", "rgbString", rgbString);
-                return "000000000";
-            }
-            const [r, g, b] = match.map(Number);
-            const formatted = [
-                r,
-                g,
-                b
-            ].map((n)=>n.toString().padStart(3, "0")).join("");
-            return formatted;
-        } catch (err) {
-            reportError("FORMAT_RGB_FAIL", err.message || "Failed to format RGB string", {
-                function: "formatRGB",
-                input: rgbString
-            }, "error", "rgbString", rgbString);
-            return "000000000";
-        }
-    }
-    // Helper to send command immediately without debounce
-    const sendImmediateCommand = (command)=>{
-        if (ws && ws.readyState === WebSocket.OPEN) {
-            try {
-                console.log("Sending immediate command:", command);
-                ws.send(command);
-            } catch (err) {
-                reportError("IMMEDIATE_COMMAND_FAIL", err.message || "Failed to send immediate command", {
-                    command
-                }, "error", "command", command);
-            }
-        } else {
-            console.log("WebSocket is not open, cannot send immediate command");
-        }
-    };
-    const debouncedSendCommand = (commandType, commandFunc, valueToCheck)=>{
-        if (timerRefs.current[commandType]) {
-            clearTimeout(timerRefs.current[commandType]);
-        }
-        timerRefs.current[commandType] = setTimeout(()=>{
-            if (ws && ws.readyState === WebSocket.OPEN) {
-                try {
-                    const command = commandFunc();
-                    ws.send(command);
-                } catch (err) {
-                    reportError("DEBOUNCED_COMMAND_FAIL", err.message || "Failed to send debounced command", {
-                        function: "debouncedSendCommand",
-                        commandType
-                    }, "error", "commandType", commandType);
-                }
-            } else {
-                console.log("WebSocket is not open, cannot send command");
-            }
-            timerRefs.current[commandType] = null;
-        }, DEBOUNCE_DELAY);
-    };
-    const sanitizeBrightness = (value)=>{
-        try {
-            let num = parseInt(String(value).replace(/\D/g, ""), 10);
-            if (isNaN(num)) {
-                reportError("BRIGHTNESS_INVALID", "Brightness value was not numeric", {
-                    input: value
-                }, "warning", "brightness", String(value));
-                num = 1;
-            }
-            return Math.min(Math.max(num, 1), 255);
-        } catch (err) {
-            reportError("BRIGHTNESS_SANITIZE_FAIL", err.message || "Failed to sanitize brightness", {
-                input: value
-            }, "error", "brightness", String(value));
-            return 1;
-        }
-    };
-    const sanitizeTarget = (value)=>{
-        try {
-            let num = parseFloat(String(value).replace(/[^\d.]/g, ""));
-            if (isNaN(num)) {
-                reportError("TARGET_INVALID", "Target value was not numeric", {
-                    input: value
-                }, "warning", "target", String(value));
-                num = 25;
-            }
-            return Math.min(Math.max(num, 25), 80);
-        } catch (err) {
-            reportError("TARGET_SANITIZE_FAIL", err.message || "Failed to sanitize target", {
-                input: value
-            }, "error", "target", String(value));
-            return 25;
-        }
-    };
-    const logDeviceDataChanges = (newData, oldData)=>{
-        try {
-            console.log("Device data change detected");
-            if (isInitialLoadRef.current) return;
-            if (!hasReceivedServerDataRef.current) return;
-            if (skipNextChangeRef.current) {
-                skipNextChangeRef.current = false;
-                return;
-            }
-            console.log("Processing device data changes");
-            console.log("Old data:", oldData);
-            console.log("New data:", newData);
-            Object.keys(newData).forEach((key)=>{
-                try {
-                    if (JSON.stringify(newData[key]) !== JSON.stringify(oldData[key])) {
-                        switch(key){
-                            case "status":
-                                {
-                                    try {
-                                        const newStatus = newData.status?.toLowerCase?.();
-                                        if (!newStatus) {
-                                            reportError("STATUS_INVALID", "Status value is missing or invalid", {
-                                                newData,
-                                                key
-                                            }, "warning", "status", String(newData.status));
-                                            return;
-                                        }
-                                        // Handle control mode switching logic
-                                        const oldStatus = oldData.status?.toLowerCase?.();
-                                        const currentControlMode = newData.controlMode;
-                                        // Case 1: Turning OFF while in AUTO mode
-                                        if (newStatus === 'off' && oldStatus === 'on' && currentControlMode === 'auto') {
-                                            console.log("Turning OFF in AUTO mode - switching to MANUAL first");
-                                            // Send control mode change to manual immediately
-                                            sendImmediateCommand("UPDATE_CONTROL_MODE:" + currentDeviceId + ":manual");
-                                            // Then send status change
-                                            setTimeout(()=>{
-                                                sendImmediateCommand("UPDATE_STATUS:" + currentDeviceId + ":" + newStatus);
-                                            }, 100);
-                                            return;
-                                        }
-                                        // Case 2: Turning ON while in AUTO mode
-                                        if (newStatus === 'on' && oldStatus === 'off' && currentControlMode === 'auto') {
-                                            console.log("Turning ON in AUTO mode - switching to AUTO");
-                                            // Send control mode change to auto immediately
-                                            sendImmediateCommand("UPDATE_CONTROL_MODE:" + currentDeviceId + ":auto");
-                                            return; // Don't send status change as AUTO mode will handle it
-                                        }
-                                        // Normal status update
-                                        debouncedSendCommand("status", ()=>"UPDATE_STATUS:" + currentDeviceId + ":" + newStatus, newStatus);
-                                    } catch (err) {
-                                        reportError("STATUS_UPDATE_FAIL", err.message || "Failed to update device status", {
-                                            function: "logDeviceDataChanges",
-                                            key
-                                        }, "error", "status", String(newData.status));
-                                    }
-                                    break;
-                                }
-                            case "targetHumidity":
-                                {
-                                    try {
-                                        const targetHumidity = sanitizeTarget(newData.targetHumidity);
-                                        debouncedSendCommand("targetHumidity", ()=>"UPDATE_TARGET:" + currentDeviceId + ":" + targetHumidity, targetHumidity);
-                                    } catch (err) {
-                                        reportError("TARGET_HUMIDITY_FAIL", err.message || "Failed to update target humidity", {
-                                            key,
-                                            newData
-                                        }, "error", "targetHumidity", String(newData.targetHumidity));
-                                    }
-                                    break;
-                                }
-                            case "controlMode":
-                                {
-                                    try {
-                                        const controlMode = newData.controlMode;
-                                        const currentStatus = newData.status?.toLowerCase?.();
-                                        if (!controlMode) {
-                                            reportError("CONTROL_MODE_INVALID", "Control mode value missing or invalid", {
-                                                newData
-                                            }, "warning", "controlMode", String(controlMode));
-                                            return;
-                                        }
-                                        // Case 3: Switching to AUTO while status is OFF - don't send the command
-                                        if (controlMode === 'auto' && currentStatus === 'off') {
-                                            console.log("Switching to AUTO while OFF - skipping command");
-                                            return;
-                                        }
-                                        // Normal control mode update
-                                        debouncedSendCommand("controlMode", ()=>"UPDATE_CONTROL_MODE:" + currentDeviceId + ":" + controlMode, controlMode);
-                                    } catch (err) {
-                                        reportError("CONTROL_MODE_FAIL", err.message || "Failed to update control mode", {
-                                            key,
-                                            newData
-                                        }, "error", "controlMode", String(newData.controlMode));
-                                    }
-                                    break;
-                                }
-                            case "timerActive":
-                                {
-                                    try {
-                                        if (newData.timerActive === true) {
-                                            const totalTime = newData.timer * 1000;
-                                            if (isNaN(totalTime) || totalTime <= 0) {
-                                                reportError("TIMER_INVALID", "Invalid timer value", {
-                                                    newData
-                                                }, "warning", "timer", String(newData.timer));
-                                                return;
-                                            }
-                                            debouncedSendCommand("timer", ()=>"UPDATE_TIMER:" + currentDeviceId + ":" + totalTime, totalTime);
-                                        } else {
-                                            debouncedSendCommand("timer", ()=>"UPDATE_TIMER:" + currentDeviceId + ":cancel", "cancel");
-                                        }
-                                    } catch (err) {
-                                        reportError("TIMER_UPDATE_FAIL", err.message || "Failed to update timer state", {
-                                            key,
-                                            newData
-                                        }, "error", "timerActive", String(newData.timerActive));
-                                    }
-                                    break;
-                                }
-                            case "brightness":
-                                {
-                                    try {
-                                        const brightness = sanitizeBrightness(newData.brightness);
-                                        debouncedSendCommand("brightness", ()=>"UPDATE_BRIGHTNESS:" + currentDeviceId + ":" + brightness, brightness);
-                                    } catch (err) {
-                                        reportError("BRIGHTNESS_UPDATE_FAIL", err.message || "Failed to update brightness", {
-                                            key,
-                                            newData
-                                        }, "error", "brightness", String(newData.brightness));
-                                    }
-                                    break;
-                                }
-                            case "mode":
-                            case "color":
-                                {
-                                    try {
-                                        let modeColorKey;
-                                        let command;
-                                        if ([
-                                            "Color",
-                                            "Fade",
-                                            "Soft Twinkle",
-                                            "Pulsating"
-                                        ].includes(newData.mode)) {
-                                            modeColorKey = `${newData.mode}-${newData.color}`;
-                                            const formatted = formatRGB(newData.color);
-                                            switch(newData.mode){
-                                                case "Color":
-                                                    command = "UPDATE_COLOR:" + currentDeviceId + ":color-" + formatted;
-                                                    break;
-                                                case "Fade":
-                                                    command = "UPDATE_COLOR:" + currentDeviceId + ":fade-" + formatted;
-                                                    break;
-                                                case "Soft Twinkle":
-                                                    command = "UPDATE_COLOR:" + currentDeviceId + ":twinkle-" + formatted;
-                                                    break;
-                                                case "Pulsating":
-                                                    command = "UPDATE_COLOR:" + currentDeviceId + ":pulsating-" + formatted;
-                                                    break;
-                                                default:
-                                                    reportError("UNKNOWN_COLOR_MODE", "Unsupported color mode", {
-                                                        newData
-                                                    }, "warning", "mode", newData.mode);
-                                                    return;
-                                            }
-                                        } else if (newData.mode === "Glowing Gradient") {
-                                            const formatted = formatRGB(newData.color);
-                                            const comp = formatRGB(getComplementaryColor(newData.color));
-                                            modeColorKey = `Gradient-${newData.color}`;
-                                            command = "UPDATE_COLOR:" + currentDeviceId + ":gradient-" + formatted + "-" + comp;
-                                        } else {
-                                            modeColorKey = newData.mode;
-                                            command = "UPDATE_COLOR:" + currentDeviceId + ":" + newData.mode;
-                                        }
-                                        debouncedSendCommand("colorMode", ()=>command, modeColorKey);
-                                    } catch (err) {
-                                        reportError("COLOR_MODE_FAIL", err.message || "Failed to update color/mode", {
-                                            newData
-                                        }, "error", "mode", newData.mode);
-                                    }
-                                    break;
-                                }
-                            default:
-                                break;
-                        }
-                    }
-                } catch (keyErr) {
-                    reportError("DATA_CHANGE_KEY_FAIL", keyErr.message || "Error processing specific device key", {
-                        key,
-                        newData
-                    }, "error", "key", key);
-                }
-            });
-        } catch (err) {
-            reportError("DEVICE_DATA_CHANGE_FAIL", err.message || "Unexpected failure while processing device data changes", {
-                newData,
-                oldData
-            }, "error", "deviceData", "");
-        }
-    };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        try {
-            logDeviceDataChanges(deviceData, prevDeviceDataRef.current);
-            console.log("Current device data:", deviceData);
-            prevDeviceDataRef.current = {
-                ...deviceData
-            };
-        } catch (err) {
-            reportError("DEVICE_DATA_EFFECT_FAIL", err.message || "Error running device data effect", {
-                deviceData
-            }, "error", "deviceData", "");
-        }
-    }, [
-        deviceData
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        return ()=>{
-            try {
-                Object.values(timerRefs.current).forEach((timer)=>{
-                    if (timer) clearTimeout(timer);
-                });
-                stopPingInterval();
-                if (reconnectTimeoutRef.current) {
-                    clearTimeout(reconnectTimeoutRef.current);
-                }
-            } catch (err) {
-                reportError("DEVICE_EFFECT_CLEANUP_FAIL", err.message || "Failed during cleanup of device effect", {}, "warning", null, "");
-            }
-        };
-    }, []);
-    const connectToDevice = (deviceId)=>{
-        try {
-            autoReconnectRef.current = true;
-            if (reconnectTimeoutRef.current) {
-                clearTimeout(reconnectTimeoutRef.current);
-                reconnectTimeoutRef.current = null;
-            }
-            if (ws) {
-                ws.close();
-            }
-            stopPingInterval();
-            isInitialLoadRef.current = true;
-            hasReceivedServerDataRef.current = false;
-            skipNextChangeRef.current = false;
-            Object.keys(timerRefs.current).forEach((key)=>{
-                if (timerRefs.current[key]) {
-                    clearTimeout(timerRefs.current[key]);
-                    timerRefs.current[key] = null;
-                }
-            });
-            if (!deviceId) {
-                reportError("DEVICE_ID_MISSING", "Attempted to connect without valid deviceId", {}, "error", "deviceId", String(deviceId));
-                return;
-            }
-            setCurrentDeviceId(deviceId);
-            console.log(`Connecting to device ${deviceId} (attempt ${connectionAttemptRef.current + 1})`);
-            const socketUrl = `wss://simple-api.mistify.lv/ws/app?deviceId=${deviceId}`;
-            let socket;
-            try {
-                socket = new WebSocket(socketUrl);
-            } catch (err) {
-                reportError("WS_INIT_FAIL", err.message || "Failed to initialize WebSocket", {
-                    socketUrl
-                }, "error", "deviceId", String(deviceId));
-                return;
-            }
-            socket.onopen = ()=>{
-                try {
-                    console.log("WebSocket connected successfully");
-                    connectionAttemptRef.current = 0;
-                    setDeviceData((prev)=>({
-                            ...prev,
-                            isConnected: true
-                        }));
-                    if (document.visibilityState === "visible") startPingInterval();
-                } catch (err) {
-                    reportError("WS_ONOPEN_FAIL", err.message || "Error during onopen handler", {
-                        deviceId
-                    }, "error", "deviceId", String(deviceId));
-                }
-            };
-            socket.onmessage = (event)=>{
-                try {
-                    const message = event.data;
-                    if (!message || typeof message !== "string") {
-                        reportError("WS_INVALID_MESSAGE", "Received empty or invalid message", {
-                            event
-                        }, "warning", "message", String(message));
-                        return;
-                    }
-                    if (message.startsWith("PONG:")) {
-                        if (heartbeatTimeoutRef.current) {
-                            clearTimeout(heartbeatTimeoutRef.current);
-                            heartbeatTimeoutRef.current = null;
-                        }
-                        return;
-                    }
-                    if (heartbeatTimeoutRef.current) {
-                        clearTimeout(heartbeatTimeoutRef.current);
-                        heartbeatTimeoutRef.current = null;
-                    }
-                    if (!hasReceivedServerDataRef.current) {
-                        hasReceivedServerDataRef.current = true;
-                        isInitialLoadRef.current = false;
-                        skipNextChangeRef.current = true;
-                        console.log("First server data received, enabling change tracking after next update");
-                    }
-                    if (message.startsWith("UPDATE_TEMPERATURE:")) {
-                        const parts = message.split(":");
-                        if (parts.length === 3 && parts[1] === deviceId) {
-                            const temperature = parseFloat(parts[2]);
-                            if (isNaN(temperature)) {
-                                reportError("TEMP_PARSE_FAIL", "Invalid temperature format in message", {
-                                    message
-                                }, "warning", "temperature", parts[2]);
-                                return;
-                            }
-                            setDeviceData((prev)=>({
-                                    ...prev,
-                                    temperature
-                                }));
-                        }
-                    } else if (message.startsWith("UPDATE_HUMIDITY:")) {
-                        const parts = message.split(":");
-                        if (parts.length === 3 && parts[1] === deviceId) {
-                            const humidity = parseFloat(parts[2]);
-                            if (isNaN(humidity)) {
-                                reportError("HUMIDITY_PARSE_FAIL", "Invalid humidity value in message", {
-                                    message
-                                }, "warning", "humidity", parts[2]);
-                                return;
-                            }
-                            setDeviceData((prev)=>({
-                                    ...prev,
-                                    humidity
-                                }));
-                        }
-                    } else if (message.startsWith("LID_STATUS:")) {
-                        const parts = message.split(":");
-                        if (parts.length === 3 && parts[1] === deviceId) {
-                            const lidStatus = parts[2];
-                            setDeviceData((prev)=>({
-                                    ...prev,
-                                    lidStatus
-                                }));
-                        }
-                    } else if (message.startsWith("TIMER:")) {
-                        const parts = message.split(":");
-                        if (parts.length === 3 && parts[1] === deviceId) {
-                            const status = parts[2] === "on" ? "On" : "Off";
-                            setDeviceData((prev)=>({
-                                    ...prev,
-                                    status
-                                }));
-                        }
-                    } else if (message.startsWith("{")) {
-                        let deviceInfo;
-                        try {
-                            deviceInfo = JSON.parse(message);
-                        } catch (err) {
-                            reportError("JSON_PARSE_FAIL", err.message || "Failed to parse JSON from device", {
-                                message
-                            }, "error", "message", message.slice(0, 50));
-                            return;
-                        }
-                        const colorInfo = processColorInfo(deviceInfo.color || "");
-                        const newStatus = deviceInfo.status === "on" || deviceInfo.status === "On" ? "On" : "Off";
-                        let serverTime = null;
-                        let expiryTime = null;
-                        if (typeof deviceInfo.timer === "string" && deviceInfo.timer.includes(",")) {
-                            const parts = deviceInfo.timer.split(",").map((t)=>parseInt(t.trim(), 10));
-                            if (parts.length === 2 && parts.every((n)=>!isNaN(n))) {
-                                [serverTime, expiryTime] = parts;
-                            } else {
-                                reportError("TIMER_PARSE_FAIL", "Invalid timer format from device", {
-                                    timer: deviceInfo.timer
-                                }, "warning", "timer", deviceInfo.timer);
-                            }
-                        }
-                        const remainingMs = expiryTime !== null && serverTime !== null ? Math.round((expiryTime - serverTime) / 1000) : null;
-                        setDeviceData((prev)=>({
-                                ...prev,
-                                id: deviceInfo.id || prev.id,
-                                name: deviceInfo.name || prev.name,
-                                status: newStatus,
-                                brightness: typeof deviceInfo.brightness === "number" ? deviceInfo.brightness : prev.brightness,
-                                temperature: typeof deviceInfo.temperature === "number" ? deviceInfo.temperature : prev.temperature,
-                                humidity: typeof deviceInfo.humidity === "number" ? deviceInfo.humidity : prev.humidity,
-                                targetHumidity: typeof deviceInfo.target === "number" ? deviceInfo.target : prev.targetHumidity,
-                                controlMode: deviceInfo.control_mode || prev.mode,
-                                lidStatus: deviceInfo.lidStatus || prev.lidStatus,
-                                mode: colorInfo.mode || prev.mode,
-                                color: colorInfo.color || prev.color,
-                                vicinity: deviceInfo.vicinity || prev.vicinity,
-                                timer: remainingMs || prev.timer
-                            }));
-                    } else {
-                        reportError("UNKNOWN_MESSAGE_TYPE", "Received unknown message format", {
-                            message
-                        }, "info", "message", message.slice(0, 50));
-                    }
-                } catch (err) {
-                    reportError("MESSAGE_PROCESS_FAIL", err.message || "Unhandled error while processing message", {
-                        data: event.data
-                    }, "error", "message", String(event.data).slice(0, 50));
-                }
-            };
-            socket.onerror = (error)=>{
-                console.error("WebSocket Error:", error);
-                stopPingInterval();
-                setDeviceData((prev)=>({
-                        ...prev,
-                        isConnected: false
-                    }));
-                if (autoReconnectRef.current) handleReconnect(deviceId);
-            };
-            socket.onclose = (event)=>{
-                console.log(`WebSocket Close: Code ${event.code}, Reason: ${event.reason || "Unknown"}`);
-                stopPingInterval();
-                setDeviceData((prev)=>({
-                        ...prev,
-                        isConnected: false
-                    }));
-                if (autoReconnectRef.current && [
-                    1006,
-                    1000,
-                    1001,
-                    1005
-                ].includes(event.code)) {
-                    handleReconnect(deviceId);
-                }
-            };
-            setWs(socket);
-        } catch (err) {
-            reportError("DEVICE_CONNECT_FAIL", err.message || "Unhandled failure in connectToDevice", {
-                deviceId
-            }, "error", "deviceId", String(deviceId));
-        }
-    };
-    const sendCommand = (command, data = {})=>{
-        try {
-            if (ws && deviceData.isConnected && currentDeviceId) {
-                const message = JSON.stringify({
-                    command,
-                    deviceId: currentDeviceId,
-                    ...data
-                });
-                ws.send(message);
-            } else {
-                console.error("Cannot send command - WebSocket not connected");
-                reportError("COMMAND_SEND_BLOCKED", "Attempted to send command while not connected", {
-                    command,
-                    data
-                }, "warning", "command", command);
-            }
-        } catch (err) {
-            reportError("COMMAND_SEND_FAIL", err.message || "Failed to send command", {
-                command,
-                data
-            }, "error", "command", command);
-        }
-    };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        try {
-            let interval = null;
-            if (isActive && timeLeft > 0) {
-                interval = setInterval(()=>{
-                    setTimeLeft((timeLeft)=>{
-                        try {
-                            const newTime = timeLeft - 1;
-                            if (newTime <= 0) {
-                                showGlobalToast("Timer finished!");
-                                setIsActive(false);
-                                return 0;
-                            }
-                            return newTime;
-                        } catch (err) {
-                            reportError("TIMER_INTERVAL_FAIL", err.message || "Error updating countdown timer", {}, "error", "timeLeft", String(timeLeft));
-                            return timeLeft;
-                        }
-                    });
-                }, 1000);
-            } else if (!isActive) {
-                clearInterval(interval);
-            }
-            return ()=>clearInterval(interval);
-        } catch (err) {
-            reportError("TIMER_EFFECT_FAIL", err.message || "Timer useEffect encountered an error", {}, "error", "timer", "");
-        }
-    }, [
-        isActive,
-        timeLeft,
-        setDeviceData
-    ]);
-    const disconnect = ()=>{
-        try {
-            console.log("Manually disconnecting WebSocket");
-            autoReconnectRef.current = false;
-            connectionAttemptRef.current = 0;
-            stopPingInterval();
-            if (reconnectTimeoutRef.current) {
-                clearTimeout(reconnectTimeoutRef.current);
-                reconnectTimeoutRef.current = null;
-            }
-            Object.keys(timerRefs.current).forEach((key)=>{
-                if (timerRefs.current[key]) {
-                    clearTimeout(timerRefs.current[key]);
-                    timerRefs.current[key] = null;
-                }
-            });
-            if (ws) {
-                ws.close();
-                setWs(null);
-                setDeviceData((prev)=>({
-                        ...prev,
-                        isConnected: false
-                    }));
-                setCurrentDeviceId(null);
-            } else {
-                reportError("DISCONNECT_NO_SOCKET", "Attempted to disconnect but WebSocket is not initialized", {}, "warning", "ws", "null");
-            }
-        } catch (err) {
-            reportError("DISCONNECT_FAIL", err.message || "Unexpected failure during manual disconnect", {}, "error", "ws", "disconnect");
-        }
-    };
-    const forceReconnect = ()=>{
-        try {
-            if (currentDeviceId) {
-                console.log("Force reconnecting...");
-                connectionAttemptRef.current = 0;
-                connectToDevice(currentDeviceId);
-            } else {
-                reportError("FORCE_RECONNECT_NO_DEVICE", "Cannot force reconnect without currentDeviceId", {}, "warning", "deviceId", "");
-            }
-        } catch (err) {
-            reportError("FORCE_RECONNECT_FAIL", err.message || "Error during force reconnect attempt", {}, "error", "deviceId", String(currentDeviceId));
-        }
-    };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DeviceContext.Provider, {
-        value: {
-            deviceData,
-            setDeviceData,
-            connectToDevice,
-            sendCommand,
-            disconnect,
-            forceReconnect,
-            currentDeviceId,
-            timeLeft,
-            setTimeLeft,
-            isActive,
-            setIsActive
-        },
-        children: children
-    }, void 0, false, {
-        fileName: "[project]/components/context/DeviceContext.js",
-        lineNumber: 1552,
-        columnNumber: 5
-    }, this);
-};
-const useDevice = ()=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(DeviceContext);
-const DeviceManagerConnection = ({ deviceId })=>{
-    const { connectToDevice, currentDeviceId } = useDevice();
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (deviceId && deviceId !== currentDeviceId) {
-            connectToDevice(deviceId);
-        }
-    }, [
-        deviceId,
-        currentDeviceId,
-        connectToDevice
-    ]);
-    return null;
-};
-}}),
 "[project]/components/devicePanelsText.js [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -3248,6 +2108,291 @@ const devicePanelsText = {
 const getDevicePanelsText = (locale)=>{
     return devicePanelsText[locale] || devicePanelsText.en;
 };
+}}),
+"[project]/components/context/DeviceContext.js [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "default": (()=>__TURBOPACK__default__export__)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$DeviceContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/context/DeviceContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$devicePanelsText$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/devicePanelsText.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/context/LanguageContext.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+const PowerControl = ()=>{
+    const { deviceData, setDeviceData, sendImmediateCommand } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$DeviceContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDevice"])();
+    const [displayMode, setDisplayMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(deviceData.controlMode);
+    // Language system
+    const { locale } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLanguage"])();
+    const [text, setText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$devicePanelsText$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getDevicePanelsText"])("en"));
+    // Update text when locale changes
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const newText = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$devicePanelsText$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getDevicePanelsText"])(locale);
+        if (newText) {
+            setText(newText);
+        }
+    }, [
+        locale
+    ]);
+    // Sync display mode with actual device data
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setDisplayMode(deviceData.controlMode);
+    }, [
+        deviceData.controlMode
+    ]);
+    const togglePower = async ()=>{
+        const newStatus = deviceData.status === 'On' ? 'Off' : 'On';
+        const currentMode = deviceData.controlMode;
+        if (newStatus === 'Off' && currentMode === 'auto') {
+            // Turning OFF with auto mode: send manual mode first, then off status
+            // But keep display showing auto
+            try {
+                // Send control mode change to manual immediately
+                await sendImmediateCommand('UPDATE_CONTROL_MODE', 'manual');
+                // Small delay to ensure command is processed
+                await new Promise((resolve)=>setTimeout(resolve, 100));
+                // Then update status to Off
+                setDeviceData((prev)=>({
+                        ...prev,
+                        status: 'Off'
+                    }));
+                // Keep the display showing auto mode
+                setDisplayMode('auto');
+            } catch (error) {
+                console.error('Error toggling power off:', error);
+            }
+        } else if (newStatus === 'On' && displayMode === 'auto') {
+            // Turning ON with auto mode displayed: send auto mode command first, then on status
+            try {
+                // Send control mode change to auto immediately
+                await sendImmediateCommand('UPDATE_CONTROL_MODE', 'auto');
+                // Small delay to ensure command is processed
+                await new Promise((resolve)=>setTimeout(resolve, 100));
+                // Then update status to On
+                setDeviceData((prev)=>({
+                        ...prev,
+                        status: 'On',
+                        controlMode: 'auto'
+                    }));
+            } catch (error) {
+                console.error('Error toggling power on:', error);
+            }
+        } else {
+            // Normal toggle for manual mode or when turning on in manual mode
+            setDeviceData((prev)=>({
+                    ...prev,
+                    status: newStatus
+                }));
+        }
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "bg-gray-800 rounded-xl p-4 relative overflow-hidden flex flex-col justify-evenly",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex justify-between items-center mb-5 z-10 relative",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex items-center",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            className: "h-7 w-7 text-blue-400 mr-3",
+                            fill: "none",
+                            viewBox: "0 0 24 24",
+                            stroke: "currentColor",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                                strokeWidth: 2,
+                                d: "M13 10V3L4 14h7v7l9-11h-7z"
+                            }, void 0, false, {
+                                fileName: "[project]/components/context/DeviceContext.js",
+                                lineNumber: 85,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/components/context/DeviceContext.js",
+                            lineNumber: 84,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                            className: "text-gray-300 text-xl font-medium",
+                            children: text.powerControl.title
+                        }, void 0, false, {
+                            fileName: "[project]/components/context/DeviceContext.js",
+                            lineNumber: 87,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/context/DeviceContext.js",
+                    lineNumber: 83,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/components/context/DeviceContext.js",
+                lineNumber: 82,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex flex-col items-center z-10 relative",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "mb-6 w-full",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "text-center mb-4",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: `text-2xl font-bold ${deviceData.status === 'On' ? 'text-green-400' : 'text-gray-400'}`,
+                                    children: deviceData.status === 'On' ? text.powerControl.running : text.powerControl.standby
+                                }, void 0, false, {
+                                    fileName: "[project]/components/context/DeviceContext.js",
+                                    lineNumber: 94,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex justify-center mt-2 h-2",
+                                    children: [
+                                        " ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: `animate-pulse flex space-x-1 ${deviceData.status === 'On' ? 'opacity-100' : 'opacity-0'}`,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/context/DeviceContext.js",
+                                                    lineNumber: 100,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/context/DeviceContext.js",
+                                                    lineNumber: 101,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/context/DeviceContext.js",
+                                                    lineNumber: 102,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/components/context/DeviceContext.js",
+                                            lineNumber: 99,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/context/DeviceContext.js",
+                                    lineNumber: 98,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/context/DeviceContext.js",
+                            lineNumber: 93,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex items-center justify-center",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                className: "relative inline-flex cursor-pointer select-none items-center",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        type: "checkbox",
+                                        checked: deviceData.status === 'On',
+                                        onChange: togglePower,
+                                        className: "sr-only"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/context/DeviceContext.js",
+                                        lineNumber: 109,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "label flex items-center text-xl font-medium text-gray-400",
+                                        children: text.powerControl.off
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/context/DeviceContext.js",
+                                        lineNumber: 115,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: `slider mx-6 flex h-14 w-[120px] items-center rounded-full p-2 duration-200 ${deviceData.status === 'On' ? 'bg-blue-500' : 'bg-gray-600'}`,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: `dot h-10 w-10 rounded-full bg-white duration-200 ${deviceData.status === 'On' ? 'translate-x-[72px]' : ''}`
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/context/DeviceContext.js",
+                                            lineNumber: 123,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/context/DeviceContext.js",
+                                        lineNumber: 118,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "label flex items-center text-xl font-medium text-green-400",
+                                        children: text.powerControl.on
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/context/DeviceContext.js",
+                                        lineNumber: 129,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/context/DeviceContext.js",
+                                lineNumber: 108,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/components/context/DeviceContext.js",
+                            lineNumber: 107,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/context/DeviceContext.js",
+                    lineNumber: 92,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/components/context/DeviceContext.js",
+                lineNumber: 91,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-600/20"
+            }, void 0, false, {
+                fileName: "[project]/components/context/DeviceContext.js",
+                lineNumber: 137,
+                columnNumber: 7
+            }, this),
+            deviceData.status === 'On' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "absolute bottom-0 left-0 right-0 h-1.5 bg-blue-500"
+            }, void 0, false, {
+                fileName: "[project]/components/context/DeviceContext.js",
+                lineNumber: 139,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/components/context/DeviceContext.js",
+        lineNumber: 81,
+        columnNumber: 5
+    }, this);
+};
+const __TURBOPACK__default__export__ = PowerControl;
 }}),
 "[project]/components/panels/BrightnessSelector.jsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -4919,15 +4064,12 @@ const ControlModeSelector = ()=>{
     }, [
         locale
     ]);
-    // Use displayControlMode if available, otherwise fall back to controlMode
-    const displayMode = deviceData.displayControlMode || deviceData.controlMode;
-    const isAuto = displayMode === 'auto';
+    const isAuto = deviceData.controlMode === 'auto';
     const toggleControlMode = ()=>{
         const newMode = isAuto ? 'manual' : 'auto';
         setDeviceData((prev)=>({
                 ...prev,
-                controlMode: newMode,
-                displayControlMode: newMode
+                controlMode: newMode
             }));
         if (newMode === 'auto') {
             setIsActive(false);
@@ -4960,12 +4102,12 @@ const ControlModeSelector = ()=>{
                                 d: "M9 12h6m-3-3v6m7.5 0A7.5 7.5 0 1112 4.5 7.5 7.5 0 0121.5 12z"
                             }, void 0, false, {
                                 fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                                lineNumber: 49,
+                                lineNumber: 46,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                            lineNumber: 48,
+                            lineNumber: 45,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -4973,18 +4115,18 @@ const ControlModeSelector = ()=>{
                             children: text.controlModeSelector.title
                         }, void 0, false, {
                             fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                            lineNumber: 51,
+                            lineNumber: 48,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                    lineNumber: 47,
+                    lineNumber: 44,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                lineNumber: 46,
+                lineNumber: 43,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4999,12 +4141,12 @@ const ControlModeSelector = ()=>{
                                 children: isAuto ? text.controlModeSelector.autoMode : text.controlModeSelector.manualMode
                             }, void 0, false, {
                                 fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                                lineNumber: 58,
+                                lineNumber: 55,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                            lineNumber: 57,
+                            lineNumber: 54,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5019,7 +4161,7 @@ const ControlModeSelector = ()=>{
                                         className: "sr-only"
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                                        lineNumber: 65,
+                                        lineNumber: 62,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5027,7 +4169,7 @@ const ControlModeSelector = ()=>{
                                         children: text.controlModeSelector.manual
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                                        lineNumber: 71,
+                                        lineNumber: 68,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5036,12 +4178,12 @@ const ControlModeSelector = ()=>{
                                             className: `dot h-10 w-10 rounded-full bg-white duration-200 ${isAuto ? 'translate-x-[72px]' : ''}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                                            lineNumber: 79,
+                                            lineNumber: 76,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                                        lineNumber: 74,
+                                        lineNumber: 71,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5049,49 +4191,49 @@ const ControlModeSelector = ()=>{
                                         children: text.controlModeSelector.auto
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                                        lineNumber: 85,
+                                        lineNumber: 82,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                                lineNumber: 64,
+                                lineNumber: 61,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                            lineNumber: 63,
+                            lineNumber: 60,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                    lineNumber: 56,
+                    lineNumber: 53,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                lineNumber: 55,
+                lineNumber: 52,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-indigo-600/20"
             }, void 0, false, {
                 fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                lineNumber: 93,
+                lineNumber: 90,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: `absolute bottom-0 left-0 right-0 h-1.5 ${isAuto ? 'bg-yellow-400' : 'bg-blue-500'}`
             }, void 0, false, {
                 fileName: "[project]/components/panels/ControlModeSelector.jsx",
-                lineNumber: 94,
+                lineNumber: 91,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/panels/ControlModeSelector.jsx",
-        lineNumber: 45,
+        lineNumber: 42,
         columnNumber: 5
     }, this);
 };
@@ -5132,33 +4274,10 @@ const PowerControl = ()=>{
     ]);
     const togglePower = ()=>{
         const newStatus = deviceData.status === 'On' ? 'Off' : 'On';
-        const isAutoMode = deviceData.controlMode === 'auto';
-        if (isAutoMode) {
-            if (newStatus === 'Off') {
-                // When turning Off in Auto mode: switch to manual first, then turn off
-                setDeviceData((prev)=>({
-                        ...prev,
-                        controlMode: 'manual',
-                        status: newStatus,
-                        // Keep the UI showing auto mode
-                        displayControlMode: 'auto'
-                    }));
-            } else {
-                // When turning On in Auto mode: switch to auto first, then turn on
-                setDeviceData((prev)=>({
-                        ...prev,
-                        controlMode: 'auto',
-                        status: newStatus,
-                        displayControlMode: 'auto'
-                    }));
-            }
-        } else {
-            // Manual mode - just change status normally
-            setDeviceData((prev)=>({
-                    ...prev,
-                    status: newStatus
-                }));
-        }
+        setDeviceData((prev)=>({
+                ...prev,
+                status: newStatus
+            }));
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "bg-gray-800 rounded-xl p-4 relative overflow-hidden flex flex-col justify-evenly",
@@ -5181,12 +4300,12 @@ const PowerControl = ()=>{
                                 d: "M13 10V3L4 14h7v7l9-11h-7z"
                             }, void 0, false, {
                                 fileName: "[project]/components/panels/PowerControl.jsx",
-                                lineNumber: 59,
+                                lineNumber: 35,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/panels/PowerControl.jsx",
-                            lineNumber: 58,
+                            lineNumber: 34,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -5194,18 +4313,18 @@ const PowerControl = ()=>{
                             children: text.powerControl.title
                         }, void 0, false, {
                             fileName: "[project]/components/panels/PowerControl.jsx",
-                            lineNumber: 61,
+                            lineNumber: 37,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/panels/PowerControl.jsx",
-                    lineNumber: 57,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/panels/PowerControl.jsx",
-                lineNumber: 56,
+                lineNumber: 32,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5221,7 +4340,7 @@ const PowerControl = ()=>{
                                     children: deviceData.status === 'On' ? text.powerControl.running : text.powerControl.standby
                                 }, void 0, false, {
                                     fileName: "[project]/components/panels/PowerControl.jsx",
-                                    lineNumber: 68,
+                                    lineNumber: 44,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5235,39 +4354,39 @@ const PowerControl = ()=>{
                                                     className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/panels/PowerControl.jsx",
-                                                    lineNumber: 74,
+                                                    lineNumber: 50,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/panels/PowerControl.jsx",
-                                                    lineNumber: 75,
+                                                    lineNumber: 51,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: `w-2 h-2 ${deviceData.status === 'On' ? 'bg-green-400' : 'bg-gray-400'} rounded-full`
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/panels/PowerControl.jsx",
-                                                    lineNumber: 76,
+                                                    lineNumber: 52,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/panels/PowerControl.jsx",
-                                            lineNumber: 73,
+                                            lineNumber: 49,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/panels/PowerControl.jsx",
-                                    lineNumber: 72,
+                                    lineNumber: 48,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/panels/PowerControl.jsx",
-                            lineNumber: 67,
+                            lineNumber: 43,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5282,7 +4401,7 @@ const PowerControl = ()=>{
                                         className: "sr-only"
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/PowerControl.jsx",
-                                        lineNumber: 83,
+                                        lineNumber: 59,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5290,7 +4409,7 @@ const PowerControl = ()=>{
                                         children: text.powerControl.off
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/PowerControl.jsx",
-                                        lineNumber: 89,
+                                        lineNumber: 65,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5299,12 +4418,12 @@ const PowerControl = ()=>{
                                             className: `dot h-10 w-10 rounded-full bg-white duration-200 ${deviceData.status === 'On' ? 'translate-x-[72px]' : ''}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/panels/PowerControl.jsx",
-                                            lineNumber: 97,
+                                            lineNumber: 73,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/PowerControl.jsx",
-                                        lineNumber: 92,
+                                        lineNumber: 68,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5312,49 +4431,49 @@ const PowerControl = ()=>{
                                         children: text.powerControl.on
                                     }, void 0, false, {
                                         fileName: "[project]/components/panels/PowerControl.jsx",
-                                        lineNumber: 103,
+                                        lineNumber: 79,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/panels/PowerControl.jsx",
-                                lineNumber: 82,
+                                lineNumber: 58,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/panels/PowerControl.jsx",
-                            lineNumber: 81,
+                            lineNumber: 57,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/panels/PowerControl.jsx",
-                    lineNumber: 66,
+                    lineNumber: 42,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/panels/PowerControl.jsx",
-                lineNumber: 65,
+                lineNumber: 41,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-600/20"
             }, void 0, false, {
                 fileName: "[project]/components/panels/PowerControl.jsx",
-                lineNumber: 111,
+                lineNumber: 87,
                 columnNumber: 7
             }, this),
             deviceData.status === 'On' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute bottom-0 left-0 right-0 h-1.5 bg-blue-500"
             }, void 0, false, {
                 fileName: "[project]/components/panels/PowerControl.jsx",
-                lineNumber: 113,
+                lineNumber: 89,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/panels/PowerControl.jsx",
-        lineNumber: 55,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 };
@@ -6340,4 +5459,4 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 
 };
 
-//# sourceMappingURL=_17d293._.js.map
+//# sourceMappingURL=_9968f2._.js.map

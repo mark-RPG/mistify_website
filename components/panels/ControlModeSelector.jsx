@@ -19,13 +19,16 @@ const ControlModeSelector = () => {
     }
   }, [locale]);
 
-  const isAuto = deviceData.controlMode === 'auto';
+  // Use displayControlMode if available, otherwise fall back to controlMode
+  const displayMode = deviceData.displayControlMode || deviceData.controlMode;
+  const isAuto = displayMode === 'auto';
 
   const toggleControlMode = () => {
     const newMode = isAuto ? 'manual' : 'auto';
     setDeviceData(prev => ({
       ...prev,
       controlMode: newMode,
+      displayControlMode: newMode, // Update both
     }));
     if (newMode === 'auto') {
       setIsActive(false);
@@ -39,25 +42,25 @@ const ControlModeSelector = () => {
   };
 
   return (
-    <div className="bg-gray-800 rounded-xl p-4 relative overflow-hidden flex flex-col justify-evenly flex-1 w-full h-full flex-grow">
-      <div className="flex justify-between items-center mb-9 z-10 relative">
+    <div className="bg-gray-800 rounded-xl p-1 relative overflow-hidden flex flex-col justify-around flex-1 w-full h-full">
+      <div className="flex justify-between items-center mb-1 z-10 relative">
         <div className="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-yellow-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-yellow-400 mr-2 sm:mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-3-3v6m7.5 0A7.5 7.5 0 1112 4.5 7.5 7.5 0 0121.5 12z" />
           </svg>
-          <h3 className="text-gray-300 text-xl font-medium">{text.controlModeSelector.title}</h3>
+          <h3 className="text-gray-300 text-base sm:text-lg md:text-xl font-medium">{text.controlModeSelector.title}</h3>
         </div>
       </div>
 
       <div className="flex flex-col items-center z-10 relative">
-        <div className="mb-8 w-full">
-          <div className="text-center mb-4">
-            <span className={`text-2xl font-bold ${isAuto ? 'text-yellow-400' : 'text-blue-400'}`}>
+        <div className="mb-1 w-full">
+          <div className="text-center mb-2 sm:mb-4">
+            <span className={`text-lg sm:text-xl md:text-2xl font-bold ${isAuto ? 'text-yellow-400' : 'text-blue-400'}`}>
               {isAuto ? text.controlModeSelector.autoMode : text.controlModeSelector.manualMode}
             </span>
           </div>
 
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center mb-2">
             <label className="relative inline-flex cursor-pointer select-none items-center">
               <input
                 type="checkbox"
@@ -65,21 +68,21 @@ const ControlModeSelector = () => {
                 onChange={toggleControlMode}
                 className="sr-only"
               />
-              <span className="label flex items-center text-xl font-medium text-blue-400">
+              <span className="label flex items-center text-sm sm:text-md md:text-lg font-medium text-blue-400">
                 {text.controlModeSelector.manual}
               </span>
               <span
-                className={`slider mx-6 flex h-14 w-[120px] items-center rounded-full p-2 duration-200 ${
+                className={`slider mx-3 sm:mx-4 md:mx-6 flex h-8 w-[60px] sm:h-10 sm:w-[75px] md:h-12 md:w-[90px] items-center rounded-full p-1.5 sm:p-2 duration-200 ${
                   isAuto ? 'bg-yellow-400' : 'bg-blue-500'
                 }`}
               >
                 <span
-                  className={`dot h-10 w-10 rounded-full bg-white duration-200 ${
-                    isAuto ? 'translate-x-[72px]' : ''
+                  className={`dot h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 rounded-full bg-white duration-200 ${
+                    isAuto ? 'translate-x-[24px] sm:translate-x-[32px] md:translate-x-[38px]' : ''
                   }`}
                 ></span>
               </span>
-              <span className="label flex items-center text-xl font-medium text-yellow-300">
+              <span className="label flex items-center text-sm sm:text-md md:text-lg font-medium text-yellow-300">
                 {text.controlModeSelector.auto}
               </span>
             </label>

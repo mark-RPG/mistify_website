@@ -226,49 +226,49 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
           </div>
         )}
 
-        {/* Device Grid - Mobile Responsive */}
+        {/* Device Grid - Mobile Responsive with LARGER cards */}
         {devices.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
             {devices.map((device) => (
               <div
                 key={device.id}
-                className="p-6 sm:p-8 bg-white rounded-lg shadow-md flex flex-col items-start transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:cursor-pointer relative"
+                className="p-8 sm:p-10 md:p-12 bg-white rounded-xl shadow-lg flex flex-col items-start transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:cursor-pointer relative min-h-[200px] sm:min-h-[220px]"
                 onClick={() => selectDevice(device.id)}
                 style={{ 
                   transition: "transform 0.3s ease, box-shadow 0.3s ease" 
                 }}
               >
                 {editingDeviceId === device.id ? (
-                  <div className="w-full mb-4" onClick={(e) => e.stopPropagation()}>
+                  <div className="w-full mb-6" onClick={(e) => e.stopPropagation()}>
                     <input
                       type="text"
                       value={editName}
                       onChange={(e) => setEditName(e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded mb-2 text-sm sm:text-base"
+                      className="w-full p-3 border border-gray-300 rounded-lg mb-3 text-base sm:text-lg"
                       placeholder="Device name"
                       autoFocus
                     />
-                    <div className="flex justify-end gap-2">
+                    <div className="flex justify-end gap-3">
                       <button 
                         onClick={() => cancelEditing()} 
-                        className="p-2 bg-gray-200 rounded hover:bg-gray-300 transition duration-200"
+                        className="p-3 bg-gray-200 rounded-lg hover:bg-gray-300 transition duration-200"
                       >
-                        <FaTimes className="text-gray-600" />
+                        <FaTimes className="text-gray-600 text-lg" />
                       </button>
                       <button 
                         onClick={() => saveDeviceName(device.id)} 
-                        className="p-2 bg-green-500 rounded hover:bg-green-600 transition duration-200"
+                        className="p-3 bg-green-500 rounded-lg hover:bg-green-600 transition duration-200"
                       >
-                        <FaSave className="text-white" />
+                        <FaSave className="text-white text-lg" />
                       </button>
                     </div>
                   </div>
                 ) : (
-                  <div className="flex justify-between items-center w-full mb-4">
-                    <div className="flex items-center flex-1 min-w-0 mr-2">
+                  <div className="flex justify-between items-center w-full mb-6">
+                    <div className="flex items-center flex-1 min-w-0 mr-3">
                       {device.name ? (
                         <>
-                          <h3 className="text-lg sm:text-xl font-semibold mr-2 truncate">{device.name}</h3>
+                          <h3 className="text-xl sm:text-xl md:text-2xl font-bold mr-3 truncate text-gray-800">{device.name}</h3>
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
@@ -276,7 +276,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                             }} 
                             className="text-blue-500 hover:text-blue-700 flex-shrink-0"
                           >
-                            <FaPencilAlt className="text-sm sm:text-base" />
+                            <FaPencilAlt className="text-lg sm:text-xl" />
                           </button>
                         </>
                       ) : (
@@ -285,7 +285,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                             e.stopPropagation();
                             startEditing(device.id, '');
                           }} 
-                          className="px-2 sm:px-3 py-1 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 text-xs sm:text-sm whitespace-nowrap"
+                          className="px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 text-sm sm:text-base font-medium whitespace-nowrap"
                         >
                           {text.addNameButton}
                         </button>
@@ -293,7 +293,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                     </div>
                   </div>
                 )}
-                <div className="text-xs sm:text-sm text-gray-500 mb-4 break-all w-full pr-8">
+                <div className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 break-all w-full pr-10 font-medium">
                   {text.deviceIdLabel} {device.id}
                 </div> 
                 <button 
@@ -301,9 +301,9 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                     e.stopPropagation();
                     confirmRemoveDevice(device.id);
                   }} 
-                  className="absolute top-3 right-3 text-red-500 hover:text-red-700 transition-colors duration-200 p-1"
+                  className="absolute top-4 right-4 text-red-500 hover:text-red-700 transition-colors duration-200 p-2"
                 >
-                  <FaTrash className="text-sm sm:text-base" />
+                  <FaTrash className="text-lg sm:text-xl" />
                 </button>
               </div>
             ))}

@@ -651,6 +651,27 @@ export const DeviceProvider = ({ children }) => {
     }
   }
 
+  // Helper to send command immediately without debounce
+  const sendImmediateCommand = (command) => {
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      try {
+        console.log("Sending immediate command:", command);
+        ws.send(command);
+      } catch (err) {
+        reportError(
+          "IMMEDIATE_COMMAND_FAIL",
+          err.message || "Failed to send immediate command",
+          { command },
+          "error",
+          "command",
+          command
+        );
+      }
+    } else {
+      console.log("WebSocket is not open, cannot send immediate command");
+    }
+  };
+
   const debouncedSendCommand = (commandType, commandFunc, valueToCheck) => {
     if (timerRefs.current[commandType]) {
       clearTimeout(timerRefs.current[commandType]);
@@ -766,6 +787,32 @@ export const DeviceProvider = ({ children }) => {
                     );
                     return;
                   }
+
+                  // Handle control mode switching logic
+                  const oldStatus = oldData.status?.toLowerCase?.();
+                  const currentControlMode = newData.controlMode;
+
+                  // Case 1: Turning OFF while in AUTO mode
+                  if (newStatus === 'off' && oldStatus === 'on' && currentControlMode === 'auto') {
+                    console.log("Turning OFF in AUTO mode - switching to MANUAL first");
+                    // Send control mode change to manual immediately
+                    sendImmediateCommand("UPDATE_CONTROL_MODE:" + currentDeviceId + ":manual");
+                    // Then send status change
+                    setTimeout(() => {
+                      sendImmediateCommand("UPDATE_STATUS:" + currentDeviceId + ":" + newStatus);
+                    }, 100);
+                    return;
+                  }
+
+                  // Case 2: Turning ON while in AUTO mode
+                  if (newStatus === 'on' && oldStatus === 'off' && currentControlMode === 'auto') {
+                    console.log("Turning ON in AUTO mode - switching to AUTO");
+                    // Send control mode change to auto immediately
+                    sendImmediateCommand("UPDATE_CONTROL_MODE:" + currentDeviceId + ":auto");
+                    return; // Don't send status change as AUTO mode will handle it
+                  }
+
+                  // Normal status update
                   debouncedSendCommand(
                     "status",
                     () => "UPDATE_STATUS:" + currentDeviceId + ":" + newStatus,
@@ -812,6 +859,8 @@ export const DeviceProvider = ({ children }) => {
               case "controlMode": {
                 try {
                   const controlMode = newData.controlMode;
+                  const currentStatus = newData.status?.toLowerCase?.();
+                  
                   if (!controlMode) {
                     reportError(
                       "CONTROL_MODE_INVALID",
@@ -823,6 +872,14 @@ export const DeviceProvider = ({ children }) => {
                     );
                     return;
                   }
+
+                  // Case 3: Switching to AUTO while status is OFF - don't send the command
+                  if (controlMode === 'auto' && currentStatus === 'off') {
+                    console.log("Switching to AUTO while OFF - skipping command");
+                    return;
+                  }
+
+                  // Normal control mode update
                   debouncedSendCommand(
                     "controlMode",
                     () =>
