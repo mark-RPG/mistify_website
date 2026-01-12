@@ -60,7 +60,7 @@ const EnvironmentDisplay = () => {
           {/* Blue gradient background for humidity side */}
           <div className="absolute inset-0 bg-gradient-to-l from-blue-500/15 to-transparent rounded-lg"></div>
           <div className="hidden sm:flex w-16 h-16 rounded-full border-4 border-blue-500 items-center justify-center bg-blue-500/10 relative z-10">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 text-blue-500 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
             </svg>
           </div>

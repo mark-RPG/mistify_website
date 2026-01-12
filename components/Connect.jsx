@@ -17,6 +17,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
   const [editingDeviceId, setEditingDeviceId] = useState(null);
   const [editName, setEditName] = useState('');
   const [showGuide, setShowGuide] = useState(false);
+  const [showClickAnimation, setShowClickAnimation] = useState(false);
 
   // Language system
   const { locale } = useLanguage();
@@ -30,11 +31,45 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
     }
   }, [locale]);
 
-  useEffect(() => {
-    const savedDevices = localStorage.getItem('savedDevices');
-    if (savedDevices) {
-      setDevices(JSON.parse(savedDevices));
+  // Function to fetch device name from API
+  const fetchDeviceName = async (deviceId) => {
+    try {
+      const response = await fetch(`https://simple-api.mistify.lv/api/device/get-name?id=${deviceId}`);
+      if (response.ok) {
+        const name = await response.text();
+        return name || '';
+      }
+    } catch (err) {
+      console.error('Error fetching device name:', err);
     }
+    return '';
+  };
+
+  useEffect(() => {
+    const loadDevices = async () => {
+      const savedDevices = localStorage.getItem('savedDevices');
+      if (savedDevices) {
+        const parsedDevices = JSON.parse(savedDevices);
+        
+        // Fetch names for all devices
+        const devicesWithNames = await Promise.all(
+          parsedDevices.map(async (device) => {
+            // Only fetch if name is empty
+            if (!device.name) {
+              const fetchedName = await fetchDeviceName(device.id);
+              return { ...device, name: fetchedName };
+            }
+            return device;
+          })
+        );
+        
+        setDevices(devicesWithNames);
+        // Update localStorage with fetched names
+        localStorage.setItem('savedDevices', JSON.stringify(devicesWithNames));
+      }
+    };
+    
+    loadDevices();
   }, []);
 
   useEffect(() => {
@@ -73,9 +108,12 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
       const data = await response.text();
 
       if (data === 'true') {
+        // Fetch the device name from API
+        const deviceName = await fetchDeviceName(newDeviceId);
+        
         const newDevice = { 
           id: newDeviceId, 
-          name: ''
+          name: deviceName
         };
         
         const updatedDevices = [...devices, newDevice];
@@ -83,6 +121,15 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
         
         // Save to localStorage
         localStorage.setItem('savedDevices', JSON.stringify(updatedDevices));
+        
+        // Show click animation if this is the first device
+        if (devices.length === 0) {
+          setShowClickAnimation(true);
+          // Hide animation after 6 seconds
+          setTimeout(() => {
+            setShowClickAnimation(false);
+          }, 6000);
+        }
         
         setNewDeviceId('');
         setShowModal(false);
@@ -238,6 +285,27 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
                   transition: "transform 0.3s ease, box-shadow 0.3s ease" 
                 }}
               >
+                {/* Click animation overlay for first device */}
+                {showClickAnimation && devices.length === 1 && (
+                  <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-50">
+                    {/* Pulsing hand pointer cursor - offset to bottom right */}
+                    <div className="relative" style={{ transform: 'translate(10vw, 50px)' }}>
+                      {/* Hand pointer cursor image */}
+                      <img 
+                        src="/pointercursor.png" 
+                        alt="Click here"
+                        width="48" 
+                        height="48"
+                        className="animate-pulse-click"
+                      />
+                      {/* Click ripple effect - positioned 20px higher and 5px left, starts 0.2s earlier */}
+                      <div className="absolute top-1/2 left-1/2" style={{ transform: 'translate(calc(-50% - 3px), calc(-50% - 20px))' }}>
+                        <div className="animate-click-ripple w-16 h-16 rounded-full border-4 border-blue-500"></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {editingDeviceId === device.id ? (
                   <div className="w-full mb-6" onClick={(e) => e.stopPropagation()}>
                     <input
@@ -315,6 +383,44 @@ const Connect = ({ setActiveDevice, refreshOnReturn }) => {
           </div>
         )}
       </div>
+      
+      {/* CSS for animations */}
+      <style jsx>{`
+        @keyframes pulse-click {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 0.8;
+          }
+        }
+        
+        @keyframes click-ripple {
+          0% {
+            transform: scale(0.1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 0.5;
+          }
+          100% {
+            transform: scale(2.5);
+            opacity: 0;
+          }
+        }
+        
+        .animate-pulse-click {
+          animation: pulse-click 1.5s ease-in-out infinite;
+        }
+        
+        .animate-click-ripple {
+          animation: click-ripple 1.5s ease-out infinite;
+          animation-delay: -0.2s;
+        }
+      `}</style>
     </div>
   );
 };

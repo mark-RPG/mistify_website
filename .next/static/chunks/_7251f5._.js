@@ -1396,6 +1396,7 @@ __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Navigation$2f$Nav$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/Navigation/Nav.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$connectPageText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/connectPageText.js [app-client] (ecmascript)");
@@ -1405,6 +1406,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$ico
 ;
 var _s = __turbopack_refresh__.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -1423,6 +1425,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
     const [editingDeviceId, setEditingDeviceId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [editName, setEditName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [showGuide, setShowGuide] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [showClickAnimation, setShowClickAnimation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     // Language system
     const { locale } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLanguage"])();
     const [text, setText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$connectPageText$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getConnectPageText"])("en"));
@@ -1437,12 +1440,47 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
     }["Connect.useEffect"], [
         locale
     ]);
+    // Function to fetch device name from API
+    const fetchDeviceName = async (deviceId)=>{
+        try {
+            const response = await fetch(`https://simple-api.mistify.lv/api/device/get-name?id=${deviceId}`);
+            if (response.ok) {
+                const name = await response.text();
+                return name || '';
+            }
+        } catch (err) {
+            console.error('Error fetching device name:', err);
+        }
+        return '';
+    };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Connect.useEffect": ()=>{
-            const savedDevices = localStorage.getItem('savedDevices');
-            if (savedDevices) {
-                setDevices(JSON.parse(savedDevices));
-            }
+            const loadDevices = {
+                "Connect.useEffect.loadDevices": async ()=>{
+                    const savedDevices = localStorage.getItem('savedDevices');
+                    if (savedDevices) {
+                        const parsedDevices = JSON.parse(savedDevices);
+                        // Fetch names for all devices
+                        const devicesWithNames = await Promise.all(parsedDevices.map({
+                            "Connect.useEffect.loadDevices": async (device)=>{
+                                // Only fetch if name is empty
+                                if (!device.name) {
+                                    const fetchedName = await fetchDeviceName(device.id);
+                                    return {
+                                        ...device,
+                                        name: fetchedName
+                                    };
+                                }
+                                return device;
+                            }
+                        }["Connect.useEffect.loadDevices"]));
+                        setDevices(devicesWithNames);
+                        // Update localStorage with fetched names
+                        localStorage.setItem('savedDevices', JSON.stringify(devicesWithNames));
+                    }
+                }
+            }["Connect.useEffect.loadDevices"];
+            loadDevices();
         }
     }["Connect.useEffect"], []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -1478,9 +1516,11 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
             }
             const data = await response.text();
             if (data === 'true') {
+                // Fetch the device name from API
+                const deviceName = await fetchDeviceName(newDeviceId);
                 const newDevice = {
                     id: newDeviceId,
-                    name: ''
+                    name: deviceName
                 };
                 const updatedDevices = [
                     ...devices,
@@ -1489,6 +1529,14 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                 setDevices(updatedDevices);
                 // Save to localStorage
                 localStorage.setItem('savedDevices', JSON.stringify(updatedDevices));
+                // Show click animation if this is the first device
+                if (devices.length === 0) {
+                    setShowClickAnimation(true);
+                    // Hide animation after 6 seconds
+                    setTimeout(()=>{
+                        setShowClickAnimation(false);
+                    }, 6000);
+                }
                 setNewDeviceId('');
                 setShowModal(false);
             } else {
@@ -1532,36 +1580,37 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
         setEditingDeviceId(null);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "jsx-7d22e62001e8257e",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Navigation$2f$Nav$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/components/Connect.jsx",
-                lineNumber: 141,
+                lineNumber: 188,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "p-4 sm:p-8 md:p-12 bg-gray-200 mt-[110px] min-h-[calc(100vh-110px)] relative text-gray-900",
+                className: "jsx-7d22e62001e8257e" + " " + "p-4 sm:p-8 md:p-12 bg-gray-200 mt-[110px] min-h-[calc(100vh-110px)] relative text-gray-900",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8",
+                        className: "jsx-7d22e62001e8257e" + " " + "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                className: "text-2xl sm:text-3xl font-bold",
+                                className: "jsx-7d22e62001e8257e" + " " + "text-2xl sm:text-3xl font-bold",
                                 children: text.pageTitle
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 145,
+                                lineNumber: 192,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-auto",
+                                className: "jsx-7d22e62001e8257e" + " " + "flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-auto",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         onClick: ()=>setShowGuide(true),
-                                        className: "flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105 text-sm sm:text-base",
+                                        className: "jsx-7d22e62001e8257e" + " " + "flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105 text-sm sm:text-base",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaQuestionCircle"], {}, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 151,
+                                                lineNumber: 198,
                                                 columnNumber: 15
                                             }, this),
                                             " ",
@@ -1569,16 +1618,16 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 147,
+                                        lineNumber: 194,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         onClick: ()=>setShowModal(true),
-                                        className: "flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out text-sm sm:text-base",
+                                        className: "jsx-7d22e62001e8257e" + " " + "flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out text-sm sm:text-base",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaPlus"], {}, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 157,
+                                                lineNumber: 204,
                                                 columnNumber: 15
                                             }, this),
                                             " ",
@@ -1586,19 +1635,19 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 153,
+                                        lineNumber: 200,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 146,
+                                lineNumber: 193,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 144,
+                        lineNumber: 191,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$GuidePopup$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1606,240 +1655,287 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                         onClose: ()=>setShowGuide(false)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 163,
+                        lineNumber: 210,
                         columnNumber: 9
                     }, this),
                     showModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "fixed inset-0 bg-[rgba(0, 0, 0, 0.7)] z-10",
-                        onClick: ()=>setShowModal(false)
+                        onClick: ()=>setShowModal(false),
+                        className: "jsx-7d22e62001e8257e" + " " + "fixed inset-0 bg-[rgba(0, 0, 0, 0.7)] z-10"
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 170,
+                        lineNumber: 217,
                         columnNumber: 11
                     }, this),
                     showModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "fixed inset-0 flex justify-center items-center z-20 bg-[rgba(0,0,0,0.7)] p-4",
+                        className: "jsx-7d22e62001e8257e" + " " + "fixed inset-0 flex justify-center items-center z-20 bg-[rgba(0,0,0,0.7)] p-4",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "bg-white p-6 sm:p-8 rounded-xl shadow-xl w-full max-w-md sm:max-w-lg",
+                            className: "jsx-7d22e62001e8257e" + " " + "bg-white p-6 sm:p-8 rounded-xl shadow-xl w-full max-w-md sm:max-w-lg",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6",
+                                    className: "jsx-7d22e62001e8257e" + " " + "text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6",
                                     children: text.modalTitle
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 177,
+                                    lineNumber: 224,
                                     columnNumber: 15
                                 }, this),
                                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-red-500 text-sm mb-4",
+                                    className: "jsx-7d22e62001e8257e" + " " + "text-red-500 text-sm mb-4",
                                     children: error
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 178,
+                                    lineNumber: 225,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     type: "text",
                                     value: newDeviceId,
                                     onChange: (e)=>setNewDeviceId(e.target.value),
-                                    className: "w-full p-3 sm:p-4 border border-gray-300 rounded-lg mb-4 sm:mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base",
-                                    placeholder: text.modalPlaceholder
+                                    placeholder: text.modalPlaceholder,
+                                    className: "jsx-7d22e62001e8257e" + " " + "w-full p-3 sm:p-4 border border-gray-300 rounded-lg mb-4 sm:mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 179,
+                                    lineNumber: 226,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex flex-col sm:flex-row justify-end gap-3 sm:gap-4",
+                                    className: "jsx-7d22e62001e8257e" + " " + "flex flex-col sm:flex-row justify-end gap-3 sm:gap-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>setShowModal(false),
-                                            className: "w-full sm:w-auto px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-200",
+                                            className: "jsx-7d22e62001e8257e" + " " + "w-full sm:w-auto px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-200",
                                             children: text.modalCancel
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 187,
+                                            lineNumber: 234,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: addDevice,
-                                            className: "w-full sm:w-auto px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out disabled:opacity-50",
                                             disabled: loading,
+                                            className: "jsx-7d22e62001e8257e" + " " + "w-full sm:w-auto px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out disabled:opacity-50",
                                             children: loading ? text.modalAdding : text.modalAdd
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 193,
+                                            lineNumber: 240,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 186,
+                                    lineNumber: 233,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Connect.jsx",
-                            lineNumber: 176,
+                            lineNumber: 223,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 175,
+                        lineNumber: 222,
                         columnNumber: 11
                     }, this),
                     showConfirmRemove && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "fixed inset-0 flex justify-center items-center z-30 bg-[rgba(0,0,0,0.7)] p-4",
+                        className: "jsx-7d22e62001e8257e" + " " + "fixed inset-0 flex justify-center items-center z-30 bg-[rgba(0,0,0,0.7)] p-4",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "bg-white p-6 rounded-xl shadow-xl w-full max-w-sm",
+                            className: "jsx-7d22e62001e8257e" + " " + "bg-white p-6 rounded-xl shadow-xl w-full max-w-sm",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-lg font-semibold mb-4",
+                                    className: "jsx-7d22e62001e8257e" + " " + "text-lg font-semibold mb-4",
                                     children: text.confirmTitle
                                 }, void 0, false, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 209,
+                                    lineNumber: 256,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "mb-4 text-sm sm:text-base",
+                                    className: "jsx-7d22e62001e8257e" + " " + "mb-4 text-sm sm:text-base",
                                     children: [
                                         text.confirmMessage,
                                         " ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                            className: "break-all",
+                                            className: "jsx-7d22e62001e8257e" + " " + "break-all",
                                             children: deviceToRemove
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 210,
+                                            lineNumber: 257,
                                             columnNumber: 78
                                         }, this),
                                         "?"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 210,
+                                    lineNumber: 257,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex flex-col sm:flex-row justify-end gap-3 sm:gap-4",
+                                    className: "jsx-7d22e62001e8257e" + " " + "flex flex-col sm:flex-row justify-end gap-3 sm:gap-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>setShowConfirmRemove(false),
-                                            className: "w-full sm:w-auto px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-200",
+                                            className: "jsx-7d22e62001e8257e" + " " + "w-full sm:w-auto px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-200",
                                             children: text.confirmCancel
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 212,
+                                            lineNumber: 259,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: removeDevice,
-                                            className: "w-full sm:w-auto px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-200",
+                                            className: "jsx-7d22e62001e8257e" + " " + "w-full sm:w-auto px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-200",
                                             children: text.confirmRemove
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 218,
+                                            lineNumber: 265,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Connect.jsx",
-                                    lineNumber: 211,
+                                    lineNumber: 258,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Connect.jsx",
-                            lineNumber: 208,
+                            lineNumber: 255,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 207,
+                        lineNumber: 254,
                         columnNumber: 11
                     }, this),
                     devices.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10",
+                        className: "jsx-7d22e62001e8257e" + " " + "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10",
                         children: devices.map((device)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "p-8 sm:p-10 md:p-12 bg-white rounded-xl shadow-lg flex flex-col items-start transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:cursor-pointer relative min-h-[200px] sm:min-h-[220px]",
                                 onClick: ()=>selectDevice(device.id),
                                 style: {
                                     transition: "transform 0.3s ease, box-shadow 0.3s ease"
                                 },
+                                className: "jsx-7d22e62001e8257e" + " " + "p-8 sm:p-10 md:p-12 bg-white rounded-xl shadow-lg flex flex-col items-start transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:cursor-pointer relative min-h-[200px] sm:min-h-[220px]",
                                 children: [
+                                    showClickAnimation && devices.length === 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "jsx-7d22e62001e8257e" + " " + "absolute inset-0 pointer-events-none flex items-center justify-center z-50",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                transform: 'translate(10vw, 50px)'
+                                            },
+                                            className: "jsx-7d22e62001e8257e" + " " + "relative",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                    src: "/pointercursor.png",
+                                                    alt: "Click here",
+                                                    width: "48",
+                                                    height: "48",
+                                                    className: "jsx-7d22e62001e8257e" + " " + "animate-pulse-click"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/Connect.jsx",
+                                                    lineNumber: 294,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        transform: 'translate(calc(-50% - 3px), calc(-50% - 20px))'
+                                                    },
+                                                    className: "jsx-7d22e62001e8257e" + " " + "absolute top-1/2 left-1/2",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-7d22e62001e8257e" + " " + "animate-click-ripple w-16 h-16 rounded-full border-4 border-blue-500"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/Connect.jsx",
+                                                        lineNumber: 303,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/Connect.jsx",
+                                                    lineNumber: 302,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/components/Connect.jsx",
+                                            lineNumber: 292,
+                                            columnNumber: 21
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/Connect.jsx",
+                                        lineNumber: 290,
+                                        columnNumber: 19
+                                    }, this),
                                     editingDeviceId === device.id ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-full mb-6",
                                         onClick: (e)=>e.stopPropagation(),
+                                        className: "jsx-7d22e62001e8257e" + " " + "w-full mb-6",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                 type: "text",
                                                 value: editName,
                                                 onChange: (e)=>setEditName(e.target.value),
-                                                className: "w-full p-3 border border-gray-300 rounded-lg mb-3 text-base sm:text-lg",
                                                 placeholder: "Device name",
-                                                autoFocus: true
+                                                autoFocus: true,
+                                                className: "jsx-7d22e62001e8257e" + " " + "w-full p-3 border border-gray-300 rounded-lg mb-3 text-base sm:text-lg"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 243,
+                                                lineNumber: 311,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-end gap-3",
+                                                className: "jsx-7d22e62001e8257e" + " " + "flex justify-end gap-3",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>cancelEditing(),
-                                                        className: "p-3 bg-gray-200 rounded-lg hover:bg-gray-300 transition duration-200",
+                                                        className: "jsx-7d22e62001e8257e" + " " + "p-3 bg-gray-200 rounded-lg hover:bg-gray-300 transition duration-200",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTimes"], {
                                                             className: "text-gray-600 text-lg"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 256,
+                                                            lineNumber: 324,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 252,
+                                                        lineNumber: 320,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>saveDeviceName(device.id),
-                                                        className: "p-3 bg-green-500 rounded-lg hover:bg-green-600 transition duration-200",
+                                                        className: "jsx-7d22e62001e8257e" + " " + "p-3 bg-green-500 rounded-lg hover:bg-green-600 transition duration-200",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaSave"], {
                                                             className: "text-white text-lg"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 262,
+                                                            lineNumber: 330,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 258,
+                                                        lineNumber: 326,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 251,
+                                                lineNumber: 319,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 242,
+                                        lineNumber: 310,
                                         columnNumber: 19
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex justify-between items-center w-full mb-6",
+                                        className: "jsx-7d22e62001e8257e" + " " + "flex justify-between items-center w-full mb-6",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center flex-1 min-w-0 mr-3",
+                                            className: "jsx-7d22e62001e8257e" + " " + "flex items-center flex-1 min-w-0 mr-3",
                                             children: device.name ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                        className: "text-xl sm:text-xl md:text-2xl font-bold mr-3 truncate text-gray-800",
+                                                        className: "jsx-7d22e62001e8257e" + " " + "text-xl sm:text-xl md:text-2xl font-bold mr-3 truncate text-gray-800",
                                                         children: device.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 271,
+                                                        lineNumber: 339,
                                                         columnNumber: 27
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1847,17 +1943,17 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                             e.stopPropagation();
                                                             startEditing(device.id, device.name);
                                                         },
-                                                        className: "text-blue-500 hover:text-blue-700 flex-shrink-0",
+                                                        className: "jsx-7d22e62001e8257e" + " " + "text-blue-500 hover:text-blue-700 flex-shrink-0",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaPencilAlt"], {
                                                             className: "text-lg sm:text-xl"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Connect.jsx",
-                                                            lineNumber: 279,
+                                                            lineNumber: 347,
                                                             columnNumber: 29
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Connect.jsx",
-                                                        lineNumber: 272,
+                                                        lineNumber: 340,
                                                         columnNumber: 27
                                                     }, this)
                                                 ]
@@ -1866,25 +1962,25 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                                     e.stopPropagation();
                                                     startEditing(device.id, '');
                                                 },
-                                                className: "px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 text-sm sm:text-base font-medium whitespace-nowrap",
+                                                className: "jsx-7d22e62001e8257e" + " " + "px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 text-sm sm:text-base font-medium whitespace-nowrap",
                                                 children: text.addNameButton
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Connect.jsx",
-                                                lineNumber: 283,
+                                                lineNumber: 351,
                                                 columnNumber: 25
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 268,
+                                            lineNumber: 336,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 267,
+                                        lineNumber: 335,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-sm sm:text-base md:text-lg text-gray-600 mb-4 break-all w-full pr-10 font-medium",
+                                        className: "jsx-7d22e62001e8257e" + " " + "text-sm sm:text-base md:text-lg text-gray-600 mb-4 break-all w-full pr-10 font-medium",
                                         children: [
                                             text.deviceIdLabel,
                                             " ",
@@ -1892,7 +1988,7 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 296,
+                                        lineNumber: 364,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1900,68 +1996,72 @@ const Connect = ({ setActiveDevice, refreshOnReturn })=>{
                                             e.stopPropagation();
                                             confirmRemoveDevice(device.id);
                                         },
-                                        className: "absolute top-4 right-4 text-red-500 hover:text-red-700 transition-colors duration-200 p-2",
+                                        className: "jsx-7d22e62001e8257e" + " " + "absolute top-4 right-4 text-red-500 hover:text-red-700 transition-colors duration-200 p-2",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTrash"], {
                                             className: "text-lg sm:text-xl"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Connect.jsx",
-                                            lineNumber: 306,
+                                            lineNumber: 374,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Connect.jsx",
-                                        lineNumber: 299,
+                                        lineNumber: 367,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, device.id, true, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 233,
+                                lineNumber: 280,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 231,
+                        lineNumber: 278,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex flex-col items-center justify-center h-64 rounded-lg px-4",
+                        className: "jsx-7d22e62001e8257e" + " " + "flex flex-col items-center justify-center h-64 rounded-lg px-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-lg sm:text-xl text-gray-600 mb-4 text-center",
+                                className: "jsx-7d22e62001e8257e" + " " + "text-lg sm:text-xl text-gray-600 mb-4 text-center",
                                 children: text.emptyTitle
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 313,
+                                lineNumber: 381,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-sm sm:text-base text-gray-500 text-center",
+                                className: "jsx-7d22e62001e8257e" + " " + "text-sm sm:text-base text-gray-500 text-center",
                                 children: text.emptySubtitle
                             }, void 0, false, {
                                 fileName: "[project]/components/Connect.jsx",
-                                lineNumber: 314,
+                                lineNumber: 382,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Connect.jsx",
-                        lineNumber: 312,
+                        lineNumber: 380,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Connect.jsx",
-                lineNumber: 142,
+                lineNumber: 189,
                 columnNumber: 7
-            }, this)
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                id: "7d22e62001e8257e",
+                children: "@keyframes pulse-click{0%,to{opacity:1;transform:scale(1)}50%{opacity:.8;transform:scale(1.2)}}@keyframes click-ripple{0%{opacity:1;transform:scale(.1)}50%{opacity:.5;transform:scale(1.2)}to{opacity:0;transform:scale(2.5)}}.animate-pulse-click.jsx-7d22e62001e8257e{animation:1.5s ease-in-out infinite pulse-click}.animate-click-ripple.jsx-7d22e62001e8257e{animation:1.5s ease-out -.2s infinite click-ripple}"
+            }, void 0, false, void 0, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Connect.jsx",
-        lineNumber: 140,
+        lineNumber: 187,
         columnNumber: 5
     }, this);
 };
-_s(Connect, "kndvZcvH6p7RwHmkIj2MroY+Wco=", false, function() {
+_s(Connect, "FZ8RyeuF89vwXy+6V5fC7iPChQc=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$context$2f$LanguageContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLanguage"]
     ];
@@ -4922,7 +5022,7 @@ const EnvironmentDisplay = ()=>{
                                 className: "hidden sm:flex w-16 h-16 rounded-full border-4 border-blue-500 items-center justify-center bg-blue-500/10 relative z-10",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                     xmlns: "http://www.w3.org/2000/svg",
-                                    className: "h-9 w-9 text-blue-500",
+                                    className: "h-9 w-9 text-blue-500 rotate-180",
                                     fill: "none",
                                     viewBox: "0 0 24 24",
                                     stroke: "currentColor",
